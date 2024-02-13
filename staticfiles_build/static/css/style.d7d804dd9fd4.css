@@ -287,3 +287,9 @@ footer .line {
     color: white;
 }
 
+.motivation-response {
+    font-weight: bold;
+    color: purple;
+    /* Add any other styles you want to apply to the response text */
+}
+
