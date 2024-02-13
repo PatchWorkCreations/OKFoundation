@@ -1,0 +1,404 @@
+/* FONTS */
+@import url("../css/clash-display.1a8a344f78c6.css");
+
+/* VARIABLES */
+:root {
+    --c-dark: #212529;
+    --c-brand: #4e57d4;
+    --c-brand-light: #6970dd;
+    --c-brand-rgb: 78, 87, 212;
+    --c-body: #727272;
+    --font-base: "ClashDisplay", sans-serif;
+    --box-shadow: 0px 15px 25px rgba(0,0,0,0.08);
+    --transition: all 0.5s ease;
+}
+
+/* RESET & HELPERS */
+body {
+    font-family: var(--font-base);
+    line-height: 1.7;
+    color: var(--c-body);
+    background-color: #008080;
+}
+
+h1, h2, h3,h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-weight: 600;
+    color: white;
+}
+
+p {
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: white;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--c-brand-light);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.section-padding {
+    padding-top: 140px;
+    padding-bottom: 140px;
+}
+
+.theme-shadow {
+    box-shadow: var(--box-shadow);
+}
+
+/* IMAGE ZOOM */
+.image-zoom {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.image-zoom-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.image-zoom-wrapper img{
+     transition: var(--transition);
+}
+
+.image-zoom:hover .image-zoom-wrapper img {
+    transform: scale(1.1);
+}
+
+.custom-shape-divider-top-1707557868 {
+    position: absolute;
+    bottom: 100px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1707557868 {
+    position: relative; /* Change from absolute to relative */
+    margin-bottom: -80px; /* Adjust this value based on your design */
+}
+
+
+.custom-shape-divider-top-1707557868 .shape-fill {
+    fill: #3EC3B6;
+}
+
+.rectangle-barr {
+    background-color: #4e57d4; /* Adjust background color as needed */
+    color: #fff; /* Text color */
+    text-align: center;
+    padding: 15px 0; /* Adjust padding as needed */
+}
+
+.rectangle-barr p {
+    margin: 0;
+    font-size: 18px; /* Adjust font size as needed */
+}
+/* NAVBAR */
+.navbar {
+    box-shadow: var(--box-shadow);
+}
+
+.navbar-brand img {
+    width: 60px; /* Adjust the width to your preference */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: var(--c-dark);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--c-brand);
+}
+
+
+
+
+/* BTN */
+.btn {
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 0;
+    padding: 10px 24px;
+}
+
+.btn-brand {
+    background-color: var(--c-brand);
+    border-color: var(--c-brand);
+    color: white;
+}
+
+.btn-brand:hover {
+    background-color: var(--c-brand-light);
+    border-color: var(--c-brand-light);
+    color: white;
+}
+
+
+/* HERO */
+/* HERO */
+#hero {
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url("../images/Ok Run BG New 03 - Copy.ef886b101cec.png");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    height: 100vh; /* Adjust the height as needed */
+}
+
+.hero-content {
+    text-align: center; /* Align text to the center */
+    color: #fff; /* Change text color to white */
+}
+
+.hero-title {
+    margin-bottom: 20px; /* Add margin to the bottom of the title */
+}
+
+.hero-buttons {
+    margin-top: 20px; /* Add margin to the top of the buttons */
+}
+
+
+
+/* SECTION TITLE */
+.section-title {
+    margin-bottom: 60px;
+}
+
+
+
+.section-title .line {
+    width: 60px;
+    height: 4px;
+    background-color: white;
+    margin: 16px auto 24px auto;
+}
+
+.section-title p {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+
+
+/* ICONBOX */
+
+
+/* SERVICE */
+.service {
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    background: url(''); /* Add the path to your background image */
+    background-size: cover; /* or 'contain' based on your preference */
+}
+
+.service::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: rgba(var(--c-brand-rgb), 0.2);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transition: var(--transition);
+}
+
+.service:hover::after {
+    width: 100%;
+    height: 100%;
+    background: var(--c-brand);
+    z-index: -1;
+}
+
+.service:hover h5,
+.service:hover p {
+    color: white;
+}
+
+.service:hover .iconbox {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+
+/* COUNTER */
+#counter {
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.8)), url("../images/counter.add579d04211.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+
+/* TEAM */
+.team-member-content {
+    background-color: white;
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    width: calc(100% - 50px);
+    transform: translateX(-50%);
+    padding: 24px;
+    transition: var(--transition);
+    opacity: 0;
+}
+
+.team-member:hover .team-member-content {
+    opacity: 1;
+    bottom: 24px;
+}
+
+/* CONTACT */
+#contact {
+    position: relative;
+    z-index: 2;
+}
+
+#contact::after {
+    content: "";
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.8)), url("../images/counter.add579d04211.jpg");
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#contact .form-control {
+    border-radius: 0;
+}
+
+#contact .form-control:focus {
+    box-shadow: none;
+    border-color: white;
+}
+
+/* FOOTER */
+footer {
+    padding-top: 120px;
+}
+
+.footer-top {
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-bottom {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+
+footer li,
+footer p,
+footer a {
+    color: rgba(255,255,255,0.7);
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer .line {
+    width: 40px;
+    height: 4px;
+    background-color: white;
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 100px;
+}
+
+.social-icons a:hover {
+    background-color: white;
+    color: white;
+}
+
+.rectangle-bar {
+    background-color: #4e57d4; /* Adjust background color as needed */
+    color: #fff; /* Text color */
+    text-align: center;
+    padding: 15px 0; /* Adjust padding as needed */
+}
+
+.rectangle-bar p {
+    margin: 0;
+    font-size: 18px; /* Adjust font size as needed */
+}
+
+
+/* Registration Form Styles */
+
+.registration-container {
+    background-color: #fff; /* Background color of the container */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+    text-align: left; /* Center the content */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.registration-container h1,h2{
+    color: #212529;
+    text-align: center;
+}
+.registration-container p,
+.registration-container label,
+.registration-container  {
+    color: black; /* Change font color to black */
+    text-align: left;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+
+/* CSS to change the button color to purple */
+.purple-button {
+    background-color: purple;
+    color: white;
+}
+
+
+.image-container {
+    text-align: center; /* Center the image */
+    margin-bottom: 20px; /* Add some space between the image and the form */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
