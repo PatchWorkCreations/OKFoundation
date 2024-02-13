@@ -69,7 +69,17 @@ img {
     transform: scale(1.1);
 }
 
+.rectangle-barr {
+    background-color: #4e57d4; /* Adjust background color as needed */
+    color: #fff; /* Text color */
+    text-align: center;
+    padding: 15px 0; /* Adjust padding as needed */
+}
 
+.rectangle-barr p {
+    margin: 0;
+    font-size: 18px; /* Adjust font size as needed */
+}
 /* NAVBAR */
 .navbar {
     box-shadow: var(--box-shadow);
@@ -115,17 +125,38 @@ img {
 
 
 /* HERO */
+/* HERO */
 #hero {
     background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('../images/Ok Run BG New 03 - Copy.png');
     background-position: center;
     background-size: cover;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    height: 100vh; /* Adjust the height as needed */
 }
+
+.hero-content {
+    text-align: center; /* Align text to the center */
+    color: #fff; /* Change text color to white */
+}
+
+.hero-title {
+    margin-bottom: 20px; /* Add margin to the bottom of the title */
+}
+
+.hero-buttons {
+    margin-top: 20px; /* Add margin to the top of the buttons */
+}
+
 
 
 /* SECTION TITLE */
 .section-title {
     margin-bottom: 60px;
 }
+
+
 
 .section-title .line {
     width: 60px;
@@ -139,6 +170,9 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
+
+
+
 
 
 
@@ -286,4 +320,17 @@ footer .line {
     background-color: var(--c-brand);
     color: white;
 }
+
+.rectangle-bar {
+    background-color: #4e57d4; /* Adjust background color as needed */
+    color: #fff; /* Text color */
+    text-align: center;
+    padding: 15px 0; /* Adjust padding as needed */
+}
+
+.rectangle-bar p {
+    margin: 0;
+    font-size: 18px; /* Adjust font size as needed */
+}
+
 
