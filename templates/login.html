@@ -6,7 +6,7 @@
 
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
 
-    <!----------------------- Registration Container -------------------------->
+    <!----------------------- Login Container -------------------------->
 
     <div class="row border rounded-5 p-3 bg-white shadow box-area">
 
@@ -29,8 +29,8 @@
         <div class="col-md-6 right-box">
             <div class="row align-items-center">
                 <div class="header-text mb-2">
-                    <h2>Hi, You</h2>
-                    <p>We are happy to have you.</p>
+                    <h2>Hello,Again</h2>
+                    <p>We are happy to have you back.</p>
                 </div>
 
                 {% if messages %}
@@ -48,10 +48,6 @@
                 <form method="post">
                     {% csrf_token %}
                     <div class="input-group mb-3">
-                        <input type="text" name="name" class="form-control form-control-lg bg-light fs-6"
-                               placeholder="Name">
-                    </div>
-                    <div class="input-group mb-3">
                         <input type="text" name="username" class="form-control form-control-lg bg-light fs-6"
                                placeholder="Username">
                     </div>
@@ -60,15 +56,11 @@
                                placeholder="Password">
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="confirm_password"
-                               class="form-control form-control-lg bg-light fs-6" placeholder="Confirm Password">
-                    </div>
-                    <div class="input-group mb-3">
-                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Register</button>
+                        <button type="submit" class="btn btn-lg btn-primary w-100 fs-6">Login</button>
                     </div>
                 </form>
                 <div class="row text-center">
-                    <small>Do you have an account? <a href="{% url 'login' %}">Login</a></small>
+                    <small>Don't have account? <a href="{% url 'register' %}">Sign Up</a></small>
                 </div>
             </div>
         </div>
