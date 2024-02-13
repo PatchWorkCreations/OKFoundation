@@ -7,3 +7,8 @@ def HomePage(request):
 
 def RegisterUser(request):
     return render(request, 'register.html')
+
+def DonateUser(request):
+    return render(request, 'donate.html')
+
+
