@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from .models import User
 from django.contrib import messages
@@ -43,6 +43,11 @@ def register_user(request):
             messages.warning(request, 'Passwords did not match. Please try again.')
 
     return render(request, 'register.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')
 
 
 def donate_user(request):
