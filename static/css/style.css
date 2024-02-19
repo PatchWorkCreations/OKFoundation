@@ -325,62 +325,66 @@ footer .line {
     background-color: #4e57d4; /* Adjust background color as needed */
     color: #fff; /* Text color */
     text-align: center;
-    padding: 15px 0; /* Adjust padding as needed */
+    padding: 10px 0; /* Adjust padding as needed */
 }
 
 .rectangle-bar p {
-    margin: 0;
+    margin: 20;
     font-size: 18px; /* Adjust font size as needed */
 }
 
 .rectangle-barr {
-    position: relative; /* Ensure the container is positioned */
+    position: relative;
     background-color: #8636ab;
-    padding: 20px;
+    padding: 0px;
     border: 1px solid #8636ab;
-    border-radius: 0;
-  }
-  
-  .rectangle-barr p {
-    text-align: left; /* Align the text to the left */
-    margin: 0; /* Remove any default margins */
-  }
+    border-radius: 0px;
+    color: #fff;
+}
+
+.rectangle-barr p {
+    text-align: left;
+    margin: 10px 10px; /* Corrected the margin with units */
+}
 
 
-  .buttonone {
+.buttonone {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 30px 20px; /* Adjust padding for height and width */
     background-color: purple;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
-    font-size: 16px;
-    position: absolute; /* Position the button absolutely */
-    top: 50%; /* Move the button down by 50% of the container's height */
-    transform: translateY(-50%); /* Center the button vertically */
-    right: 25px; /* Align the button to the right side of the container */
-  }
-  
-  .buttonone:hover {
-    background-color: purple;
-  }
-  
-  .rectangle-barrr {
-    position: relative; /* Ensure the container is positioned */
+    font-size: 32px;
+    line-height: 1; /* Ensure line-height doesn't affect the size */
+    position: absolute;
+    top: 60%;
+    transform: translateY(-50%);
+    right: 25px;
+}
+
+.buttonone:hover {
+    background-color: #5a1a8e;
+}
+
+
+
+.rectangle-barrr {
+    position: relative;
     background-color: #8636ab;
-    padding: 20px;
+    padding: 0px;
     border: 1px solid #8636ab;
-    border-radius: 0;
+    border-radius: 5px; /* Add border-radius for rounded corners */
     color: #fff;
-  }
-  
-  .rectangle-barrr p {
-    text-align: center; /* Align the text to the left */
-    margin: 0; /* Remove any default margins */
-    
-  }
+}
+
+.rectangle-barrr p {
+    text-align: center;
+    margin: 20px 0; /* Adjust the vertical margin as needed */
+    font-size: 20px;
+}
 
   #welcome-section {
     background-color: #f8f9fa; /* Light gray background color */
@@ -652,4 +656,49 @@ footer .line {
 .img-fluid {
     max-width: 100%;
     height: auto;
+}
+#disclaimer {
+    display: none;
+    color: #ff5252; /* Red color for emphasis */
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+#under_18:focus + #disclaimer,
+#under_18:valid + #disclaimer {
+    display: block;
+}
+
+.containerone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    text-align: center;
+}
+
+.containerone a.btn-primary {
+    display: inline-block;
+    background-color: #007bff;
+    color: whitesmoke;
+    border: 2px solid #0056b3;
+    border-radius: 5px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.containerone a.btn-primary:hover {
+    background-color: #0056b3;
+    color: whitesmoke;
+}
+
+.containerone h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
