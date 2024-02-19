@@ -55,8 +55,7 @@ def donate_user(request):
 
 
 def johnstown_2024_page(request):
-    # Your view logic goes here
-    return render(request, 'Johnstown2024.html')
+    return render(request, 'johnstown2024.html')
 
 def registration_page(request):
     # Your view logic goes here
