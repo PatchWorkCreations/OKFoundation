@@ -333,4 +333,323 @@ footer .line {
     font-size: 18px; /* Adjust font size as needed */
 }
 
+.rectangle-barr {
+    position: relative; /* Ensure the container is positioned */
+    background-color: #8636ab;
+    padding: 20px;
+    border: 1px solid #8636ab;
+    border-radius: 0;
+  }
+  
+  .rectangle-barr p {
+    text-align: left; /* Align the text to the left */
+    margin: 0; /* Remove any default margins */
+  }
 
+
+  .buttonone {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: purple;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute; /* Position the button absolutely */
+    top: 50%; /* Move the button down by 50% of the container's height */
+    transform: translateY(-50%); /* Center the button vertically */
+    right: 25px; /* Align the button to the right side of the container */
+  }
+  
+  .buttonone:hover {
+    background-color: purple;
+  }
+  
+  .rectangle-barrr {
+    position: relative; /* Ensure the container is positioned */
+    background-color: #8636ab;
+    padding: 20px;
+    border: 1px solid #8636ab;
+    border-radius: 0;
+    color: #fff;
+  }
+  
+  .rectangle-barrr p {
+    text-align: center; /* Align the text to the left */
+    margin: 0; /* Remove any default margins */
+    
+  }
+
+  #welcome-section {
+    background-color: #f8f9fa; /* Light gray background color */
+    padding: 50px 0; /* Adjust padding as needed */
+}
+
+#welcome-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333; /* Dark text color */
+    margin-bottom: 20px;
+}
+
+#welcome-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555; /* Slightly darker text color */
+    margin-bottom: 15px;
+}
+
+#welcome-section p:last-child {
+    margin-bottom: 0; /* Remove bottom margin from last paragraph */
+}
+
+
+/* Style for the event details section */
+#event-details-section {
+    background-color: #f8f9fa; /* Light gray background color */
+    padding: 50px 0;
+    color: black;
+}
+
+/* Style for the event details text */
+#event-details-section h2 {
+    color: #007bff; /* Blue color for headings */
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Style for the event details paragraphs */
+#event-details-section p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Style for the registration button */
+#event-details-section .btn-primary {
+    background-color: #007bff; /* Blue color for the button */
+    color: white; /* White text color */
+    border: none;
+    border-radius: 25px; /* Rounded button */
+    padding: 12px 24px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover style for the registration button */
+#event-details-section .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* Registration and Sponsorship Section */
+#registration-sponsorship-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+/* Trophy Announcement Section */
+#trophy-announcement-section {
+    padding: 50px 0;
+}
+
+/* How to Join Section */
+#how-to-join-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+/* Special Announcements Section */
+#special-announcements-section {
+    padding: 50px 0;
+}
+
+/* Call to Action for Hosting an Event Section */
+#cta-host-event-section {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+/* Additional Information Section */
+#additional-info-section {
+    padding: 50px 0;
+}
+
+
+#registration-sponsorship-section {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+#registration-sponsorship-section h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#registration-sponsorship-section h3 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+#registration-sponsorship-section h4 {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+#registration-sponsorship-section ul {
+    margin-bottom: 20px;
+}
+
+#registration-sponsorship-section ul li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#registration-sponsorship-section ul li:last-child {
+    margin-bottom: 0;
+}
+
+
+#trophy-announcement-section {
+    background-color: #f9f9f9;
+    padding: 50px 0;
+}
+
+#trophy-announcement-section h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#trophy-announcement-section h3 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.trophy-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.trophy-item {
+    flex-basis: calc(33.33% - 20px);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.trophy-item h4 {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.trophy-item p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+.section {
+    padding-top: 100px; /* Adjust as needed to offset fixed navbar */
+}
+
+.buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.buttons .btn {
+    margin: 0 10px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.buttons .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.buttons .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.buttons .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.buttons .btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+}
+
+.buttons .btn-success:hover {
+    background-color: #218838;
+}
+
+/* Define a class for the body specific to the johnstown2024.html page */
+.body-johnstown2024 {
+    background-color: teal; /* Set the background color to teal */
+    color: white; /* Set text color to white for better visibility */
+}
+/* Registration Form Styles */
+
+.registration-container {
+    background-color: #fff; /* Background color of the container */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Box shadow for a 3D effect */
+    text-align: left; /* Center the content */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.registration-container h1,h2{
+    color: #212529;
+    text-align: center;
+}
+.registration-container p,
+.registration-container label,
+.registration-container  {
+    color: black; /* Change font color to black */
+    text-align: left;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+
+/* CSS to change the button color to purple */
+.purple-button {
+    background-color: purple;
+    color: white;
+}
+
+
+.image-container {
+    text-align: center; /* Center the image */
+    margin-bottom: 20px; /* Add some space between the image and the form */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}

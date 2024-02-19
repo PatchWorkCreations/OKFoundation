@@ -1,0 +1,233 @@
+<!-- base.html -->
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+
+<body class="body-johnstown2024">
+<div class="rectangle-barrr">
+    <p>Johnstown 2024</p>
+</div>
+
+<section id="welcome-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="static/images/Ok Run BG New 03 - Copy.png" alt="Welcome Image" class="img-fluid">
+            </div>
+            <div class="col-md-6">
+                <h2>Welcome to the inaugural event of The 0K Foundation in Johnstown this 2024</h2>
+                <p>A beacon of hope and solidarity in our shared journey towards suicide prevention. This year, we gather in memory of Jacob Wetzel, whose life was tragically cut short by suicide.</p>
+                <p>
+                    Through this event, we aim not just to honor Jacob’s memory, but also to illuminate the path for those who find themselves in the shadows of despair, reminding everyone that they are not alone.
+                </p>
+
+                <p> 
+                    Join us in creating a ripple of change that extends beyond this day—become a participant, form a team, or step forward as a sponsor. Together, we can build a community of support, understanding, and action. We invite community members, local influencers, and potential sponsors to learn more about our cause and discover how you can contribute to this vital movement. Your involvement can make a world of difference, offering hope and healing to many.
+        
+                </p>
+
+                <p>
+                    Be part of something truly impactful. Together, let’s celebrate life, encourage one another, and stand united against suicide. 
+                </p>
+
+                <p>
+                    Join us in our mission to save lives and spread a message of love and support throughout our community and beyond.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Event Details Section -->
+<section id="event-details-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Event Information</h2>
+                <p><strong>Date and Time:</strong> May 18, 2024, from 9 AM to Noon</p>
+                <p><strong>Location:</strong> Johnstown</p>
+                <a href="{% url 'registration' %}" class="btn btn-primary">Register Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="registration-sponsorship-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Register as a Participant or Become a Sponsor</h2>
+                <h3>Options:</h3>
+                <ul>
+                    <li>Individual Participant: $30</li>
+                    <li>Team of up to 5: $100</li>
+                    <li>Team of up to 10 members: $275</li>
+                </ul>
+                <h3>Sponsors (Bronze, Silver, Gold)</h3>
+                <h4>Bronze Sponsorship - “Community Supporter”</h4>
+                <ul>
+                    <li>Price: $15,000</li>
+                    <li>Includes: Your name or logo will be prominently featured on our event website and on the official event t-shirts. You will also be honored with a prestigious certificate of appreciation to acknowledge your significant contribution to our cause.</li>
+                    <li>Please submit your t-shirt size by April 15 to ensure a perfect fit.</li>
+                </ul>
+                <h4>Silver Sponsorship - “Hope Advocate”</h4>
+                <ul>
+                    <li>Price: $20,000</li>
+                    <li>Includes: As a Silver sponsor, your name or logo will be displayed on our event website and on the event t-shirts, recognizing your valuable support. A certificate of appreciation will also be provided to celebrate your commitment.</li>
+                    <li>T-shirt size submissions are due by April 15.</li>
+                </ul>
+                <h4>Gold Sponsorship - “Lifesaver Leader”</h4>
+                <ul>
+                    <li>Price: $25,000</li>
+                    <li>Includes: All Silver benefits plus premier visibility across all event materials, feature in press releases, and promotional materials.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="trophy-announcement-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Trophy Announcement</h2>
+                <h3>The participant, team, and sponsor raising the most money will be awarded a trophy!</h3>
+                <div class="trophy-list">
+                    <div class="trophy-item">
+                        <h4>“Champions of Hope” Awards</h4>
+                        <p>Celebrate the spirit of giving with our “Champions of Hope” trophies, awarded to the participant, team, and sponsor who go above and beyond in their fundraising efforts. Your remarkable contributions light the way to a brighter future, and we want to honor your commitment and impact with a symbol of our gratitude and recognition.</p>
+                    </div>
+                    <div class="trophy-item">
+                        <h4>“Heart of the Community” Trophy</h4>
+                        <p>This special accolade goes to the participant, team, and sponsor whose extraordinary fundraising achievements embody the heart and soul of our mission. Your dedication not only raises crucial funds but also amplifies our collective voice against suicide, making you true heroes in our community.</p>
+                    </div>
+                    <div class="trophy-item">
+                        <h4>“Beacons of Light” Recognition</h4>
+                        <p>Shine bright as a beacon of light! The top fundraiser from each category—individual, team, and sponsor—will receive a prestigious “Beacons of Light” trophy, symbolizing your role in illuminating the path to hope and support for those in need. Let’s celebrate your inspiring efforts and success in bringing us closer to a world without suicide.</p>
+                    </div>
+                    <div class="trophy-item">
+                        <h4>“Guardians of Tomorrow” Awards</h4>
+                        <p>Acknowledging the forward-looking impact of your fundraising, the “Guardians of Tomorrow” trophies will be presented to those who lead the way in contributions. Your visionary support as a participant, team, or sponsor safeguards our future, ensuring ongoing care and prevention efforts. Join us in honoring these guardians who pave the way for enduring change.</p>
+                    </div>
+                    <div class="trophy-item">
+                        <h4>“Unity in Action” Trophies</h4>
+                        <p>In recognition of the collective effort and unity it takes to make a difference, the “Unity in Action” trophies will be awarded to the highest fundraisers. This honor celebrates not just the funds raised but the spirit of collaboration and solidarity you’ve shown. Together, you’re a formidable force for good, and we’re thrilled to commemorate your achievement.</p>
+                    </div>
+                    <div class="trophy-item">
+                        <h4>Social Media Spotlight</h4>
+                        <p>Winners will not only receive a trophy but also be featured in a special social media campaign. This will include interviews, stories, and posts celebrating your journey, achievements, and the difference you’ve made. It’s an opportunity to shine in the spotlight and inspire others with your dedication and success.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- How to Join Section -->
+<section id="how-to-join-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>How to Join</h2>
+                <a href="#" class="btn btn-primary">Join Us in Making a Difference</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Call to Action for Hosting an Event Section -->
+<section id="cta-host-event-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Host an Event in Your City</h2>
+                <a href="#" class="btn btn-primary">Host an Event in Your City</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Information Section -->
+<section id="additional-info-section" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>More Ways to Get Involved and Support</h2>
+                <!-- Add additional information here -->
+                <div class="buttons">
+                    <a href="#additional-info-section" class="btn btn-primary">Volunteer</a>
+                    <a href="#additional-info-section" class="btn btn-success">Donate</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="rectangle-bar">
+    <p>Help is available. Speak with someone today. Call 988.</p>
+</div>
+<!-- FOOTER -->
+<footer class="bg-dark">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row gy-5">
+                <div class="col-lg-3 col-sm-6">
+                    <a href="#">
+                        <img src="{% static 'images/Ok-Run-New-Logo_white2.png' %}" alt="" class="img-fluid"
+                             style="max-width: 100px;">
+                    </a>
+                    <div class="line"></div>
+                    <p>We overcome through love, care, and compassion. We garner strength through shared experiences to
+                        build stronger communities - TOGETHER! </p>
+                    <p> "It's going to be 0K!" </p>
+                    <div class="social-icons">
+                        <a href="#"><i class="ri-twitter-fill"></i></a>
+                        <a href="#"><i class="ri-instagram-fill"></i></a>
+                        <a href="#"><i class="ri-github-fill"></i></a>
+                        <a href="#"><i class="ri-dribbble-fill"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <h5 class="mb-0 text-white">ABOUT US</h5>
+                    <div class="line"></div>
+                    <ul>
+                        <li><a href="#">Become a Volunteer</a></li>
+                        <li><a href="#">Sponsors</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <h5 class="mb-0 text-white">CONTACT</h5>
+                    <div class="line"></div>
+                    <ul>
+                        <li>Johnstown Ohio, OH</li>
+                        <li>http://0kfoundation.jacobwetzel.com/</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row g-4 justify-content-between">
+                <div class="col-auto">
+                    <p class="mb-0">© Copyright The PatchWork™. All Rights Reserved</p>
+                </div>
+                <div class="col-auto">
+                    <p class="mb-0">Powered by: <a
+                            href="https://i-patchwork.com/">The PatchWork™</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+{% endblock %}

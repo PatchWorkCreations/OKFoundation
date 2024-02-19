@@ -52,3 +52,12 @@ def logout_user(request):
 
 def donate_user(request):
     return render(request, 'donate.html')
+
+
+def johnstown_2024_page(request):
+    # Your view logic goes here
+    return render(request, 'Johnstown2024.html')
+
+def registration_page(request):
+    # Your view logic goes here
+    return render(request, 'registration.html')
