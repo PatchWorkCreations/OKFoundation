@@ -247,78 +247,161 @@
     </div>
 </section>
 
-
-<!-- CONTACT -->
-<section class="section-padding bg-light" id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
-                <div class="section-title">
-                    <h1 class="display-4 text-white fw-semibold">Get in touch</h1>
-                    <div class="line bg-white"></div>
-                    <p class="text-white"></p>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center" data-aos="fade-down" data-aos-delay="250">
-            <div class="col-lg-8">
-                <form action="#" class="row g-3 p-lg-5 p-4 bg-white theme-shadow">
-                    <div class="form-group col-lg-6">
-                        <input type="text" class="form-control" placeholder="Enter first name">
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <input type="text" class="form-control" placeholder="Enter last name">
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <input type="email" class="form-control" placeholder="Enter Email address">
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <input type="text" class="form-control" placeholder="Enter subject">
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <textarea name="message" rows="5" class="form-control" placeholder="Enter Message"></textarea>
-                    </div>
-                    <div class="form-group col-lg-12 d-grid">
-                        <button class="btn btn-brand">Send Message</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- BLOG -->
-<section id="blog" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
-                <div class="section-title">
-                    <h1 class="display-4 fw-semibold">Recent News & Articles</h1>
-                    <div class="line"></div>
-                    <p>Stay informed with our latest articles and news updates on mental health awareness, crafted to
-                        empower and enlighten.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4" data-aos="fade-down" data-aos-delay="150">
-                <div class="team-member image-zoom">
-                    <div class="image-zoom-wrapper">
-                        <img src="{% static 'images/Ms Patchh.jpeg' %}" alt="">
-                    </div>
-                    <h5 class="mt-4">Families joining the state in a mission to prevent suicide</h5>
-                    <p>Wetzel, a mother, was forced to endure the devastating pain of losing her son, who died by
-                        suicide. She says her son struggled with mental health issues, and that she had no idea. Stories
-                        like hers are behind a major initiative launched by Governor Mike DeWine, and the aim is to save
-                        lives. The Wetzel family also created a foundation focused on suicide prevention. (WSYX)</p>
-                    <a href="https://abc6onyourside.com/news/local/families-joining-the-state-in-a-mission-to-prevent-suicide-central-columbus-ohio-january-2024-soar-study-0k-foundation-patch-jacob-wetzel?fbclid=IwAR1X21Yrd0SDYh2zxZwJimFNS5WIRsKauvNPiyoK1uKJ5UsgxRViPp1TZ7U">Read
-                        More</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+<div id='collection-component-1708378939143'></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+(function () {
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  if (window.ShopifyBuy) {
+    if (window.ShopifyBuy.UI) {
+      ShopifyBuyInit();
+    } else {
+      loadScript();
+    }
+  } else {
+    loadScript();
+  }
+  function loadScript() {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = scriptURL;
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+    script.onload = ShopifyBuyInit;
+  }
+  function ShopifyBuyInit() {
+    var client = ShopifyBuy.buildClient({
+      domain: '48b389-2.myshopify.com',
+      storefrontAccessToken: '9a5f37754916b504d25086b092a18b61',
+    });
+    ShopifyBuy.UI.onReady(client).then(function (ui) {
+      ui.createComponent('collection', {
+        id: '312518344861',
+        node: document.getElementById('collection-component-1708378939143'),
+        moneyFormat: '%24%7B%7Bamount%7D%7D',
+        options: {
+  "product": {
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "calc(25% - 20px)",
+          "margin-left": "20px",
+          "margin-bottom": "50px",
+          "width": "calc(25% - 20px)"
+        },
+        "img": {
+          "height": "calc(100% - 15px)",
+          "position": "absolute",
+          "left": "0",
+          "right": "0",
+          "top": "0"
+        },
+        "imgWrapper": {
+          "padding-top": "calc(75% + 15px)",
+          "position": "relative",
+          "height": "0"
+        }
+      },
+      "button": {
+        ":hover": {
+          "background-color": "#774ea4"
+        },
+        "background-color": "#8457b6",
+        ":focus": {
+          "background-color": "#774ea4"
+        },
+        "border-radius": "9px",
+        "padding-left": "36px",
+        "padding-right": "36px"
+      }
+    },
+    "buttonDestination": "modal",
+    "contents": {
+      "options": false
+    },
+    "text": {
+      "button": "View product"
+    }
+  },
+  "productSet": {
+    "styles": {
+      "products": {
+        "@media (min-width: 601px)": {
+          "margin-left": "-20px"
+        }
+      }
+    }
+  },
+  "modalProduct": {
+    "contents": {
+      "img": false,
+      "imgWithCarousel": true,
+      "button": false,
+      "buttonWithQuantity": true
+    },
+    "styles": {
+      "product": {
+        "@media (min-width: 601px)": {
+          "max-width": "100%",
+          "margin-left": "0px",
+          "margin-bottom": "0px"
+        }
+      },
+      "button": {
+        ":hover": {
+          "background-color": "#774ea4"
+        },
+        "background-color": "#8457b6",
+        ":focus": {
+          "background-color": "#774ea4"
+        },
+        "border-radius": "9px",
+        "padding-left": "36px",
+        "padding-right": "36px"
+      }
+    },
+    "text": {
+      "button": "Add to cart"
+    }
+  },
+  "option": {},
+  "cart": {
+    "styles": {
+      "button": {
+        ":hover": {
+          "background-color": "#774ea4"
+        },
+        "background-color": "#8457b6",
+        ":focus": {
+          "background-color": "#774ea4"
+        },
+        "border-radius": "9px"
+      }
+    },
+    "text": {
+      "total": "Subtotal",
+      "button": "Checkout"
+    }
+  },
+  "toggle": {
+    "styles": {
+      "toggle": {
+        "background-color": "#8457b6",
+        ":hover": {
+          "background-color": "#774ea4"
+        },
+        ":focus": {
+          "background-color": "#774ea4"
+        }
+      }
+    }
+  }
+},
+      });
+    });
+  }
+})();
+/*]]>*/
+</script>
 <div class="rectangle-bar">
     <p>Help is available. Speak with someone today. Call 988.</p>
 </div>

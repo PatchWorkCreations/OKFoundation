@@ -702,3 +702,41 @@ footer .line {
     font-size: 24px;
     margin-bottom: 20px;
 }
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Set a background color */
+}
+
+#collection-component-1708378939143 {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Adjust the height as needed */
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-description {
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
