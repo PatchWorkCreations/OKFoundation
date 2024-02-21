@@ -350,19 +350,18 @@ footer .line {
 
 .buttonone {
     display: inline-block;
-    padding: 30px 20px; /* Adjust padding for height and width */
+    padding: 2rem 2rem; /* Adjust padding for height and width */
     background-color: purple;
     color: #ffffff;
     text-decoration: none;
     border-radius: 10px;
     border: none;
     cursor: pointer;
-    font-size: 32px;
     line-height: 1; /* Ensure line-height doesn't affect the size */
     position: absolute;
     top: 60%;
     transform: translateY(-50%);
-    right: 25px;
+    right: 0.5rem;
 }
 
 .buttonone:hover {
