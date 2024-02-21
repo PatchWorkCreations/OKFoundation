@@ -347,7 +347,6 @@ footer .line {
     margin: 10px 10px; /* Corrected the margin with units */
 }
 
-
 .buttonone {
     display: inline-block;
     padding: 2rem 2rem; /* Adjust padding for height and width */
@@ -367,8 +366,6 @@ footer .line {
 .buttonone:hover {
     background-color: #5a1a8e;
 }
-
-
 
 .rectangle-barrr {
     position: relative;
