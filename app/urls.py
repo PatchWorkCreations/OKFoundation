@@ -10,4 +10,6 @@ urlpatterns = [
     path('johnstown2024', johnstown_2024_page, name='johnstown_2024'),
     path('registration', registration_page, name='registration'),
     path('dashboard', dashboard, name='dashboard'),
+    path('eventinyourcity', eventinyourcity, name='eventinyourcity'),
+
 ]

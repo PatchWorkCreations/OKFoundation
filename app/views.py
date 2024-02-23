@@ -89,3 +89,6 @@ def registration_page(request):
 
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+def eventinyourcity(request):
+    return render(request, 'eventinyourcity.html')
