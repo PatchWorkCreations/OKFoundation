@@ -2,12 +2,12 @@
 {% block content %}
 
 {% include 'navbar.html' %}
-    <h1>Welcome to Your Dashboard, {{ participant.name }}!</h1>
+    <h1>Welcome to Your Dashboard. Your Team is {{ request.user.team_name }}!</h1>
     <p>Your Basic Information:</p>
     <ul>
-        <li><strong>Name:</strong> {{ participant.name }}</li>
-        <li><strong>Username:</strong> {{ participant.username }}</li>
-        <li><strong>Fundraising Goal:</strong> ${{ participant.fundraising_goal }}</li>
+        <li><strong>Name:</strong> {{ request.user.name }}</li>
+        <li><strong>Username:</strong> {{ request.user.username }}</li>
+        <li><strong>Fundraising Goal:</strong> ${{ request.user.fundraising_goal }}</li>
         <!-- Add more information as needed -->
     </ul>
 

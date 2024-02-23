@@ -62,7 +62,7 @@ def registration_page(request):
                 messages.warning(request, 'Username is already taken. Please choose another.')
             else:
                 # Create a Participant object and save it to the database
-                participant = Participant(
+                Participant.objects.create_user(
                     name=name,
                     username=username,
                     password=password,
@@ -78,8 +78,6 @@ def registration_page(request):
                     country=country,
                     phone_number=phone_number
                 )
-                participant.save()
-
                 messages.success(request, 'Registration successful. You can now log in.')
                 return redirect('login')
 
@@ -90,8 +88,4 @@ def registration_page(request):
 
 
 def dashboard(request):
-    # Retrieve the participant object from the database
-    # participant = get_object_or_404(Participant, id=participant_id)
-    participant = Participant.objects.all()
-
-    return render(request, 'dashboard.html', {'participant': participant})
+    return render(request, 'dashboard.html')
