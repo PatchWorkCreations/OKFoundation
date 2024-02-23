@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
-from .models import User
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Participant
 from django.contrib import messages
 
 
@@ -16,33 +16,12 @@ def login_user(request):
 
         if user is not None:
             login(request, user)
-            return redirect('home')
+            # Redirect to the dashboard with the participant's basic information
+            return redirect('dashboard')
         else:
             messages.warning(request, 'Invalid username or password. Please try again.')
 
     return render(request, 'login.html')
-
-
-def register_user(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        confirm_password = request.POST.get('confirm_password')
-
-        if password == confirm_password:
-            # Check if the username is already taken
-            if User.objects.filter(username=username).exists():
-                messages.warning(request, 'Username is already taken. Please choose another.')
-            else:
-                User.objects.create_user(username=username, password=password, name=name)
-                messages.success(request, 'Registration successful. You can now log in.')
-                return redirect('login')
-
-        else:
-            messages.warning(request, 'Passwords did not match. Please try again.')
-
-    return render(request, 'register.html')
 
 
 def logout_user(request):
@@ -57,6 +36,62 @@ def donate_user(request):
 def johnstown_2024_page(request):
     return render(request, 'johnstown2024.html')
 
+
 def registration_page(request):
-    # Your view logic goes here
-    return render(request, 'registration.html')
+    if request.method == 'POST':
+        # Extract data from the form
+        name = request.POST.get('name')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        fundraising_goal = request.POST.get('fundraising_goal')
+        donation_amount = request.POST.get('donation_amount', 0)  # Default to 0 if not provided
+        team_option = request.POST.get('team_option')
+        team_name = request.POST.get('team_name', '') if team_option == 'start_team' else ''
+        under_18 = request.POST.get('under_18') == 'yes'
+        mailing_address = request.POST.get('mailing_address')
+        zip_code = request.POST.get('zip_code')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        country = request.POST.get('country')
+        phone_number = request.POST.get('phone_number', '')  # Optional field
+
+        if password == confirm_password:
+            # Check if the username is already taken
+            if Participant.objects.filter(username=username).exists():
+                messages.warning(request, 'Username is already taken. Please choose another.')
+            else:
+                # Create a Participant object and save it to the database
+                participant = Participant(
+                    name=name,
+                    username=username,
+                    password=password,
+                    fundraising_goal=fundraising_goal,
+                    donation_amount=donation_amount,
+                    team_option=team_option,
+                    team_name=team_name,
+                    under_18=under_18,
+                    mailing_address=mailing_address,
+                    zip_code=zip_code,
+                    city=city,
+                    state=state,
+                    country=country,
+                    phone_number=phone_number
+                )
+                participant.save()
+
+                messages.success(request, 'Registration successful. You can now log in.')
+                return redirect('login')
+
+        else:
+            messages.warning(request, 'Passwords did not match. Please try again.')
+
+    return render(request, 'registration.html')  # Update with your actual template name
+
+
+def dashboard(request):
+    # Retrieve the participant object from the database
+    # participant = get_object_or_404(Participant, id=participant_id)
+    participant = Participant.objects.all()
+
+    return render(request, 'dashboard.html', {'participant': participant})

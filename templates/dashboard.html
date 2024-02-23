@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% include 'navbar.html' %}
+    <h1>Welcome to Your Dashboard, {{ participant.name }}!</h1>
+    <p>Your Basic Information:</p>
+    <ul>
+        <li><strong>Name:</strong> {{ participant.name }}</li>
+        <li><strong>Username:</strong> {{ participant.username }}</li>
+        <li><strong>Fundraising Goal:</strong> ${{ participant.fundraising_goal }}</li>
+        <!-- Add more information as needed -->
+    </ul>
+
+
+{% include 'footer.html' %}
+{% endblock %}

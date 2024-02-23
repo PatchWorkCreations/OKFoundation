@@ -23,7 +23,8 @@
                     <h2 class="mb-4">Your Fundraising</h2>
                     <!-- Registration Form content goes here -->
 
-                    <form id="registrationForm">    <!-- Form content goes here -->
+                    <form method="post" id="registrationForm">    <!-- Form content goes here -->
+                        {% csrf_token %}
                         <!-- Question 1 -->
                         <div class="mb-4">
                             <p>We all participate in 0K Run for various motivations. What motivates you to join? (Please
@@ -66,7 +67,7 @@
                         <!-- Question 2 -->
                         <div class="mb-4">
                             <label for="fundraising_goal" class="form-label">What's your fundraising goal?</label>
-                            <input type="text" class="form-control" id="fundraising_goal"
+                            <input type="number" class="form-control" id="fundraising_goal" name="fundraising_goal"
                                    placeholder="Enter your fundraising goal">
                         </div>
 
@@ -393,6 +394,7 @@
             disclaimer.style.display = "none";
         }
     }
+
 
 
 
