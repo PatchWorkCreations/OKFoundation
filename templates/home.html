@@ -3,21 +3,257 @@
 {% load static %}
 
 <style>
-    #johnstown_2024_button {
-        position: absolute;
-        top: 8.7rem; /* Adjust this value as needed */
-        right: 0rem; /* Adjust this value as needed */
-        padding: 1rem 2rem; /* Adjust padding for height and width */
-        background-color: purple;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 10px;
-        border: none;
-        cursor: pointer;
-        line-height: 1; /* Ensure line-height doesn't affect the size */
+  #johnstown_2024_button {
+      position: absolute;
+      top: 8.6rem; /* Adjust this value as needed */
+      right: 1rem; /* Adjust this value as needed */
+      padding: 1rem 2rem; /* Adjust padding for height and width */
+      background-color: #673ab7; /* Deep purple color */
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 0 0 10px 10px; /* Rounded corners for the bottom */
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+      overflow: hidden; /* Hide overflowing content */
+  }
+
+  #johnstown_2024_button:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent; /* Adjust size as needed */
+      border-right: 20px solid transparent; /* Adjust size as needed */
+      border-bottom: 20px solid #673ab7; /* Deep purple color */
+      z-index: 1; /* Place the triangle above the button content */
+  }
+
+  #johnstown_2024_button:hover {
+      background-color: #512da8; /* Darken the color on hover */
+  }
+
+  #bannerr {
+    background: linear-gradient(135deg, #6f42c1, #007bff); /* Gradient background with purple and blue */
+    background-color: #6f42c1; /* Fallback color for older browsers */
+}
+
+.banner-title {
+    color: #fff; /* White text color */
+    font-size: 28px; /* Adjust font size as needed */
+    font-family: "Arial", sans-serif; /* Choose a font that's engaging and easy to read */
+    padding: 20px; /* Add padding for spacing */
+}
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+    .banner-title {
+        font-size: 24px; /* Adjust font size for smaller screens */
     }
+}
+
+@media (max-width: 576px) {
+    .banner-title {
+        font-size: 20px; /* Further adjust font size for smaller screens */
+    }
+}
+
+.engage-button {
+    background-color: #6f42c1; /* Purple color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline from anchor */
+    display: inline-block; /* Ensure button behaves like a block element */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Adjust shadow on hover */
+.engage-button:hover {
+    background-color: #5a3a9e; /* Darker shade of purple on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
+}
+
+/*fun in fundraising*/
+
+#fun-section {
+    text-align: center; /* Center align text */
+    background-color: #f8f9fa; /* Light background color */
+    padding: 50px 0; /* Add padding for spacing */
+    border-radius: 10px; /* Add rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+.fun-header {
+    font-size: 4.5rem; /* Adjust font size (using rem for better scalability) */
+    color: #6f42c1; /* Purple color */
+    margin-bottom: 20px; /* Add margin at the bottom */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle text shadow for emphasis */
+}
+
+/* Add hover effect to make the header more interactive */
+.fun-header:hover {
+    color: #512da8; /* Darker shade of purple on hover */
+    transform: scale(1.05); /* Increase size on hover */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition on hover */
+}
+
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+    .fun-header {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next row on smaller screens */
+    justify-content: center; /* Center align cards horizontally */
+    gap: 20px; /* Add spacing between cards */
+}
+
+.card {
+    /* Card styles */
+    position: relative;
+    cursor: pointer;
+    width: 22em;
+    max-width: 80%;
+    padding: 2em 0;
+    background: #FFF;
+    box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
+    transition: all 0.35s ease;
+    margin-bottom: 20px; /* Add space between cards */
+}
+
+.card::before, .card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: purple;
+    height: 4px;
+}
+
+.card::before {
+    width: 0;
+    opacity: 0;
+    transition: opacity 0 ease, width 0 ease;
+    transition-delay: 0.5s;
+}
+
+.card::after {
+    width: 100%;
+    background: white;
+    transition: width 0.5s ease;
+}
+
+.card .content {
+    width: 18em;
+    max-width: 80%;
+    padding-left: 20px; /* Add some left padding for spacing */
+    text-align: left; /* Align text to the left */
+}
+
+
+
+.card .logo {
+    margin: 0 0 1em;
+    width: 10.625em;
+    transition: all 0.35s ease;
+    font-weight: bold; /* Make the text bold */
+    color: #000; /* Set text color to black */
+}
+
+.card .h6 {
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.card .hover_content {
+    overflow: hidden;
+    max-height: 0;
+    transform: translateY(1em);
+    transition: all 0.55s ease;
+}
+
+.card .hover_content p {
+    margin: 1.5em 0 0;
+    color: #6E6E70;
+    line-height: 1.4em;
+}
+
+.card:hover {
+    width: 24em;
+    box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
+}
+
+.card:hover::before {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.5s ease, width 0.5s ease;
+    transition-delay: 0;
+}
+
+.card:hover::after {
+    width: 0;
+    opacity: 0;
+    transition: width 0 ease;
+}
+
+.card:hover .logo {
+    margin-bottom: 0.5em;
+}
+
+.card:hover .hover_content {
+    max-height: 10em;
+    transform: none;
+}
+
+/* Hide the hidden-cards section initially */
+.hidden-cards {
+  display: none;
+}
+
+/* Style for the arrow-down icon/button */
+.arrow-down {
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+/* Style for the hidden cards */
+.hidden-cards .card {
+  width: calc(33.33% - 20px); /* Ensure three cards are side by side */
+  margin-right: 20px;
+}
+
+/* Adjust the width of cards for smaller screens */
+@media (max-width: 768px) {
+  .hidden-cards .card {
+    width: calc(50% - 20px); /* Two cards per row on smaller screens */
+  }
+}
+
+
 
 </style>
+
+
+
+
+
 
 {% include 'navbar.html' %}
 
@@ -29,6 +265,7 @@
         <p>Johnstown 2024</p>
         <p>May 18, 2024</p>
         <p>9am - 12 Noon</p>
+        <p>Click Here</p>
     </a>
 
 
@@ -48,89 +285,89 @@
     </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section-padding">
-    <div class="container">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2 text-center mb-4 mb-lg-0" data-aos="fade-down" data-aos-delay="50">
-                    <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F0KFinishLine%2Fvideos%2F1003298810696142%2F&show_text=false&width=560&t=0"
-                            width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
-                </div>
-                <div class="col-lg-6 order-lg-1" data-aos="fade-down" data-aos-delay="150">
-                    <div class="section-title text-lg-start text-center">
-                        <h1 class="display-4 fw-semibold">About Us</h1>
-                        <div class="line"></div>
-                        <p>The 0K Foundation, established in 2023 by Patch Wetzel, is dedicated to supporting
-                            individuals grappling with mental illness by raising crucial funds for existing
-                            organizations dedicated to mental health advocacy and support.</p>
-                        <p>At The 0K Foundation, we recognize the immense challenges faced by those navigating the
-                            complexities of mental health disorders. Our mission is rooted in the belief that every
-                            individual deserves access to comprehensive mental health care and support services.</p>
-                        <p>Driven by a commitment to fostering tangible change, we channel our efforts into fundraising
-                            initiatives aimed at bolstering the resources and capabilities of established organizations
-                            already making significant strides in mental health advocacy and support. Through strategic
-                            partnerships and community engagement, we strive to amplify the impact of these
-                            organizations, ensuring that they have the necessary resources to continue their vital
-                            work.</p>
-                        <p>At the core of our ethos lies a deep-seated belief in the power of collective action. By
-                            mobilizing individuals, businesses, and communities, we endeavor to spark conversations,
-                            raise awareness, and break down barriers surrounding mental health. Together, we aim to
-                            cultivate a more compassionate and supportive society where individuals facing mental health
-                            challenges are met with understanding, empathy, and access to the resources they need to
-                            thrive.</p>
-                        <p>Join us in our mission to champion mental health awareness, support, and advocacy. Together,
-                            we can make a difference—one step, one contribution, one individual at a time.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--Bannerr-->
+<section id="bannerr" class="text-center py-5">
+  <div class="container">
+      <h2 class="banner-title text-uppercase text-white fw-bold">Say their name, sign their name this is their tribute</h2>
+      <a href="{% url 'registration' %}" class="engage-button">Engage Now</a>
+  </div>
+</section>
+<!--fun section-->
+<section id="fun-section">
+  <div class="container">
+      <h2 class="fun-header">"FUN" in Fundraising</h2>
+  </div>
 
-        <div class="row justify-content-between align-items-center">
-            <div class="col-lg-6" data-aos="fade-down" data-aos-delay="50">
-                <img src="{% static 'images/Jacob.png' %}" alt="">
-                <a href="https://www.forevermissed.com/jacob-stephen-wetzel/about" class="btn btn-primary mt-3">Learn
-                    More</a>
-            </div>
-            <div data-aos="fade-down" data-aos-delay="150" class="col-lg-5">
-                <h1>The inspiration behind The 0K foundation</h1>
-                <p class="mt-3 mb-4">Celebrating a witty, sarcastic, snarky, beloved, and missed life.
-                </p>
-
-                <div class="d-flex pt-4 mb-3">
-                    <div class="iconbox me-4">
-                        <i class="ri-mail-send-fill"></i>
-                    </div>
-                    <div>
-                        <h5>25 years old</h5>
-
-                    </div>
-                </div>
-                <div class="d-flex mb-3">
-                    <div class="iconbox me-4">
-                        <i class="ri-user-5-fill"></i>
-                    </div>
-                    <div>
-                        <h5>Born on November 18, 1997 in Johnstown, Ohio, United States</h5>
-
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="iconbox me-4">
-                        <i class="ri-rocket-2-fill"></i>
-                    </div>
-                    <div>
-                        <h5>Found unresponsive on December 18, 2023</h5>
-                        <h5>Took his last breath January 17, 2023 in Harborview Medical Center in Seattle </h5>
-
-                    </div>
-                </div>
+  <section class="cards-container">
+    <!-- Sponsorship Team -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Sponsorship Team</p>
+            <div class="h6">Recognizing the team that secures the highest number of sponsorships from area businesses</div>
+            <div class="hover_content">
+                <p>Showcasing their exceptional outreach and networking abilities.</p>
             </div>
         </div>
     </div>
+    
+    <!-- Participant Pioneers -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Participant Pioneers</p>
+            <div class="h6">Celebrating the team with the highest number of participants</div>
+            <div class="hover_content">
+                <p>Highlighting their success in mobilizing a large group of individuals.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Social Media Stars -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Social Media Stars</p>
+            <div class="h6">Awarding the team that generates the most engagement and impact on social media platforms</div>
+            <div class="hover_content">
+                <p>Demonstrating their prowess in leveraging digital channels to raise awareness and funds.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Creative Fundraisers -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Creative Fundraisers</p>
+            <div class="h6">Honoring the team that implements the most innovative and effective fundraising strategies</div>
+            <div class="hover_content">
+                <p>Showcasing their creativity and resourcefulness in driving donations.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Team Spirit Award -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Team Spirit Award</p>
+            <div class="h6">Recognizing the team that exhibits the most enthusiasm, unity, and support for the cause</div>
+            <div class="hover_content">
+                <p>Embodying the true spirit of camaraderie and collaboration.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Corporate Citizenship Award -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Corporate Citizenship Award</p>
+            <div class="h6">Commending the company or team that best exemplifies corporate social responsibility</div>
+            <div class="hover_content">
+                <p>Through their involvement, demonstrating a commitment to making a positive impact in the community.</p>
+            </div>
+        </div>
+    </div>
+  </section>
 </section>
+
+
 
 <!-- SERVICES -->
 <section id="services" class="section-padding border-top">
@@ -255,6 +492,75 @@
     </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about" class="section-padding">
+  <div class="container">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-6 order-lg-2 text-center mb-4 mb-lg-0" data-aos="fade-down" data-aos-delay="50">
+                  <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2F0KFinishLine%2Fvideos%2F1003298810696142%2F&show_text=false&width=560&t=0"
+                          width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                          allowfullscreen></iframe>
+              </div>
+              <div class="col-lg-6 order-lg-1" data-aos="fade-down" data-aos-delay="150">
+                  <div class="section-title text-lg-start text-center">
+                      <h1 class="display-4 fw-semibold">About Us</h1>
+                      <div class="line"></div>
+                      <p>Our Mission</p>
+                      <p>The 0K Foundation fuels mental health support by fundraising for existing advocacy organizations. We believe in universal access to mental health care and champion tangible change through partnerships and community engagement.</p>
+                      <p>Our Vission</p>
+                      <p>We envision a society where mental health is prioritized and supported for all. By amplifying existing organizations and sparking conversations, we aim to create a compassionate community where everyone has access to the resources they need to thrive. Join us in making a difference—one step, one contribution, one person at a time.</p>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row justify-content-between align-items-center">
+          <div class="col-lg-6" data-aos="fade-down" data-aos-delay="50">
+              <img src="{% static 'images/Jacob.png' %}" alt="">
+              <a href="https://www.forevermissed.com/jacob-stephen-wetzel/about" class="btn btn-primary mt-3">Learn
+                  More</a>
+          </div>
+          <div data-aos="fade-down" data-aos-delay="150" class="col-lg-5">
+              <h1>The inspiration behind The 0K foundation</h1>
+              <p class="mt-3 mb-4">Celebrating a witty, sarcastic, snarky, beloved, and missed life.
+              </p>
+
+              <div class="d-flex pt-4 mb-3">
+                  <div class="iconbox me-4">
+                      <i class="ri-mail-send-fill"></i>
+                  </div>
+                  <div>
+                      <h5>25 years old</h5>
+
+                  </div>
+              </div>
+              <div class="d-flex mb-3">
+                  <div class="iconbox me-4">
+                      <i class="ri-user-5-fill"></i>
+                  </div>
+                  <div>
+                      <h5>Born on November 18, 1997 in Johnstown, Ohio, United States</h5>
+
+                  </div>
+              </div>
+              <div class="d-flex">
+                  <div class="iconbox me-4">
+                      <i class="ri-rocket-2-fill"></i>
+                  </div>
+                  <div>
+                      <h5>Found unresponsive on December 18, 2023</h5>
+                      <h5>Took his last breath January 17, 2023 in Harborview Medical Center in Seattle </h5>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
 <div class="shopify-header">
     <h1>Exclusive 0K Merchandise</h1>
     <p>All proceeds of the merchandise will go to The 0k foundation</p>
@@ -364,6 +670,7 @@
     }
   })();
   /*]]>*/
+
   </script>
 
 <div class="visit-button-container">
@@ -375,6 +682,7 @@
 </div>
 
 <!-- FOOTER -->
+
 {% include 'footer.html' %}
 
 {% endblock %}
