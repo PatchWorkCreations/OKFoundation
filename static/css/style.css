@@ -879,18 +879,7 @@ main {
 }
 
 
-#bannerr {
-    background: linear-gradient(135deg, #6f42c1, #007bff); /* Gradient background with purple and blue */
-    background-color: #6f42c1; /* Fallback color for older browsers */
-}
-
-.banner-title {
-    color: #fff; /* White text color */
-    font-size: 28px; /* Adjust font size as needed */
-    font-family: "Arial", sans-serif; /* Choose a font that's engaging and easy to read */
-    padding: 20px; /* Add padding for spacing */
-}
-
+  
 /* Responsive CSS */
 @media (max-width: 768px) {
     .banner-title {
@@ -1088,5 +1077,146 @@ main {
     width: calc(50% - 20px); /* Two cards per row on smaller screens */
   }
 }
+.trophy-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    color: whitesmoke;
+}
+
+.trophy-container {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow cards to wrap to the next row on smaller screens */
+    justify-content: center; /* Center align cards horizontally */
+    gap: 20px; /* Add spacing between cards */
+    background-color: white; /* Set background color to white */
+}
+
+.trophy-card {
+    /* Card styles */
+    position: relative;
+    cursor: pointer;
+    width: 22em;
+    max-width: 80%;
+    padding: 2em 0;
+    background: #FFF;
+    box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12); /* Add shadow */
+    border: 1px solid #e0e0e0; /* Add border color */
+    transition: all 0.35s ease;
+    margin-bottom: 20px; /* Add space between cards */
+}
 
 
+.trophy-card::before,
+.trophy-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: purple;
+    height: 4px;
+}
+
+.trophy-card::before {
+    width: 0;
+    opacity: 0;
+    transition: opacity 0 ease, width 0 ease;
+    transition-delay: 0.5s;
+}
+
+.trophy-card::after {
+    width: 100%;
+    background: white;
+    transition: width 0.5s ease;
+}
+
+.trophy-content {
+    width: 18em;
+    max-width: 80%;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.trophy-logo {
+    margin: 0 0 1em;
+    width: 10.625em;
+    transition: all 0.35s ease;
+    font-weight: bold;
+    color: #000;
+}
+
+.trophy-description {
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.trophy-hover-content {
+    overflow: hidden;
+    max-height: 0;
+    transform: translateY(1em);
+    transition: all 0.55s ease;
+}
+
+.trophy-hover-content p {
+    margin: 1.5em 0 0;
+    color: #6E6E70;
+    line-height: 1.4em;
+}
+
+.trophy-card:hover {
+    width: 24em;
+    box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
+}
+
+.trophy-card:hover::before {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.5s ease, width 0.5s ease;
+    transition-delay: 0;
+}
+
+.trophy-card:hover::after {
+    width: 0;
+    opacity: 0;
+    transition: width 0 ease;
+}
+
+.trophy-card:hover .trophy-logo {
+    margin-bottom: 0.5em;
+}
+
+.trophy-card:hover .trophy-hover-content {
+    max-height: 10em;
+    transform: none;
+}
+
+/* Hide the hidden-cards section initially */
+.hidden-cards {
+  display: none;
+}
+
+/* Style for the arrow-down icon/button */
+.arrow-down {
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+/* Style for the hidden cards */
+.hidden-cards .trophy-card {
+  width: calc(33.33% - 20px); /* Ensure three cards are side by side */
+  margin-right: 20px;
+}
+
+/* Adjust the width of cards for smaller screens */
+@media (max-width: 768px) {
+  .hidden-cards .trophy-card {
+    width: calc(50% - 20px); /* Two cards per row on smaller screens */
+  }
+}

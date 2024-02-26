@@ -36,6 +36,24 @@
       background-color: #512da8; /* Darken the color on hover */
   }
 
+  #bannerr {
+    background: linear-gradient(135deg, #6f42c1, #007bff); /* Gradient background with purple and blue */
+    background-color: #6f42c1; /* Fallback color for older browsers */
+}
+
+.banner-title {
+    color: #fff; /* White text color */
+    font-size: 28px; /* Adjust font size as needed */
+    font-family: "Arial", sans-serif; /* Choose a font that's engaging and easy to read */
+    padding: 20px; /* Add padding for spacing */
+}
+
+.landscape-picture {
+    width: 7in; /* Set the width to 2 inches */
+    height: 2.5in; /* Set the height to 7 inches */
+    display: block; /* Make the image a block-level element for proper rendering */
+    margin: 0 auto 20px; /* Center the image horizontally and add space below */
+}
 </style>
 
 
@@ -69,25 +87,28 @@
     </div>
 </section>
 
-<!--Bannerr-->
 <section id="bannerr" class="text-center py-5">
   <div class="container">
       <h2 class="banner-title text-uppercase text-white fw-bold">Say their name, sign their name... this is their tribute!</h2>
+      <img src="{% static 'images/new.png' %}" class="landscape-picture" alt="Landscape Picture">
       <a href="{% url 'registration' %}" class="engage-button">Engage Now</a>
   </div>
 </section>
+
+
 <!--fun section-->
 <section id="fun-section">
   <div class="container">
       <h2 class="fun-header">"FUN" in Fundraising</h2>
+      <h4>Special awards to be given out at the event</h4>
   </div>
 
   <section class="cards-container">
     <!-- Sponsorship Team -->
     <div class="card">
         <div class="content">
-            <p class="logo">Sponsorship Team</p>
-            <div class="h6">Recognizing the team that secures the highest number of sponsorships from area businesses</div>
+            <p class="logo">Sponsorship ROCKstar</p>
+            <div class="h6">Recognizing the team and participant that secures the highest number of sponsorships from area businesses</div>
             <div class="hover_content">
                 <p>Showcasing their exceptional outreach and networking abilities.</p>
             </div>
@@ -108,8 +129,8 @@
     <!-- Social Media Stars -->
     <div class="card">
         <div class="content">
-            <p class="logo">Social Media Stars</p>
-            <div class="h6">Awarding the team that generates the most engagement and impact on social media platforms</div>
+            <p class="logo">Social Media ROCKStars</p>
+            <div class="h6">Awarding the team and participant that generates the most engagement and impact on social media platforms</div>
             <div class="hover_content">
                 <p>Demonstrating their prowess in leveraging digital channels to raise awareness and funds.</p>
             </div>
@@ -120,7 +141,7 @@
     <div class="card">
         <div class="content">
             <p class="logo">Creative Fundraisers</p>
-            <div class="h6">Honoring the team that implements the most innovative and effective fundraising strategies</div>
+            <div class="h6">Honoring the team and participant that implements the most innovative and effective fundraising strategies</div>
             <div class="hover_content">
                 <p>Showcasing their creativity and resourcefulness in driving donations.</p>
             </div>
@@ -459,10 +480,6 @@
 
 <div class="visit-button-container">
 <a href="http://inhaleits0k.store/" class="visit-button">Visit the Website</a>
-</div>
-
-<div class="rectangle-bar">
-    <p>Help is available. Speak with someone today. Call 988.</p>
 </div>
 
 <!-- FOOTER -->

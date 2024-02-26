@@ -93,4 +93,7 @@ def dashboard(request):
 def eventinyourcity(request):
     return render(request, 'eventinyourcity.html')
 
+def volunteer(request):
+    return render(request, 'volunteer.html')
+
 

@@ -1,0 +1,167 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+{% include 'navbar.html' %}
+<style>
+    #johnstown_2024_button {
+        position: absolute;
+        top: 8.6rem; /* Adjust this value as needed */
+        right: 1rem; /* Adjust this value as needed */
+        padding: 1rem 2rem; /* Adjust padding for height and width */
+        background-color: #673ab7; /* Deep purple color */
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 0 0 10px 10px; /* Rounded corners for the bottom */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        overflow: hidden; /* Hide overflowing content */
+    }
+  
+    #johnstown_2024_button:after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent; /* Adjust size as needed */
+        border-right: 20px solid transparent; /* Adjust size as needed */
+        border-bottom: 20px solid #673ab7; /* Deep purple color */
+        z-index: 1; /* Place the triangle above the button content */
+    }
+  
+    #johnstown_2024_button:hover {
+        background-color: #512da8; /* Darken the color on hover */
+    }
+
+
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.header-container {
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.header-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.form-container {
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.volunteer-form .form-group {
+  margin-bottom: 20px;
+}
+
+.volunteer-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.volunteer-form input[type="text"],
+.volunteer-form input[type="email"],
+.volunteer-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.volunteer-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.volunteer-form button:hover {
+  background-color: #0056b3;
+}
+
+.volunteer-form button:focus {
+  outline: none;
+}
+
+
+</style>  
+
+
+
+<body>
+    <a href="{% url 'johnstown_2024' %}" id="johnstown_2024_button">
+        <p>Johnstown 2024</p>
+        <p>May 18, 2024</p>
+        <p>9am - 12 Noon</p>
+        <p>Click Here</p>
+    </a>
+   
+        <div class="header-container">
+          <img src="header-photo.jpg" alt="Volunteer Registration Header Photo" class="header-image">
+        </div>
+        <div class="form-container">
+          <form id="volunteerForm" class="volunteer-form">
+            <h2>Volunteer Registration Form</h2>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="role">Select Role</label>
+              <select id="role" name="role" required>
+                <option value="" disabled selected>Select your role</option>
+                <option value="Parking Attendants">Parking Attendants</option>
+                <option value="Registration Team">Registration Team</option>
+                <option value="DJ Booth Assistants">DJ Booth Assistants</option>
+                <option value="Event Greeters">Event Greeters</option>
+                <option value="Information Booth Attendants">Information Booth Attendants</option>
+                <option value="Food and Beverage Team">Food and Beverage Team</option>
+                <option value="Fundraising Ambassadors">Fundraising Ambassadors</option>
+                <option value="Security Personnel">Security Personnel</option>
+                <option value="Cleanup Crew">Cleanup Crew</option>
+                <option value="Photographers/Videographers">Photographers/Videographers</option>
+                <option value="Social Media Team">Social Media Team</option>
+                <option value="Volunteer Coordinators">Volunteer Coordinators</option>
+              </select>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </body>
+
+
+
+
+{% include 'footer.html' %}
+{% endblock %}
