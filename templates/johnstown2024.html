@@ -3,35 +3,70 @@
 {% load static %}
 {% include 'navbar.html' %}
 
+<style>
+/* Styling the welcome section */
+#welcome-section {
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('static/images/johsntownbackg.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    height: 100vh; /* Adjust the height as needed */
+}
+
+/* Styling for the text content */
+#welcome-section .container {
+    position: relative; /* Ensure content stays above the background */
+    display: flex;
+    flex-direction: column; /* Stack columns vertically */
+    justify-content: center; /* Vertically center the content */
+    max-width: 70%; /* Limit container width to 70% of its parent */
+    margin-left: 50px; /* Push content to the left */
+}
+
+/* Adjusting the text alignment */
+#welcome-section .col-md-6 {
+    text-align: right; /* Align text to the left */
+}
+
+/* Other styles for headings and paragraphs if needed */
+#welcome-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: whitesmoke; /* Dark text color */
+    margin-bottom: 20px;
+    text-align: left; /* Align heading text to the left */
+}
+
+#welcome-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: whitesmoke; /* Slightly darker text color */
+    margin-bottom: 15px;
+    text-align: left; /* Align paragraph text to the left */
+}
+
+#welcome-section p:last-child {
+    margin-bottom: 0; /* Remove bottom margin from last paragraph */
+}
+
+</style>
+
 <body class="body-johnstown2024">
 <div class="rectangle-barrr">
     <p>Johnstown 2024</p>
 </div>
 
-<section id="welcome-section">
+<section id="welcome-section" class="min-vh-100 d-flex align-items-center text-center">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <img src="static/images/Ok Run BG New 03 - Copy.png" alt="Welcome Image" class="img-fluid">
-            </div>
-            <div class="col-md-6">
                 <h2>Welcome to the inaugural event of 0K: The Finish Line Moves in Johnstown this 2024</h2>
                 <p>A beacon of hope and solidarity in our shared journey towards suicide prevention, this banner year, we gather in hope, remembrance, and celebration for those affected by suicide. </p>
-                <p>
-                    Together, we can all be Life-Savers!
-                </p>
-                <p>
-                    You are not alone! 
-
-                </p>
-
-                <p>
-                    Join us in creating a ripple of change that extends beyond this day—become a participant, form a team, or step forward as a sponsor. Together, we can build a community of support, understanding, and action. 
-                </p>
-
-                <p>
-                    We invite community members, local influencers, and potential sponsors to learn more about our cause and discover how you can contribute to this vital movement. Your involvement can make a world of difference, offering hope and healing to many. Be part of something truly impactful. Together, let’s celebrate life, encourage one another, and stand united to prevent suicide. Join us in our mission to save lives and spread a message of love and support throughout our community and beyond.
-                </p>
+                <p>Together, we can all be Life-Savers!</p>
+                <p>You are not alone!</p>
+                <p>Join us in creating a ripple of change that extends beyond this day—become a participant, form a team, or step forward as a sponsor. Together, we can build a community of support, understanding, and action.</p>
+                <p>We invite community members, local influencers, and potential sponsors to learn more about our cause and discover how you can contribute to this vital movement. Your involvement can make a world of difference, offering hope and healing to many. Be part of something truly impactful. Together, let’s celebrate life, encourage one another, and stand united to prevent suicide. Join us in our mission to save lives and spread a message of love and support throughout our community and beyond.</p>
             </div>
         </div>
     </div>
@@ -45,7 +80,9 @@
             <div class="col-md-12">
                 <h2>Event Information</h2>
                 <p><strong>Date and Time:</strong> May 18, 2024, from 9 AM to Noon</p>
-                <p><strong>Location:</strong> Johnstown</p>
+                <p><strong>Location:</strong> North Athletic Fields by the American Legion, Wall of Honor
+                    Maple and Oregon Streets
+                    Johnstown, Ohio</p>
                 <a href="{% url 'registration' %}" class="btn btn-primary">Register Now</a>
             </div>
         </div>
@@ -114,60 +151,75 @@
 </section>
 
 
-<section id="trophy-announcement-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Trophy Announcement</h2>
-                <h3>The participant, team, and sponsor raising the most money will be awarded a trophy!</h3>
-                <div class="trophy-list">
-                    <div class="trophy-item">
-                        <h4>“Champions of Hope” Awards</h4>
-                        <p>Celebrate the spirit of giving with our “Champions of Hope” trophies, awarded to the
-                            participant, team, and sponsor who go above and beyond in their fundraising efforts. Your
-                            remarkable contributions light the way to a brighter future, and we want to honor your
-                            commitment and impact with a symbol of our gratitude and recognition.</p>
-                    </div>
-                    <div class="trophy-item">
-                        <h4>“Heart of the Community” Trophy</h4>
-                        <p>This special accolade goes to the participant, team, and sponsor whose extraordinary
-                            fundraising achievements embody the heart and soul of our mission. Your dedication not only
-                            raises crucial funds but also amplifies our collective voice against suicide, making you
-                            true heroes in our community.</p>
-                    </div>
-                    <div class="trophy-item">
-                        <h4>“Beacons of Light” Recognition</h4>
-                        <p>Shine bright as a beacon of light! The top fundraiser from each category—individual, team,
-                            and sponsor—will receive a prestigious “Beacons of Light” trophy, symbolizing your role in
-                            illuminating the path to hope and support for those in need. Let’s celebrate your inspiring
-                            efforts and success in bringing us closer to a world without suicide.</p>
-                    </div>
-                    <div class="trophy-item">
-                        <h4>“Guardians of Tomorrow” Awards</h4>
-                        <p>Acknowledging the forward-looking impact of your fundraising, the “Guardians of Tomorrow”
-                            trophies will be presented to those who lead the way in contributions. Your visionary
-                            support as a participant, team, or sponsor safeguards our future, ensuring ongoing care and
-                            prevention efforts. Join us in honoring these guardians who pave the way for enduring
-                            change.</p>
-                    </div>
-                    <div class="trophy-item">
-                        <h4>“Unity in Action” Trophies</h4>
-                        <p>In recognition of the collective effort and unity it takes to make a difference, the “Unity
-                            in Action” trophies will be awarded to the highest fundraisers. This honor celebrates not
-                            just the funds raised but the spirit of collaboration and solidarity you’ve shown. Together,
-                            you’re a formidable force for good, and we’re thrilled to commemorate your achievement.</p>
-                    </div>
-                    <div class="trophy-item">
-                        <h4>Social Media Spotlight</h4>
-                        <p>Winners will not only receive a trophy but also be featured in a special social media
-                            campaign. This will include interviews, stories, and posts celebrating your journey,
-                            achievements, and the difference you’ve made. It’s an opportunity to shine in the spotlight
-                            and inspire others with your dedication and success.</p>
-                    </div>
-                </div>
+<section class="cards-container">
+    <h1>Trophy Announcement</h1>
+    <h2>The participant, team, and sponsor raising the most money will be awarded a trophy!</h2>
+    <!-- Sponsorship Team -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Sponsorship Team</p>
+            <div class="h6">Recognizing the team that secures the highest number of sponsorships from area businesses</div>
+            <div class="hover_content">
+                <p>Showcasing their exceptional outreach and networking abilities.</p>
             </div>
         </div>
     </div>
+    
+    <!-- Participant Pioneers -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Participant Pioneers</p>
+            <div class="h6">Celebrating the team with the highest number of participants</div>
+            <div class="hover_content">
+                <p>Highlighting their success in mobilizing a large group of individuals.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Social Media Stars -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Social Media Stars</p>
+            <div class="h6">Awarding the team that generates the most engagement and impact on social media platforms</div>
+            <div class="hover_content">
+                <p>Demonstrating their prowess in leveraging digital channels to raise awareness and funds.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Creative Fundraisers -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Creative Fundraisers</p>
+            <div class="h6">Honoring the team that implements the most innovative and effective fundraising strategies</div>
+            <div class="hover_content">
+                <p>Showcasing their creativity and resourcefulness in driving donations.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Team Spirit Award -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Team Spirit Award</p>
+            <div class="h6">Recognizing the team that exhibits the most enthusiasm, unity, and support for the cause</div>
+            <div class="hover_content">
+                <p>Embodying the true spirit of camaraderie and collaboration.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Corporate Citizenship Award -->
+    <div class="card">
+        <div class="content">
+            <p class="logo">Corporate Citizenship Award</p>
+            <div class="h6">Commending the company or team that best exemplifies corporate social responsibility</div>
+            <div class="hover_content">
+                <p>Through their involvement, demonstrating a commitment to making a positive impact in the community.</p>
+            </div>
+        </div>
+    </div>
+  </section>
 </section>
 
 

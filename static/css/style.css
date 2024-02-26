@@ -127,7 +127,7 @@ img {
 /* HERO */
 /* HERO */
 #hero {
-    background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('../images/home-image.png');
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('../images/0k image new.png');
     background-position: center;
     background-size: cover;
     display: flex;
@@ -478,28 +478,20 @@ footer .line {
     background-color: #6c3483; /* Darker shade on hover */
   }
 
-  #welcome-section {
-    background-color: #f8f9fa; /* Light gray background color */
-    padding: 50px 0; /* Adjust padding as needed */
+  /* Resetting default margin and padding */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
 }
 
-#welcome-section h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333; /* Dark text color */
-    margin-bottom: 20px;
+/* Ensuring images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-#welcome-section p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555; /* Slightly darker text color */
-    margin-bottom: 15px;
-}
 
-#welcome-section p:last-child {
-    margin-bottom: 0; /* Remove bottom margin from last paragraph */
-}
+
 
 
 /* Style for the event details section */
@@ -510,6 +502,17 @@ footer .line {
 }
 
 /* Style for the event details text */
+
+/* Centering the event details section content */
+#event-details-section .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center; /* Center-align text within the section */
+}
+
+
 #event-details-section h2 {
     color: #007bff; /* Blue color for headings */
     font-size: 36px;
@@ -531,7 +534,7 @@ footer .line {
     padding: 12px 24px;
     font-size: 20px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Add margin to the top of the button */
 }
 
 /* Hover style for the registration button */
@@ -546,10 +549,52 @@ footer .line {
     background-color: #f8f9fa;
 }
 
+#registration-sponsorship-section .container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#registration-sponsorship-section h2 {
+    font-size: 36px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#registration-sponsorship-section h3 {
+    font-size: 24px;
+    color: #666;
+    margin-top: 40px;
+}
+
+#registration-sponsorship-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+#registration-sponsorship-section ul li {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+#registration-sponsorship-section h4 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 30px;
+}
+
+#registration-sponsorship-section ul li {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
 /* Trophy Announcement Section */
 #trophy-announcement-section {
     padding: 50px 0;
 }
+
 
 /* How to Join Section */
 #how-to-join-section {
@@ -832,3 +877,216 @@ main {
     font-size: 18px;
     margin-bottom: 20px;
 }
+
+
+#bannerr {
+    background: linear-gradient(135deg, #6f42c1, #007bff); /* Gradient background with purple and blue */
+    background-color: #6f42c1; /* Fallback color for older browsers */
+}
+
+.banner-title {
+    color: #fff; /* White text color */
+    font-size: 28px; /* Adjust font size as needed */
+    font-family: "Arial", sans-serif; /* Choose a font that's engaging and easy to read */
+    padding: 20px; /* Add padding for spacing */
+}
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+    .banner-title {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-title {
+        font-size: 20px; /* Further adjust font size for smaller screens */
+    }
+}
+
+.engage-button {
+    background-color: #6f42c1; /* Purple color */
+    color: #fff; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Remove underline from anchor */
+    display: inline-block; /* Ensure button behaves like a block element */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Adjust shadow on hover */
+.engage-button:hover {
+    background-color: #5a3a9e; /* Darker shade of purple on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
+}
+
+/*fun in fundraising*/
+
+#fun-section {
+    text-align: center; /* Center align text */
+    background-color: #f8f9fa; /* Light background color */
+    padding: 50px 0; /* Add padding for spacing */
+    border-radius: 10px; /* Add rounded corners for a softer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+}
+
+.fun-header {
+    font-size: 4.5rem; /* Adjust font size (using rem for better scalability) */
+    color: #6f42c1; /* Purple color */
+    margin-bottom: 20px; /* Add margin at the bottom */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle text shadow for emphasis */
+}
+
+/* Add hover effect to make the header more interactive */
+.fun-header:hover {
+    color: #512da8; /* Darker shade of purple on hover */
+    transform: scale(1.05); /* Increase size on hover */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition on hover */
+}
+
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+    .fun-header {
+        font-size: 24px; /* Adjust font size for smaller screens */
+    }
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to the next row on smaller screens */
+    justify-content: center; /* Center align cards horizontally */
+    gap: 20px; /* Add spacing between cards */
+}
+
+.card {
+    /* Card styles */
+    position: relative;
+    cursor: pointer;
+    width: 22em;
+    max-width: 80%;
+    padding: 2em 0;
+    background: #FFF;
+    box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
+    transition: all 0.35s ease;
+    margin-bottom: 20px; /* Add space between cards */
+}
+
+.card::before, .card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: purple;
+    height: 4px;
+}
+
+.card::before {
+    width: 0;
+    opacity: 0;
+    transition: opacity 0 ease, width 0 ease;
+    transition-delay: 0.5s;
+}
+
+.card::after {
+    width: 100%;
+    background: white;
+    transition: width 0.5s ease;
+}
+
+.card .content {
+    width: 18em;
+    max-width: 80%;
+    padding-left: 20px; /* Add some left padding for spacing */
+    text-align: left; /* Align text to the left */
+}
+
+
+
+.card .logo {
+    margin: 0 0 1em;
+    width: 10.625em;
+    transition: all 0.35s ease;
+    font-weight: bold; /* Make the text bold */
+    color: #000; /* Set text color to black */
+}
+
+.card .h6 {
+    color: #999;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.card .hover_content {
+    overflow: hidden;
+    max-height: 0;
+    transform: translateY(1em);
+    transition: all 0.55s ease;
+}
+
+.card .hover_content p {
+    margin: 1.5em 0 0;
+    color: #6E6E70;
+    line-height: 1.4em;
+}
+
+.card:hover {
+    width: 24em;
+    box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
+}
+
+.card:hover::before {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.5s ease, width 0.5s ease;
+    transition-delay: 0;
+}
+
+.card:hover::after {
+    width: 0;
+    opacity: 0;
+    transition: width 0 ease;
+}
+
+.card:hover .logo {
+    margin-bottom: 0.5em;
+}
+
+.card:hover .hover_content {
+    max-height: 10em;
+    transform: none;
+}
+
+/* Hide the hidden-cards section initially */
+.hidden-cards {
+  display: none;
+}
+
+/* Style for the arrow-down icon/button */
+.arrow-down {
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
+/* Style for the hidden cards */
+.hidden-cards .card {
+  width: calc(33.33% - 20px); /* Ensure three cards are side by side */
+  margin-right: 20px;
+}
+
+/* Adjust the width of cards for smaller screens */
+@media (max-width: 768px) {
+  .hidden-cards .card {
+    width: calc(50% - 20px); /* Two cards per row on smaller screens */
+  }
+}
+
+
