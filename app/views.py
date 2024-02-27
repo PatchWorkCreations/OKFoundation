@@ -16,8 +16,12 @@ def login_user(request):
 
         if user is not None:
             login(request, user)
-            # Redirect to the dashboard with the participant's basic information
-            return redirect('dashboard')
+            if request.user.is_superuser:
+                # Redirect to the admin dashboard
+                return redirect('admin_dashboard')
+            else:
+                # Redirect to the dashboard with the participant's basic information
+                return redirect('dashboard')
         else:
             messages.warning(request, 'Invalid username or password. Please try again.')
 
@@ -90,10 +94,16 @@ def registration_page(request):
 def dashboard(request):
     return render(request, 'dashboard.html')
 
+
+def admin_dashboard(request):
+    participants = Participant.objects.all()
+
+    return render(request, 'admin_dashboard.html', {'participants': participants})
+
+
 def eventinyourcity(request):
     return render(request, 'eventinyourcity.html')
 
+
 def volunteer(request):
     return render(request, 'volunteer.html')
-
-

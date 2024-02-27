@@ -10,7 +10,7 @@
 </div>
 
 <!-- PHOTO SECTION -->
-<section id="photo-section" class="mt-5">
+<section id="photo-section" class="mt-5 my-5">
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -232,6 +232,18 @@
                             <input type="tel" class="form-control" id="phone_number"
                                    placeholder="Enter your phone number" name="phone_number">
                         </div>
+                        <div class="text-center mx-4">
+                            <small>
+                                By selecting Sign Up, you're agreeing to the Relay For Life <a href="#"
+                                                                                               class="text-decoration-none"
+                                                                                               type="button"
+                                                                                               data-bs-toggle="modal"
+                                                                                               data-bs-target="#exampleModal">waiver</a>.
+
+                                You'll receive email updates from The 0K Foundation. You can unsubscribe at any time.
+                                Learn more about our <a href="#" class="text-decoration-none">privacy policy</a> and <a
+                                    href="#" class="text-decoration-none">privacy rights</a>.</small>
+                        </div>
 
                         <div class="center-button">
                             <button type="submit" class="btn btn-primary purple-button">Sign Up</button>
@@ -240,6 +252,181 @@
                     <div class="row text-center mt-2">
                         <small>Do you have an account? <a href="{% url 'login' %}">Login</a></small>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Waiver Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">WAIVER</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    RELEASE OF CLAIMS AND WAIVER OF RIGHTS: PLEASE READ CAREFULLY BEFORE PROCEEDING!
+                    <br>
+                    <br>
+                    I wish to engage in certain events and/or fundraising activities of The 0k Foundation during the
+                    current calendar year, including but not limited to 0K: The Finish Line Moves (the "Activities"). I
+                    acknowledge that I derive personal satisfaction and benefit from my engagement with The 0k
+                    Foundation and my participation in the Activities discussed above. In consideration of my
+                    participation in the Activities, I hereby freely, voluntarily, and without influence from anyone or
+                    duress of any kind, for myself, my executors, administrators, heirs, next of kin, successors, and
+                    assigns, consent and agree to each of the following, in favor of The 0k Foundation, its affiliated
+                    divisions and entities, event site or facility owners and operators, subcontractors, organizers, and
+                    sponsors, including in each case, without limitation, their directors, officers, employees,
+                    volunteers, agents, successors and/or assigns (collectively "The 0k Foundation"):
+                    <br>
+                    <br>
+                    ASSUMPTION OF THE RISK. I understand that the Activities include actions that may be hazardous to
+                    me, including camping, picnicking, walking, jogging, running, bicycling, swimming, water plunging,
+                    golfing, exercising, climbing, other recreational or team sports, and/or other physical activity
+                    reasonably anticipated to be performed in connection with the Activities. I willingly engage in
+                    these Activities and I knowingly assume the risk of injury, harm and loss associated with the
+                    Activities, including any injury, harm and loss caused by the negligence, fault or misconduct of any
+                    kind on the part of The 0k Foundation.
+                    <br>
+                    <br>
+                    COVID-19 NOTICE. I understand that COVID-19 is extremely contagious and is spread mainly from
+                    person-to-person contact. I further understand that while social distancing, face masks, and/or
+                    other preventative measures can reduce the spread of COVID-19, The 0k Foundation cannot guarantee
+                    that its participants, volunteers, partners, or others in attendance will not become infected with
+                    COVID-19.
+                    <br>
+                    <br>
+                    COVID-19 SAFETY CERTIFICATION. By participating in the Activities, I agree to self-monitor for signs
+                    and symptoms of COVID-19 (symptoms typically include fever, cough, and shortness of breath), and
+                    certify that I do not fall into any of the following categories: 1. Individuals who currently or
+                    within the past fourteen (14) days have experienced any symptoms associated with COVID-19, which
+                    include fever, cough, and shortness of breath among others; 2. Individuals who have traveled at any
+                    point in the past fourteen (14) days either internationally or to a community in the U.S. that has
+                    experienced or is experiencing sustained community spread of COVID-19; or 3. Individuals who believe
+                    that they may have been exposed to a confirmed or suspected case of COVID-19 or have been diagnosed
+                    with COVID-19 and are not yet cleared as non-contagious by state or local public health authorities
+                    or the health care team responsible for their treatment.
+                    <br>
+                    <br>
+                    COVID-19 ASSUMPTION OF RISK. I acknowledge and understand that participation in the Activities
+                    includes possible exposure to and illness from infectious diseases, including but not limited to
+                    COVID-19. While particular rules and personal discipline may reduce this risk, the risk of serious
+                    illness and death does exist. I knowingly and freely assume all such risks related to illness and
+                    infectious diseases, such as COVID-19, even if arising from the negligence or fault of The 0k
+                    Foundation.
+                    <br>
+                    <br>
+                    THIRD-PARTY MEDICAL SERVICES PROVIDERS. I understand that third-party health care providers (e.g.
+                    hospital systems, physicians practices, or individual physicians or nurses etc.) may be present at
+                    The 0k Foundation events from time to time to deliver medical services such as suicide prevention
+                    services or vaccinations (such third-party health care providers, collectively, the "Third-Party
+                    Providers"). I acknowledge and understand that those Third-Party Providers are NOT affiliated with
+                    The 0k Foundation and are NOT providing those services on behalf of The 0k Foundation. I understand
+                    and agree that The 0k Foundation is NOT a provider of medical services and is NOT in any way
+                    responsible for those services including, without limitation, administration of the services or any
+                    required follow-up communications. I also understand and agree that The 0k Foundation does not
+                    endorse any of these Third-Party Providers nor does The 0k Foundation make any guarantee of services
+                    or accept any responsibility or liability for any injuries or damages whatsoever arising out my use
+                    of or inability to use these services.
+                    <br>
+                    <br>
+                    RELEASE AND WAIVER. I HEREBY RELEASE, WAIVE AND FOREVER DISCHARGE ANY AND ALL LIABILITY, CLAIMS, AND
+                    DEMANDS OF WHATEVER KIND OR NATURE AGAINST THE 0K FOUNDATION (AS DEFINED ABOVE), EITHER IN LAW OR IN
+                    EQUITY, TO THE FULLEST EXTENT PERMISSIBLE BY LAW, INCLUDING BUT NOT LIMITED TO THE NEGLIGENCE, FAULT
+                    OR MISCONDUCT OF ANY KIND ON THE PART OF THE 0K FOUNDATION FOR DAMAGES OR CAUSES OF ACTION,
+                    INCLUDING BUT NOT LIMITED TO DEATH, BODILY OR PERSONAL INJURY, ILLNESS, ECONOMIC LOSS OR OUT OF
+                    POCKET EXPENSES, OR LOSS OR DAMAGE TO PROPERTY, WHICH I, MY HEIRS, ASSIGNEES, NEXT OF KIN AND/OR
+                    LEGALLY APPOINTED OR DESIGNATED REPRESENTATIVES, MAY HAVE OR WHICH MAY HEREINAFTER ACCRUE ON THEIR
+                    BEHALF, WHICH ARISE OR MAY HEREAFTER ARISE FROM MY ATTENDANCE AT, PERFORMANCE OF, AND/OR
+                    PARTICIPATION IN THE ACTIVITIES.
+                    <br>
+                    <br>
+                    EFFECTIVE DURATION. I UNDERSTAND AND AGREE THAT THIS RELEASE AND WAIVER WILL APPLY TO AND GOVERN MY
+                    PARTICIPATION IN ANY AND ALL THE 0K FOUNDATION ACTIVITIES AND/OR EVENTS DURING THE CURRENT CALENDER
+                    YEAR. I FULLY INTEND AND AGREE FOR THIS RELEASE AND WAIVER TO BE EFFECTIVE FOR THE DURATION OF THE
+                    CURRENT CALENDAR YEAR.
+                    <br>
+                    <br>
+                    MEDICAL TREATMENT. I hereby grant permission to The 0k Foundation to render preventative or
+                    first-aid assistance or seek any treatment or medical care that seems reasonably necessary,
+                    including hospitalization, for my health and well-being. I do hereby release and forever discharge
+                    The 0k Foundation from any claim whatsoever which arises or may hereafter arise on account of any
+                    first aid, treatment, or service rendered to me in connection with the Activities with The 0k
+                    Foundation. I agree that The 0k Foundation may give out any and all information, including my
+                    personal health information, to any physicians, hospitals, ambulance companies, or any other health
+                    care provider in the event of an emergency and/or hospitalization, as reasonably necessary for
+                    purposes related to my treatment or care.
+                    <br>
+                    <br>
+                    IMAGE RELEASE. I understand that I may be photographed or recorded at The 0k Foundation events or
+                    Activities. I hereby grant and convey to The 0k Foundation all right, title, and interest in any and
+                    all photographic images and video or audio recordings of me made during or in connection with the
+                    Activities, including, but not limited to, any royalties, proceeds, or other benefits derived from
+                    such photographs or recordings. I hereby release, discharge and agree to hold harmless The 0k
+                    Foundation, its legal representatives or assigns, and all persons acting under its permission or
+                    upon its authority or for whom it is acting, from any liability by virtue of any publication of my
+                    likeness, including, without limitation, claims for libel or invasion of privacy.
+                    <br>
+                    <br>
+                    WEB PAGE CONTENT. I understand that The 0k Foundation may use the information that I provide during
+                    this registration to create an individualized web page for me to use for fundraising purposes
+                    related to signature events such as 0K: The Finish Line Moves and The 0k Foundation Making Strides
+                    on Suicide Prevention("Participant Pages"). All donations received through the Participant Page are
+                    contributions for which no goods and services have been provided. Therefore, I acknowledge that my
+                    Participant Pages shall not contain any language which suggests that merchandise will be provided in
+                    exchange for any contribution. I understand that I am prohibited from offering merchandise sales,
+                    prizes, raffles, giveaways, lotteries, contests, tournaments, lucky draws, or any games of chance on
+                    my Participant Pages either as an outright token action or as an inducement to solicit donations. As
+                    a participant, I understand that I may only disseminate information that is for the benefit of The
+                    0k Foundation and that I am expressly prohibited from advertising for any for-profit business. My
+                    Participant Pages are expected to represent The 0k Foundation in a professional manner and may not
+                    include information that is inconsistent with The 0k Foundation's mission and values. Examples of
+                    prohibited subjects include, but not are limited to, the sale or promotion of any goods or services,
+                    an endorsement or perceived endorsement of any goods or services, support or opposition of a
+                    political party or a political candidate, materials affiliated with tobacco or tobacco-related
+                    products and any other products inconsistent with The 0k Foundation's mission, content of any nature
+                    which may result in fraud or misrepresentation to the public, pornographic or otherwise offensive
+                    sexual materials, racially or ethnically prejudicial materials, overtly religious materials or any
+                    other information that may be offensive to the general public. The 0k Foundation reserves the right
+                    to edit or remove any Participant Page that The 0k Foundation deems in violation of these policies
+                    and standards.
+                    <br>
+                    <br>
+                    ATTENDANCE OR PARTICIPATION BY MINOR CHILDREN. I agree that any and all representations made and
+                    releases, waivers, covenants, consents and permissions that I have given above are given on behalf
+                    of me and any and all of my minor children or persons over whom I have guardianship who participate
+                    in or attend the Activities ("Minor"). In consideration of the Minor's participation in or
+                    attendance at the Activities, I, in my capacity as Minor's parent or guardian, hereby (a) give
+                    permission for the Minor to participate voluntarily in the Activities, and (b) understand that this
+                    Release and Waiver forever releases, waives and discharges any and all liability, claims, and
+                    demands of whatever kind or nature against The 0k Foundation, either in law or in equity, to the
+                    fullest extent permissible by law, including but not limited to the negligence, fault or misconduct
+                    of any kind on the part of The 0k Foundation for damages or causes of action, including but not
+                    limited to death, bodily or personal injury, illness, economic loss or out of pocket expenses, or
+                    loss or damage to property, which Minor, his/her heirs, assignees, next of kin and/or legally
+                    appointed or designated representatives, may have or which may hereinafter accrue on their behalf,
+                    which arise or may hereafter arise from Minor's attendance at, performance of, and/or participation
+                    in the Activities. In my capacity as Minor's parent or guardian, I also give consent to The 0k
+                    Foundation to collect information about the Minor that is needed to register him or her. I
+                    understand that The 0k Foundation will not collect more information about the Minor than is
+                    reasonably necessary to participate in the Activities. I also understand that in consenting to a
+                    Minor's registration, I am enabling the Minor to participate in all communication aspects of the
+                    event Web site, including posting content on the Minor's Participant Page that may be accessible to
+                    the public.
+                    <br>
+                    <br>
+                    COLLECTION OF INFORMATION. I understand that personal information that I am providing will be used
+                    by The 0k Foundation as outlined in its privacy statement (located on www.0kfoundation.org).
+                    Additionally, I understand that if I am joining a team to participate in the event, my personal
+                    information (such as name, contact information and donation amount) will be accessible to the
+                    corporate team sponsor and/or team captain, even if I choose not to disclose this information
+                    publicly on the team site.
+                    <br>
+                    <br>
+                    I UNDERSTAND THAT BY SIGNING THIS DOCUMENT EITHER ELECTRONICALLY OR ON PAPER, I AM CONSENTING AND
+                    AGREEING TO THE WAIVER AND RELEASE OF CERTAIN LEGAL RIGHTS AS SET FORTH IN THIS RELEASE OF CLAIMS
+                    AND WAIVER AGREEMENT AND THAT I AM LEGALLY BOUND BY THE TERMS HEREOF.
                 </div>
             </div>
         </div>
@@ -359,6 +546,12 @@
             disclaimer.style.display = "none";
         }
     }
+
+
+
+
+
+
 
 
 

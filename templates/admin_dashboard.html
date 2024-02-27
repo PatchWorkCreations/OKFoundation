@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="container my-3">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date Registered</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for participant in participants %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ participant.name }}</td>
+            <td>{{ participant.username }}</td>
+            <td>January 1, 2024</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
