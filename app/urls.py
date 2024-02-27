@@ -13,4 +13,5 @@ urlpatterns = [
     path('admin_dashboard', admin_dashboard, name='admin_dashboard'),
     path('eventinyourcity', eventinyourcity, name='eventinyourcity'),
     path('volunteer', volunteer, name='volunteer'),
+    path('engagement', engagement, name='engagement'),
 ]

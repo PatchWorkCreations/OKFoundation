@@ -107,3 +107,6 @@ def eventinyourcity(request):
 
 def volunteer(request):
     return render(request, 'volunteer.html')
+
+def engagement(request):
+    return render(request, 'engagement.html')
