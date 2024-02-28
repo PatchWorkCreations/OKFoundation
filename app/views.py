@@ -45,6 +45,7 @@ def registration_page(request):
     if request.method == 'POST':
         # Extract data from the form
         name = request.POST.get('name')
+        email = request.POST.get('email')
         username = request.POST.get('username')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
@@ -68,6 +69,7 @@ def registration_page(request):
                 # Create a Participant object and save it to the database
                 Participant.objects.create_user(
                     name=name,
+                    email=email,
                     username=username,
                     password=password,
                     fundraising_goal=fundraising_goal,
@@ -93,6 +95,32 @@ def registration_page(request):
 
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+
+def update_user(request):
+    if request.method == 'POST':
+        # Retrieve the form data
+        name = request.POST.get('name')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        fundraising_goal = request.POST.get('fundraising_goal')
+
+        # Update the user profile
+        request.user.name = name
+        request.user.username = username
+        request.user.email = email
+        request.user.fundraising_goal = fundraising_goal
+        request.user.save()
+
+        messages.success(request, 'Profile updated successfully.')
+        return redirect('dashboard')
+
+
+
+def delete_user(request, pk):
+    participant = Participant.objects.get(id=pk)
+    participant.delete()
+    return redirect('admin_dashboard')
 
 
 def admin_dashboard(request):
