@@ -3,7 +3,7 @@
 {% load static %}
 
 <style>
-  #johnstown_2024_button {
+  #johnstown_2024_buttonn {
       position: absolute;
       top: 8.6rem; /* Adjust this value as needed */
       right: 1rem; /* Adjust this value as needed */
@@ -18,7 +18,7 @@
       overflow: hidden; /* Hide overflowing content */
   }
 
-  #johnstown_2024_button:after {
+  #johnstown_2024_buttonn:after {
       content: '';
       position: absolute;
       top: 100%;
@@ -32,7 +32,7 @@
       z-index: 1; /* Place the triangle above the button content */
   }
 
-  #johnstown_2024_button:hover {
+  #johnstown_2024_buttonn:hover {
       background-color: #512da8; /* Darken the color on hover */
   }
 
@@ -54,22 +54,116 @@
     display: block; /* Make the image a block-level element for proper rendering */
     margin: 0 auto 20px; /* Center the image horizontally and add space below */
 }
+
+/* Custom styles for the modal */
+.modal-content {
+    background: linear-gradient(135deg, #673ab7, #00bcd4); /* Gradient background with purple and teal */
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+  }
+
+  .modal-header {
+    border-bottom: none; /* Remove border bottom for header */
+    padding-top: 20px; /* Add padding top for spacing */
+  }
+
+  .modal-title {
+    color: #fff; /* White text color */
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold; /* Add bold font weight */
+  }
+
+  .modal-body {
+    color: #fff; /* White text color */
+    font-size: 18px; /* Adjust font size */
+  }
+
+  .modal-footer {
+    border-top: none; /* Remove border top for footer */
+    padding-bottom: 20px; /* Add padding bottom for spacing */
+  }
+
+  .btn-primary {
+    background-color: #673ab7; /* Purple color */
+    border-color: #673ab7; /* Purple color */
+  }
+
+  .btn-primary:hover {
+    background-color: #5e35b1; /* Darken the color on hover */
+    border-color: #5e35b1; /* Darken the color on hover */
+  }
+
+  .btn-secondary {
+    background-color: #00bcd4; /* Teal color */
+    border-color: #00bcd4; /* Teal color */
+  }
+
+  .btn-secondary:hover {
+    background-color: #0097a7; /* Darken the color on hover */
+    border-color: #0097a7; /* Darken the color on hover */
+  }
+
+  .modal-body .larger-text {
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: bold; /* Optionally, make the text bold */
+}
+
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Include Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 
 
 {% include 'navbar.html' %}
 
+<head>
 <div class="rectangle-barr">
     <p>Welcome to The 0K Foundation</p>
 </div>
 
-    <a href="{% url 'johnstown_2024' %}" id="johnstown_2024_button">
+    <a href="{% url 'johnstown_2024' %}" id="johnstown_2024_buttonn">
         <p>Johnstown 2024</p>
         <p>May 18, 2024</p>
         <p>9am - 12 Noon</p>
         <p>Click Here</p>
     </a>
 
+    <!-- Button trigger modal (hidden) -->
+<button type="button" class="btn btn-primary visually-hidden" data-bs-toggle="modal" data-bs-target="#exampleModal" id="johnstown_2024_button">
+  Johnstown 2024
+</button>
+
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Johnstown 2024</h5>
+              <button type="button" class="btn-close" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+  <div class = "larger-text">       <!-- Modal content here -->
+<p>May 18, 2024</p>
+      <p>9am - 12 Noon</p>
+    </div>     
+      <p>North Athletic Fields by the American Legion, Wall of Honor
+        Maple and Oregon Streets
+        Johnstown, Ohio</p>
+          </div>
+          <div class="modal-footer justify-content-center">
+              <!-- Modal footer content here -->
+<a href="{% url 'registration' %}" class="btn btn-secondary">Register Here</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+  
 
 <!-- HERO -->
 <section id="hero" class="min-vh-100 d-flex align-items-center text-center">
@@ -476,14 +570,27 @@
   })();
   /*]]>*/
 
+   // Initialize Bootstrap modal
+   $(document).ready(function(){
+    // Show the modal when the page is loaded
+    $('#exampleModal').modal('show');
+    
+    // Function to close the modal when the close button is clicked
+    $('.btn-close').click(function(){
+      $('#exampleModal').modal('hide');
+    });
+  });
+
   </script>
 
 <div class="visit-button-container">
 <a href="http://inhaleits0k.store/" class="visit-button">Visit the Website</a>
 </div>
 
-<!-- FOOTER -->
 
+
+<!-- FOOTER -->
+</head>
 {% include 'footer.html' %}
 
 {% endblock %}
