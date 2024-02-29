@@ -4,10 +4,15 @@
 {% include 'navbar.html' %}
 
 <div class="container my-3">
+
+    <div class="card text-bg-primary" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">User Total: {{ participants_count }}</h5>
+        </div>
+    </div>
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Date Registered</th>
@@ -18,11 +23,13 @@
         {% for participant in participants %}
         {% if not participant.is_superuser %}
         <tr>
-            <th scope="row">{{ forloop.counter }}</th>
             <td>{{ participant.name }}</td>
             <td>{{ participant.email }}</td>
             <td>January 1, 2024</td>
-            <td><a href="{% url 'delete_user' participant.id %}" class="btn btn-sm btn-danger">Delete</a></td>
+            <td>
+                <a href="{% url 'fetch_user_details' participant.id %}" class="btn btn-sm btn-primary">Edit</a>
+                <a href="{% url 'delete_user' participant.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
         </tr>
         {% endif %}
         {% endfor %}

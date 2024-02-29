@@ -42,22 +42,26 @@
 
 
 
+
 </style>
 
 <div class="dashboard-content">
     <!-- Button trigger modal -->
-    <div class="d-flex justify-content-end mb-2">
-        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div class="d-flex justify-content-end gap-2 mb-2">
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProfile">
             Edit Profile
+        </button>
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#accountSettings">
+            Change Account Settings
         </button>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal for Edit Profile -->
+    <div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+                    <h1 class="modal-title fs-5" id="editProfileLabel">Edit Profile</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -66,22 +70,26 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" name="name" value="{{ request.user.name }}" id="name"
+                            <input type="text" class="form-control" name="name" value="{{ request.user.name }}"
+                                   id="name"
                                    placeholder="Enter your name">
                         </div>
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" name="username" value="{{ request.user.username }}" id="username"
+                            <input type="text" class="form-control" name="username" value="{{ request.user.username }}"
+                                   id="username"
                                    placeholder="Enter your username">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" value="{{ request.user.email }}" id="email"
+                            <input type="email" class="form-control" name="email" value="{{ request.user.email }}"
+                                   id="email"
                                    placeholder="Enter your email">
                         </div>
                         <div class="mb-3">
                             <label for="fundraising_goal" class="form-label">Fundraising Goal</label>
-                            <input type="number" class="form-control" name="fundraising_goal" value="{{ request.user.fundraising_goal }}" id="fundraising_goal"
+                            <input type="number" class="form-control" name="fundraising_goal"
+                                   value="{{ request.user.fundraising_goal }}" id="fundraising_goal"
                                    placeholder="Enter your fundraising goal">
                         </div>
                     </div>
@@ -90,6 +98,46 @@
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Account Settings -->
+    <div class="modal fade" id="accountSettings" tabindex="-1" aria-labelledby="accountSettingsLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="accountSettingsLabel">Edit Account Settings</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form method="post" action="{% url 'update_account_settings' %}">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" value="{{ request.user.username }}"
+                                   id="change_username" placeholder="Enter your username">
+                        </div>
+                        <p class="text-center fw-bold fst-italic">Change password</p>
+                        <div class="mb-3">
+                            <label for="new_password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" name="new_password" id="new_password"
+                                   placeholder="Enter your new password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" name="confirm_password" id="confirm_password"
+                                   placeholder="Confirm your new password">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

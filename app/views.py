@@ -116,17 +116,68 @@ def update_user(request):
         return redirect('dashboard')
 
 
+def update_account_settings(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+
+        user = request.user
+
+        # Update username if provided
+        if username and username != user.username:
+            user.username = username
+            user.save()
+            messages.success(request, 'Username successfully updated.')
+            return redirect('dashboard')
+
+        # Update password if provided
+        if new_password and confirm_password and new_password == confirm_password:
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, 'Password successfully updated.')
+            # For security, log the user out after changing the password
+            return redirect('logout')  # You should have a 'logout' URL defined in your urls.py
+
+
+def admin_dashboard(request):
+    participants = Participant.objects.all()
+    participants_count = participants.count() - 1
+
+    return render(request, 'admin_dashboard.html',
+                  {'participants': participants, 'participants_count': participants_count})
+
+
+def fetch_user_details(request, pk):
+    participant = Participant.objects.get(id=pk)
+
+    return render(request, 'fetch_user_details.html', {'participant': participant})
+
+
+def update_user_detail(request, pk):
+    if request.method == 'POST':
+        # Retrieve the form data
+        name = request.POST.get('name')
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        fundraising_goal = request.POST.get('fundraising_goal')
+
+        # Update the user profile
+        participant = Participant.objects.get(id=pk)
+        participant.name = name
+        participant.username = username
+        participant.email = email
+        participant.fundraising_goal = fundraising_goal
+        participant.save()
+
+        messages.success(request, 'Profile updated successfully.')
+        return redirect('admin_dashboard')
+
 
 def delete_user(request, pk):
     participant = Participant.objects.get(id=pk)
     participant.delete()
     return redirect('admin_dashboard')
-
-
-def admin_dashboard(request):
-    participants = Participant.objects.all()
-
-    return render(request, 'admin_dashboard.html', {'participants': participants})
 
 
 def eventinyourcity(request):
@@ -135,6 +186,7 @@ def eventinyourcity(request):
 
 def volunteer(request):
     return render(request, 'volunteer.html')
+
 
 def engagement(request):
     return render(request, 'engagement.html')
