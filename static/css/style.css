@@ -1220,3 +1220,12 @@ main {
     width: calc(50% - 20px); /* Two cards per row on smaller screens */
   }
 }
+
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('/static/fonts/Inconsolata-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
