@@ -11,7 +11,9 @@
     background-size: cover;
     display: flex;
     align-items: center; /* Vertically center the content */
-    height: 100vh; /* Adjust the height as needed */
+    justify-content: center; /* Horizontally center the content */
+    min-height: 100vh; /* Adjust the height as needed */
+    padding: 0 20px; /* Add padding to prevent content from sticking to the edges */
 }
 
 /* Styling for the text content */
@@ -36,6 +38,7 @@
     color: whitesmoke; /* Dark text color */
     margin-bottom: 20px;
     text-align: left; /* Align heading text to the left */
+    max-width: 100%;
 }
 
 #welcome-section p {
@@ -44,11 +47,13 @@
     color: whitesmoke; /* Slightly darker text color */
     margin-bottom: 15px;
     text-align: left; /* Align paragraph text to the left */
+    max-width: 100%;
 }
 
-#welcome-section p:last-child {
-    margin-bottom: 0; /* Remove bottom margin from last paragraph */
-
+@media (max-width: 768px) {
+    #welcome-section .col-md-6 {
+        text-align: center; /* Align text to the center on smaller screens */
+    }
 }
 
 </style>
