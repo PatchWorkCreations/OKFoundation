@@ -138,7 +138,8 @@
                             </div>
                         </div>
 
-                        <p>If you would like to volunteer at the event, please register <a href="{% url 'volunteer' %}">here</a>.</p>
+                        <p>If you would like to volunteer at the event, please register <a href="{% url 'volunteer' %}">here</a>.
+                        </p>
 
                         <!-- Team Name Input for Start a team -->
                         <div id="start_team_name_input" style="display: none;">
@@ -240,13 +241,36 @@
                             <input type="tel" class="form-control" id="phone_number"
                                    placeholder="Enter your phone number" name="phone_number">
                         </div>
+
+                        <div class="row text-center mb-2">
+                            <small>To Pay Registration Fee. <a href="#" type="button" data-bs-toggle="modal"
+                                                               data-bs-target="#paymentModal">Click Here</a>.</small>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="ratio ratio-1x1">
+                                            <iframe src="https://square.link/u/KGTyo48H?src=embed" frameborder="0"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="text-center mx-4">
                             <small>
                                 By selecting Sign Up, you're agreeing to the 0K: The Finish Line Moves <a href="#"
-                                                                                               class="text-decoration-none"
-                                                                                               type="button"
-                                                                                               data-bs-toggle="modal"
-                                                                                               data-bs-target="#exampleModal">waiver</a>.
+                                                                                                          class="text-decoration-none"
+                                                                                                          type="button"
+                                                                                                          data-bs-toggle="modal"
+                                                                                                          data-bs-target="#exampleModal">waiver</a>.
 
                                 You'll receive email updates from The 0K Foundation. You can unsubscribe at any time.
                                 Learn more about our <a href="#" class="text-decoration-none">privacy policy</a> and <a
@@ -289,7 +313,9 @@
                     volunteers, agents, successors and/or assigns (collectively "The 0k Foundation"):
                     <br>
                     <br>
-                    ASSUMPTION OF THE RISK. I understand that participating Team activities may include actions that may be hazardous to me , including camping, picnicking, walking, jogging, running, bicycling, swimming, water plunging,
+                    ASSUMPTION OF THE RISK. I understand that participating Team activities may include actions that may
+                    be hazardous to me , including camping, picnicking, walking, jogging, running, bicycling, swimming,
+                    water plunging,
                     golfing, exercising, climbing, other recreational or team sports, and/or other physical activity
                     reasonably anticipated to be performed in connection with the Activities. I willingly engage in
                     these Activities and I knowingly assume the risk of injury, harm and loss associated with the
@@ -553,6 +579,9 @@
             disclaimer.style.display = "none";
         }
     }
+
+
+
 
 
 
