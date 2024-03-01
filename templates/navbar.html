@@ -23,6 +23,13 @@
                     <a class="nav-link" href="{% url 'engagement' %}">Your Engagement</a>
                 </li>
 
+                <li class="nav-item dropdown"> <!-- Added class 'dropdown' here -->
+                    <a href="#" class="nav-link dropbtn">Resources</a> <!-- Added class 'dropbtn' here -->
+                    <div class="dropdown-content"> <!-- Dropdown container -->
+                        <a href="{% url 'fun' %}">"FUN" Fundraising</a> <!-- Dropdown link -->
+                    </div>
+                </li> <!-- Closing 'dropdown' class -->
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'home' %}#services">Join Us</a>
                 </li>

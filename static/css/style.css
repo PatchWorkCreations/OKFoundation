@@ -99,7 +99,34 @@ img {
     color: var(--c-brand);
 }
 
-
+/* Dropdown menu */
+.dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff; /* Adjust the background color to your preference */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for a subtle effect */
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: var(--c-dark); /* Adjust the text color to match your theme */
+    padding: 10px 15px; /* Adjust padding as needed */
+    display: block;
+    text-decoration: none;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f5f5f5; /* Adjust the hover background color to your preference */
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
 
 
 /* BTN */

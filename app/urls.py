@@ -19,4 +19,5 @@ urlpatterns = [
     path('eventinyourcity', eventinyourcity, name='eventinyourcity'),
     path('volunteer', volunteer, name='volunteer'),
     path('engagement', engagement, name='engagement'),
+    path('fun', fun, name='fun'),
 ]

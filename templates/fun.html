@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% include 'navbar.html' %}
+<style>
+    /* Global styles */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Specific header styles for elements with class 'headerone' */
+    header.headerone {
+        background-color: #673ab7 !important;
+        color: #fff !important;
+        text-align: center !important;
+        padding: 20px 0 !important;
+    }
+
+    header.headerone h1 {
+    color: #fff;
+}
+
+    header:not(.headerone) {
+        background-color: transparent !important;
+    }
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .fundraising-card {
+        width: 300px;
+        height: 300px;
+        background-color: #fff;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .fundraising-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .fundraising-card-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: transform 0.3s ease;
+    }
+
+    .fundraising-card h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: #673ab7;
+    }
+
+    .fundraising-card p {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .fundraising-card-front,
+    .fundraising-card-back {
+        backface-visibility: hidden;
+    }
+
+    .fundraising-card-front {
+        transform: rotateY(0deg);
+    }
+
+    .fundraising-card-back {
+        transform: rotateY(180deg);
+    }
+
+    /* Unique button styles */
+    #johnstown_2024_buttonn {
+        position: absolute;
+        top: 8.6rem;
+        right: 1rem;
+        padding: 1rem 2rem;
+        background-color: #673ab7;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        overflow: hidden;
+    }
+
+    #johnstown_2024_buttonn:hover {
+        background-color: #512da8;
+    }
+
+    #fundraising-events {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+#fundraising-events h2 {
+    color: #673ab7;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#fundraising-events h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#fundraising-events p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+#fundraising-events ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#fundraising-events li {
+    margin-bottom: 10px;
+}
+
+#fundraising-events strong {
+    font-weight: bold;
+}
+
+</style>
+
+<header class="headerone">
+    <h1>Team Leader Fundraising Ideas</h1>
+</header>
+
+<main>
+    <!-- Sponsorship -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Sponsorship</h2>
+                <p>Reach out to local businesses, corporations, and community organizations to secure sponsorships. Offer different sponsorship levels with corresponding benefits such as logo placement on promotional materials, recognition at the event, and social media shout-outs.</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Sponsorship</h2>
+                <p>Reach out to local businesses, corporations, and community organizations to secure sponsorships. Offer different sponsorship levels with corresponding benefits such as logo placement on promotional materials, recognition at the event, and social media shout-outs.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Crowdfunding -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Crowdfunding</h2>
+                <p>Set up a crowdfunding campaign on platforms like GoFundMe, Kickstarter, or Indiegogo. Encourage participants, supporters, and community members to donate online and share the campaign with their networks.</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Crowdfunding</h2>
+                <p>Set up a crowdfunding campaign on platforms like GoFundMe, Kickstarter, or Indiegogo. Encourage participants, supporters, and community members to donate online and share the campaign with their networks.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partnerships -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Partnerships</h2>
+                <p>Collaborate with other events, organizations, or clubs that share similar interests or target audiences. Explore opportunities for cross-promotion and joint fundraising efforts to expand your reach and maximize resources.</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Partnerships</h2>
+                <p>Collaborate with other events, organizations, or clubs that share similar interests or target audiences. Explore opportunities for cross-promotion and joint fundraising efforts to expand your reach and maximize resources.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Merchandise Sales -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Merchandise Sales</h2>
+                <p>Design and sell branded merchandise such as t-shirts, hats, water bottles, or wristbands. Offer these items for sale online, at local events, or during registration for "0K: The Finish Line Moves."</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Merchandise Sales</h2>
+                <p>Design and sell branded merchandise such as t-shirts, hats, water bottles, or wristbands. Offer these items for sale online, at local events, or during registration for "0K: The Finish Line Moves."</p>
+            </div>
+        </div>
+    </div>
+    <!-- Repeat the same structure for other sections -->
+
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Corporate Partnerships</h2>
+                <p>Approach companies for corporate donations, matching gift programs, or employee fundraising initiatives. Highlight the positive exposure and community impact associated with supporting your event.</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Corporate Partnerships</h2>
+                <p>Approach companies for corporate donations, matching gift programs, or employee fundraising initiatives. Highlight the positive exposure and community impact associated with supporting your event.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grant Opportunities -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Grant Opportunities</h2>
+                <p>Research grant opportunities from government agencies, foundations, and non-profit organizations that support community events, health initiatives, or youth programs. Develop compelling grant proposals outlining the goals, impact, and budget for "0K: The Finish Line Moves."</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Grant Opportunities</h2>
+                <p>Research grant opportunities from government agencies, foundations, and non-profit organizations that support community events, health initiatives, or youth programs. Develop compelling grant proposals outlining the goals, impact, and budget for "0K: The Finish Line Moves."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Individual Donations -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Individual Donations</h2>
+                <p>Encourage individual donations from friends, family members, colleagues, and neighbors. Use personalized outreach, social media campaigns, and storytelling to inspire people to contribute to your cause.</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Individual Donations</h2>
+                <p>Encourage individual donations from friends, family members, colleagues, and neighbors. Use personalized outreach, social media campaigns, and storytelling to inspire people to contribute to your cause.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- In-Kind Donations -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>In-Kind Donations</h2>
+                <p>Seek in-kind donations of goods or services from local businesses and vendors. These could include refreshments, event supplies, printing services, or prizes for fundraising contests.</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>In-Kind Donations</h2>
+                <p>Seek in-kind donations of goods or services from local businesses and vendors. These could include refreshments, event supplies, printing services, or prizes for fundraising contests.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Online Fundraising Challenges -->
+    <div class="fundraising-card">
+        <div class="fundraising-card-inner">
+            <div class="fundraising-card-front">
+                <h2>Online Fundraising Challenges</h2>
+                <p>Create fun and engaging online fundraising challenges or competitions to motivate participants and supporters to raise funds. Offer incentives such as prizes, recognition, or exclusive experiences for top fundraisers.</p>
+            </div>
+            <div class="fundraising-card-back">
+                <h2>Online Fundraising Challenges</h2>
+                <p>Create fun and engaging online fundraising challenges or competitions to motivate participants and supporters to raise funds. Offer incentives such as prizes, recognition, or exclusive experiences for top fundraisers.</p>
+            </div>
+        </div>
+    </div>
+
+    <section id="fundraising-events">
+        <h2>Fundraising Event Ideas</h2>
+        <p>Organize fundraising events such as bake sales, car washes, charity auctions, or benefit concerts. Leverage the support of volunteers, sponsors, and local venues to host these events and generate revenue.</p>
+
+        <!-- Sub-section for Small Fundraising Events -->
+        <h3>Small Fundraising Events:</h3>
+        <ul>
+            <li>
+                <strong>Bake Sale:</strong> Host a bake sale featuring homemade treats such as cookies, brownies, cupcakes, and pies. Set up a booth at a local park, community center, or outside a popular store to attract passersby.
+            </li>
+            <li>
+                <strong>Car Wash:</strong> Organize a car wash where participants pay a fee to have their cars washed by volunteers. Choose a visible location with access to water and gather supplies such as soap, sponges, and hoses.
+            </li>
+            <li>
+                <strong>Charity Garage Sale:</strong> Collect donations of gently used items from community members and hold a charity garage sale. Set up tables to display items such as clothing, toys, books, and household goods, and price them affordably.
+            </li>
+            <li>
+                <strong>Pancake Breakfast:</strong> Host a pancake breakfast event where attendees purchase tickets to enjoy a delicious meal of pancakes, sausages, and beverages. Consider partnering with a local restaurant or securing donations of food items.
+            </li>
+            <li>
+                <strong>Trivia Night:</strong> Organize a trivia night at a local venue such as a restaurant, bar, or community center. Charge an entry fee for teams to participate and offer prizes for the top-scoring teams. You can also incorporate raffles or silent auctions for additional fundraising.
+            </li>
+            <li>
+                <strong>Fitness Challenge:</strong> Plan a fitness challenge such as a fun run, walkathon, or yoga session. Participants can register and collect pledges from friends and family based on the distance covered or the duration of the activity.
+            </li>
+            <li>
+                <strong>DIY Craft Fair:</strong> Host a DIY craft fair where artisans and crafters can showcase and sell their handmade goods. Charge a small vendor fee for table space and encourage attendees to support local artists by purchasing unique gifts and crafts.
+            </li>
+            <li>
+                <strong>Movie Night Fundraiser:</strong> Organize a movie night fundraiser at a local venue or outdoor space. Charge admission for entry and screen popular films or family-friendly movies. Offer concessions such as popcorn, candy, and drinks for additional revenue.
+            </li>
+            <li>
+                <strong>Pet Parade or Petting Zoo:</strong> Host a pet-themed event such as a pet parade, petting zoo, or pet costume contest. Participants can register their pets and pay a fee to participate, while attendees can enjoy interacting with animals and supporting the cause.
+            </li>
+            <li>
+                <strong>Cook-Off Competition:</strong> Organize a cook-off competition such as a chili cook-off, BBQ cook-off, or dessert competition. Participants can enter their culinary creations for judging, and attendees can purchase tasting tickets to sample the dishes and vote for their favorites.
+            </li>
+        </ul>
+    </section>
+</main>
+
+{% include 'footer.html' %}
+{% endblock %}

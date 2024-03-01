@@ -190,3 +190,6 @@ def volunteer(request):
 
 def engagement(request):
     return render(request, 'engagement.html')
+
+def fun(request):
+    return render(request, 'fun.html')
