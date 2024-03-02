@@ -109,6 +109,8 @@
     font-weight: bold; /* Optionally, make the text bold */
 }
 
+  
+
 .monospace-custom {
     font-family: Consolas, Menlo, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
@@ -158,6 +160,11 @@
     height: 50px; /* Adjust height as needed */
   }
 
+
+  #white-heading {
+    color: white;
+}
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -198,9 +205,10 @@
           </div>
           <div class="modal-body text-center">
   <div class = "larger-text">       <!-- Modal content here -->
-<p>May 18, 2024</p>
+    <h1 id="white-heading">FREE COMMUNITY EVENT!</h1>  
+    <p>May 18, 2024</p>
       <p>9am - 12 Noon</p>
-    </div>     
+       </div>     
       <p>North Athletic Fields, by the American Legion</p>
       <p>Wall of Honor</p>
        <p>Maple & Oregon Streets </p>
@@ -638,6 +646,56 @@
 <a href="http://inhaleits0k.store/" class="visit-button">Visit the Website</a>
 </div>
 
+
+<!-- BLOG -->
+<section id="blog" class="section-padding">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 text-center" data-aos="fade-down" data-aos-delay="150">
+              <div class="section-title">
+                  <h1 class="display-4 fw-semibold">Recent News & Articles</h1>
+                  <div class="line"></div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-4" data-aos="fade-down" data-aos-delay="150">
+              <div class="team-member image-zoom">
+                  <div class="image-zoom-wrapper">
+                      <img src="{% static 'images/mspatch-ezgif.com-webp-to-png-converter.png' %}" alt="">
+                  </div>
+                  <h5 class="mt-4">Families joining the state in a mission to prevent suicide</h5>
+                  <p>Wetzel, a mother, was forced to endure the devastating pain of losing her son, who died by suicide. She says her son struggled with mental health issues, and that she had no idea. Stories like hers are behind a major initiative launched by Governor Mike DeWine, and the aim is to save lives. The Wetzel family also created a foundation focused on suicide prevention. (WSYX) </p>
+                  <a href="https://nbc24.com/news/local/families-joining-the-state-in-a-mission-to-prevent-suicide-central-columbus-ohio-january-2024-soar-study-0k-foundation-patch-jacob-wetzel">Read More</a>
+              </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-down" data-aos-delay="250">
+              <div class="team-member image-zoom">
+                  <div class="image-zoom-wrapper">
+                      <img src="{% static 'images/988.jpeg' %}" alt="">
+                  </div>
+                  <h5 class="mt-4">Suicide is on the rise in Ohio</h5>
+                  <p>Over 1,400 Ohioans died from suicide in 2022, the most recent year we have data for. This makes suicide the fifth-leading causes of death for working-age Ohioans, behind unintentional injuries like drug overdose and motor vehicle crashes, cancer, heart disease, and COVID-19.
+                    Ohio’s suicide death rate is 15 deaths per 100,000 people, just slightly above than the national rate of 14.5 deaths per 100,000 people.</p>
+                  <a href="https://ohiocapitaljournal.com/2024/02/15/suicide-is-on-the-rise-in-ohio/">Read More</a>
+              </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-down" data-aos-delay="350">
+              <div class="team-member image-zoom">
+                  <div class="image-zoom-wrapper">
+                      <img src="{% static 'images/Screen Shot 2024-03-02 at 11.53.48 PM.png' %}" alt="">
+                  </div> 
+                  <h5 class="mt-4">Suicide prevention program 'Sources of Strength'</h5>
+                  <p>The Ohio Department of Mental Health and Addiction Services funds it with CARES Act dollars.
+                    Preliminary data from the Ohio Suicide Prevention Foundation show Sources of Strength has spread to approximately 180 schools, including 94 elementary schools and 85 secondary schools since 2021.
+                    A new Ohio law known as the SAVE Students Act requires all schools to incorporate suicide awareness and prevention into the curriculum by the 2023-2024 school year.</p>
+                  <a href="https://spectrumnews1.com/oh/cleveland/news/2023/01/19/suicide-prevention-program--sources-of-strength--makes-positive-impact-at-cuyahoga-falls-high-school?cq_ck=1675112813289#">Read More</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- End Blog Section -->
 
 <!-- FOOTER -->
 </head>
