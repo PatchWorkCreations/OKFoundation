@@ -1,0 +1,82 @@
+
+{% extends 'base.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<style>
+  .contactt-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('static/images/rename.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .contact-formm {
+    background: rgba(145, 28, 204, 0.444);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(148, 15, 165, 0.514);
+    width: 500px;
+    max-width: 100%;
+  }
+
+  .contact-formm h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+
+  .contact-formm input,
+  .contact-formm textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: whitesmoke;
+  }
+
+  .contact-formm button {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    background: #7a49e5;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .contact-formm button:hover {
+    background-color: #a589e9;
+  }
+
+  .contact-formm input::placeholder,
+.contact-formm textarea::placeholder {
+  color: rgba(132, 12, 183, 0.527); /* Adjust the color and transparency as needed */
+}
+
+</style>
+</head>
+<div class="rectangle-barr">
+  <p style="font-family: 'Inconsolata', monospace;">Welcome to The 0K Foundation</p>
+</div>
+
+<div class="contactt-section">
+  <div class="contact-formm">
+    <h2>CONTACT US</h2>
+    <input type="text" placeholder="Name" id="name">
+    <input type="email" placeholder="E-Mail" id="email">
+    <textarea placeholder="Message" id="message"></textarea>
+    <button type="submit" id="submit">SUBMIT</button>
+  </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
+

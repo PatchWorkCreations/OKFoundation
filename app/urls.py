@@ -20,4 +20,5 @@ urlpatterns = [
     path('volunteer', volunteer, name='volunteer'),
     path('engagement', engagement, name='engagement'),
     path('fun', fun, name='fun'),
+    path('cWeb_Contact_Form_Template', Web_Contact_Form_Template, name='Web_Contact_Form_Template'),
 ]

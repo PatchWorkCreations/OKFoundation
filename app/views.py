@@ -193,3 +193,6 @@ def engagement(request):
 
 def fun(request):
     return render(request, 'fun.html')
+
+def Web_Contact_Form_Template(request):
+    return render(request, 'Web_Contact_Form_Template.html')

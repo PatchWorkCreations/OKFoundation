@@ -1,6 +1,35 @@
 {% load static %}
 
-<!-- NAVBAR -->
+<style>
+    .nav-link.dropdown-toggle svg {
+    width: 1.5rem; /* Adjust the width */
+    height: 1.5rem; /* Adjust the height */
+    /* Add more styles as needed */}
+
+    /* Adjust the Bootstrap dropdown arrow icon */
+    .nav-link.dropdown-toggle::after {
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+    }
+
+    /* Remove black border from dropdown toggle button */
+    .dropdown-toggle {
+    border: none; /* Remove any border */
+    outline: none; /* Remove outline when button is focused */
+    /* Add any additional styles as needed */
+    background-color: white;
+}
+
+
+</style>
+
 <nav class="navbar navbar-expand-lg bg-white sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -12,32 +41,34 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                <li class="nav-item {% if request.path == '/' %}active{% endif %}" >
                     <a class="nav-link" href="{% url 'home' %}">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if request.resolver_match.view_name == 'home' and request.resolver_match.kwargs.anchor == 'about' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'home' %}#about">About Us</a>
                 </li>
-
-                <li class="nav-item">
+                <li class="nav-item {% if request.resolver_match.view_name == 'engagement' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'engagement' %}">Your Engagement</a>
                 </li>
-
-                <li class="nav-item dropdown"> <!-- Added class 'dropdown' here -->
-                    <a href="#" class="nav-link dropbtn">Resources</a> <!-- Added class 'dropbtn' here -->
-                    <div class="dropdown-content"> <!-- Dropdown container -->
-                        <a href="{% url 'fun' %}">"FUN" Fundraising</a> <!-- Dropdown link -->
-                    </div>
-                </li> <!-- Closing 'dropdown' class -->
-
-                <li class="nav-item">
+                <li class="nav-item dropdown {% if request.resolver_match.view_name == 'fun' %}active{% endif %}">
+                    <button id="dropdownNavbarLink" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Resources
+                    </button>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="dropdownNavbarLink">
+                        <li>
+                            <a href="{% url 'fun' %}" class="dropdown-item">"FUN" in Fundraising</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item {% if request.resolver_match.view_name == 'home' and request.resolver_match.kwargs.anchor == 'services' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'home' %}#services">Join Us</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}#contact">Contact</a>
+                <li class="nav-item {% if request.resolver_match.view_name == 'web_contact_form_template' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'Web_Contact_Form_Template' %}">Contact</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if request.resolver_match.view_name == 'home' and request.resolver_match.kwargs.anchor == 'blog' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'home' %}#blog">Blog</a>
                 </li>
             </ul>

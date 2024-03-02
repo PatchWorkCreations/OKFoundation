@@ -2,7 +2,50 @@
 {% block content %}
 {% load static %}
 {% include 'navbar.html' %}
+<style>
+
+/* Input fields */
+input[type="text"],
+input[type="text"]:focus,
+input[type="text"]:hover,
+input[type="text"]:active {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    outline: none; /* Remove default focus outline */
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Adjust label color on focus */
+input[type="text"]:focus + label,
+input[type="text"]:hover + label,
+input[type="text"]:active + label {
+    color: #666;
+}
+
+/* Adjust label position when input is filled */
+input[type="text"]:not(:placeholder-shown) + label {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+</style>
+
 <body>
+
+
 
 <div class="rectangle-barr">
     <p>Welcome to The 0K Foundation</p>
@@ -122,35 +165,41 @@
                         <div class="mb-4">
                             <p>How do you want to start 0K?</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_option" id="start_team"
-                                       value="start_team">
+                                <input class="form-check-input" type="radio" name="team_option" id="start_team" value="start_team" onchange="handleTeamOptionSelection()">
                                 <label class="form-check-label" for="start_team">Start a team</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_option" id="join_team"
-                                       value="join_team">
+                                <input class="form-check-input" type="radio" name="team_option" id="join_team" value="join_team" onchange="handleTeamOptionSelection()">
                                 <label class="form-check-label" for="join_team">Join a team</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_option" id="participate_solo"
-                                       value="participate_solo">
+                                <input class="form-check-input" type="radio" name="team_option" id="participate_solo" value="participate_solo" onchange="handleTeamOptionSelection()">
                                 <label class="form-check-label" for="participate_solo">Participate Solo</label>
                             </div>
                         </div>
 
-                        <p>If you would like to volunteer at the event, please register <a href="{% url 'volunteer' %}">here</a>.
-                        </p>
+                        <div id="start_team_question" style="display: none;">
+                            <p>Are you registering as a team captain?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_captain_option" id="team_captain_yes" value="yes">
+                                <label class="form-check-label" for="team_captain_yes">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_captain_option" id="team_captain_no" value="no">
+                                <label class="form-check-label" for="team_captain_no">No</label>
+                            </div>
+                        </div>
+                    
 
-                        <!-- Team Name Input for Start a team -->
                         <div id="start_team_name_input" style="display: none;">
                             <label for="team_name">Enter your team name:</label>
-                            <input type="text" class="form-control" id="team_name" name="team_name">
+                            <input type="text" id="team_name" placeholder="Enter team name">
+                            <p>For more ideas for fundraising as a team captain <a href="{% url 'fun' %}">click here</a>.</p>
                         </div>
-
-                        <!-- Team Name Input for Join a team -->
+                    
                         <div id="join_team_name_input" style="display: none;">
                             <label for="join_team_name">Let's find your team. What's it called?</label>
-                            <input type="text" class="form-control" id="join_team_name" name="join_team_name">
+                            <input type="text" id="join_team_name" placeholder="Enter team name to join">
                         </div>
 
                         <!-- Solo Response -->
@@ -158,6 +207,10 @@
                             <p>Thanks for joining us! You can always change your mind later if you decide you want to
                                 join a team.</p>
                         </div>
+
+                        <p>If you would like to volunteer at the event, please register <a href="{% url 'volunteer' %}">here</a>.
+                        </p>
+
 
                         <!-- Your Contact Information Section -->
                         <h2 class="mb-4">Your Contact Information</h2>
@@ -242,28 +295,7 @@
                                    placeholder="Enter your phone number" name="phone_number">
                         </div>
 
-                        <div class="row text-center mb-2">
-                            <small>To Pay Registration Fee. <a href="#" type="button" data-bs-toggle="modal"
-                                                               data-bs-target="#paymentModal">Click Here</a>.</small>
-                        </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="ratio ratio-1x1">
-                                            <iframe src="https://square.link/u/KGTyo48H?src=embed" frameborder="0"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        
                         <div class="text-center mx-4">
                             <small>
                                 By selecting Sign Up, you're agreeing to the 0K: The Finish Line Moves <a href="#"
@@ -495,26 +527,7 @@
             });
         }
     
-        // Function to handle the selection of team option radio buttons
-        function handleTeamOptionSelection() {
-            const teamOption = document.querySelector('input[name="team_option"]:checked');
-            if (teamOption) {
-                switch (teamOption.value) {
-                    case 'start_team':
-                        document.getElementById('team_question').innerText = "What's the name of your team?";
-                        document.getElementById('team_name_input').style.display = 'block';
-                        break;
-                    case 'join_team':
-                        document.getElementById('team_question').innerText = "Let's find your team. What's it called?";
-                        document.getElementById('team_name_input').style.display = 'block';
-                        break;
-                    case 'participate_solo':
-                        document.getElementById('team_question').innerText = "Thanks for joining us! You can always change your mind later if you decide you want to join a team.";
-                        document.getElementById('team_name_input').style.display = 'none';
-                        break;
-                }
-            }
-        }
+       
     
         // Add event listeners to checkboxes and radio buttons
         document.querySelectorAll('input[name="motivation"]').forEach(checkbox => {
@@ -526,33 +539,50 @@
         });
     
     
-        function handleTeamOptionSelection() {
-            const startTeamNameInput = document.getElementById('start_team_name_input');
-            const joinTeamNameInput = document.getElementById('join_team_name_input');
-            const soloResponse = document.getElementById('solo_response');
-            const teamOption = document.querySelector('input[name="team_option"]:checked');
-    
-            if (teamOption) {
-                if (teamOption.value === 'start_team') {
-                    startTeamNameInput.style.display = 'block';
-                    joinTeamNameInput.style.display = 'none';
-                    soloResponse.style.display = 'none';
-                } else if (teamOption.value === 'join_team') {
-                    startTeamNameInput.style.display = 'none';
-                    joinTeamNameInput.style.display = 'block';
-                    soloResponse.style.display = 'none';
-                } else {
-                    startTeamNameInput.style.display = 'none';
-                    joinTeamNameInput.style.display = 'none';
-                    soloResponse.style.display = 'block';
-                }
+       function handleTeamOptionSelection() {
+        const startTeamNameInput = document.getElementById('start_team_name_input');
+        const joinTeamNameInput = document.getElementById('join_team_name_input');
+        const soloResponse = document.getElementById('solo_response');
+        const teamOption = document.querySelector('input[name="team_option"]:checked');
+        const startTeamQuestion = document.getElementById('start_team_question');
+
+        if (teamOption) {
+            if (teamOption.value === 'start_team') {
+                startTeamQuestion.style.display = 'block';
+                startTeamNameInput.style.display = 'none';
+                joinTeamNameInput.style.display = 'none';
+                soloResponse.style.display = 'none';
+            } else if (teamOption.value === 'join_team') {
+                startTeamNameInput.style.display = 'none';
+                joinTeamNameInput.style.display = 'block';
+                soloResponse.style.display = 'none';
+                startTeamQuestion.style.display = 'none';
+            } else {
+                startTeamNameInput.style.display = 'none';
+                joinTeamNameInput.style.display = 'none';
+                soloResponse.style.display = 'block';
+                startTeamQuestion.style.display = 'none';
             }
         }
-    
-        // Add event listener to team option radio buttons
-        document.querySelectorAll('input[name="team_option"]').forEach(radio => {
-            radio.addEventListener('change', handleTeamOptionSelection);
+    }
+
+    // Add event listener to team option radio buttons
+    document.querySelectorAll('input[name="team_option"]').forEach(radio => {
+        radio.addEventListener('change', handleTeamOptionSelection);
+    });
+
+    // Add event listener to team captain option radio buttons
+    document.querySelectorAll('input[name="team_captain_option"]').forEach(radio => {
+        radio.addEventListener('change', function () {
+            const startTeamNameInput = document.getElementById('start_team_name_input');
+            const teamCaptainYes = document.getElementById('team_captain_yes');
+            if (teamCaptainYes.checked) {
+                startTeamNameInput.style.display = 'block';
+            } else {
+                startTeamNameInput.style.display = 'none';
+            }
         });
+    });
     
         function handleDonationSelection() {
             const donationOption = document.querySelector('input[name="donation"]:checked');

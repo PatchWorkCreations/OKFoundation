@@ -12,6 +12,41 @@
     --box-shadow: 0px 15px 25px rgba(0,0,0,0.08);
     --transition: all 0.5s ease;
 }
+/* Navbar */
+.navbar {
+    background-color: #ffffff; /* White background */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure navbar appears above other content */
+}
+
+/* Navbar Brand */
+.navbar-brand img {
+    height: auto; /* Ensure logo scales properly */
+    max-height: 40px; /* Set maximum height for the logo */
+}
+
+/* Navbar Toggler Icon */
+.navbar-toggler {
+    border: none; /* Remove border */
+}
+
+/* Navbar Links */
+.navbar-nav .nav-link {
+    color: #000000; /* Black text color */
+    padding: 0.5rem 1rem; /* Adjust padding */
+}
+
+
+/* Active Link */
+.nav-item.active .nav-link {
+    color: #007bff; /* Blue active link color */
+}
+
+.nav-item.active .nav-link {
+    color: #007bff; /* Blue active link color */
+    font-weight: bold; /* Make active link bold */
+}
 
 /* RESET & HELPERS */
 body {
@@ -80,24 +115,7 @@ img {
     margin: 0;
     font-size: 18px; /* Adjust font size as needed */
 }
-/* NAVBAR */
-.navbar {
-    box-shadow: var(--box-shadow);
-}
 
-.navbar-brand img {
-    width: 60px; /* Adjust the width to your preference */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.navbar-nav .nav-link {
-    font-weight: 500;
-    color: var(--c-dark);
-}
-
-.navbar-nav .nav-link.active {
-    color: var(--c-brand);
-}
 
 /* Dropdown menu */
 .dropdown {
@@ -337,34 +355,6 @@ img {
 .team-member:hover .team-member-content {
     opacity: 1;
     bottom: 24px;
-}
-
-/* CONTACT */
-#contact {
-    position: relative;
-    z-index: 2;
-}
-
-#contact::after {
-    content: "";
-    width: 100%;
-    height: 70%;
-    background: linear-gradient(rgba(var(--c-brand-rgb), 0.8), rgba(var(--c-brand-rgb), 0.8)), url('../images/counter.jpg');
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-#contact .form-control {
-    border-radius: 0;
-}
-
-#contact .form-control:focus {
-    box-shadow: none;
-    border-color: var(--c-brand);
 }
 
 /* FOOTER */

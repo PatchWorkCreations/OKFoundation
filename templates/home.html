@@ -112,6 +112,52 @@
 .monospace-custom {
     font-family: Consolas, Menlo, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
+#services {
+    position: relative; /* Add relative positioning to the parent section */
+  }
+  .event-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* Adjust max-width as needed */
+    margin: 0 auto;
+    background: linear-gradient(135deg, #8E2DE2, #4A00E0, #00A5E0);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    color: white;
+  }
+
+  .event-card h2 {
+    color: white; /* Set font color to white */
+  }
+
+  .event-card p {
+    margin: 5px 0;
+  }
+  .learn-more {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #333333;
+    padding: 12px 24px; /* Increased padding for better visibility */
+    border: 2px solid #333333; /* Add border */
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px; /* Increase font size */
+    transition: all 0.3s ease; /* Add transition for smooth hover effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box-shadow for depth */
+}
+
+.learn-more:hover {
+    background-color: #a629d8;
+    color: #ffffff;
+}
+  .space-after-card {
+    height: 50px; /* Adjust height as needed */
+  }
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -285,21 +331,18 @@
                 </div>
             </div>
         </div>
-        <div class="row g-4 text-center">
-            <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="150">
-                <div class="service theme-shadow p-lg-5 p-4">
-                    <div class="iconbox">
-                        <i class="ri-pen-nib-fill"></i>
-                    </div>
-                    <h5 class="mt-4 mb-3" style="font-family: 'Inconsolata', monospace;">0K: The Finish Line Moves</h5>
-                    <p>May 18, 2024</p>
-                    <p>9am - 12 noon</p>
-                    <p>Johnstown, Ohio</p>
-                    <a href="https://www.facebook.com/0KFinishLine" class="more">Learn More...</a>
-                </div>
-            </div>
+        <div class="event-card">
+          <h2>May 18, 2024</h2>
+          <p>9am - 12 noon</p>
+          <p>North Athletic Fields, by the American Legion</p>
+          <p>Wall of Honor</p>
+          <p>Maple & Oregon Streets</p>
+          <p>Johnstown, Ohio</p>
+          <a href="{% url 'registration' %}" class="learn-more">Register Here</a>
+        </div>
 
-
+        <div class="space-after-card"></div>
+        <div class="row g-4 text-center">  
             <!-- March 07, 2024 -->
             <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="150">
                 <div class="service theme-shadow p-lg-5 p-4">
@@ -412,11 +455,12 @@
                       <div class="line"></div>
                       <div>
                       <p >Our Mission</p>
-                      <p style="font-family: 'Inconsolata', monospace;">The 0K Foundation fuels mental health support by fundraising for existing advocacy organizations. We believe in universal access to mental health care and champion tangible change through partnerships and community engagement.</p>
+                      <p style="font-family: 'Inconsolata', monospace; margin-bottom: 20px;">The 0K Foundation fuels mental health support by fundraising for existing advocacy organizations. We believe in universal access to mental health care and champion tangible change through partnerships and community engagement.</p>
                     </div>
                       <div>
                       <p>Our Vision</p>
-                      <p style="font-family: 'Inconsolata', monospace;">We envision a society where mental health is prioritized and supported for all. By amplifying existing organizations and sparking conversations, we aim to create a compassionate community where everyone has access to the resources they need to thrive. Join us in making a difference—one step, one contribution, one person at a time.</p>
+                      <p style="font-family: 'Inconsolata', monospace;">The 0K Foundation is dedicated to raising funds to support existing organizations in their mission to eliminate suicide as an option for everyone. By providing resources to these communities, we aim to strengthen their efforts in suicide prevention and mental health support. Together, we're working towards a future where every person feels valued, supported, and knows that suicide is never the answer. Join us in making this vision a reality by contributing to our cause today.
+                  </p>
                     </div>    
                   </div>
               </div>
@@ -593,7 +637,6 @@
 <div class="visit-button-container">
 <a href="http://inhaleits0k.store/" class="visit-button">Visit the Website</a>
 </div>
-
 
 
 <!-- FOOTER -->
