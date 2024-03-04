@@ -36,8 +36,6 @@
     color: #000000; /* Black text color */
     padding: 0.5rem 1rem; /* Adjust padding */
 }
-
-
 /* Active Link */
 .nav-item.active .nav-link {
     color: #007bff; /* Blue active link color */

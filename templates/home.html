@@ -6,9 +6,9 @@
 <style>
   #johnstown_2024_buttonn {
       position: absolute;
-      top: 8.6rem; /* Adjust this value as needed */
+      top: 7.3rem; /* Adjust this value as needed */
       right: 1rem; /* Adjust this value as needed */
-      padding: 1rem 2rem; /* Adjust padding for height and width */
+      padding: 2rem 2rem; /* Adjust padding for height and width */
       background-color: #673ab7; /* Deep purple color */
       color: #ffffff;
       text-decoration: none;
@@ -165,6 +165,17 @@
     color: white;
 }
 
+.video-container {
+            max-width: 600px; /* Adjust the maximum width as needed */
+            margin: 0 auto; /* Center the container horizontally */
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+        }
+    </style
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -247,6 +258,14 @@
       <a href="{% url 'registration' %}" class="engage-button">Engage Now</a>
   </div>
 </section>
+
+<div class="video-container">
+  <video controls>
+      <!-- Include the path to your video file -->
+      <source src="{% static 'images/VE Project 2-5.mp4' %}" type="video/mp4">
+      Your browser does not support the video tag.
+  </video>
+</div>
 
 
 <!--fun section-->
