@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+    /* Custom styles */
+    .header-section {
+      background-image: url('{% static "images/aboutus2.png" %}');
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      align-items: center; /* Vertically center the content */
+      justify-content: center; /* Horizontally center the content */
+      height: 50vh; /* Adjust the height as needed */
+    }
+  
+    .mission-section,
+    .vision-section {
+      padding: 50px 0;
+    }
+  
+    .mission-section .row,
+    .vision-section .row {
+      display: flex;
+      align-items: center;
+    }
+  
+    .mission-section img,
+    .vision-section img {
+      max-width: 100%;
+    }
+  
+    /* Adjust z-index for overlapping elements */
+    .bg-black {
+      position: relative;
+      z-index: -1;
+    }
+  
+    .bg-gradient {
+      background-image: linear-gradient(to bottom right, purple, cyan, white);
+    }
+  
+    .vh-75 {
+      height: 75vh;
+    }
+  
+    .h1-transition,
+    .a-transition {
+      transition: color 0.3s ease-in-out;
+    }
+  
+    /* Additional styling for h1 */
+    .h1-transition:hover {
+      color: #870ca3; /* Change to desired hover color */
+    }
+  
+    /* Additional styling for a */
+    .a-transition:hover {
+      color: #6605a1; /* Change to desired hover color */
+      background-color: #ffffff; /* Change to desired background color on hover */
+    }
+</style>
+
+{% include 'navbar.html' %}
+
+<!-- Header Section with Background Image -->
+<div class="header-section" style="font-family: 'Inconsolata', monospace;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 headerr">
+                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The 0K Foundation</h1>
+                <h1 class="text-white mt-3 mb-4" data-aos="fade-left">It's Going To Be 0K</h1>
+                <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Mission Section -->
+    <div class="row mission-section" data-aos="fade-up">
+        <div class="col-md-6">
+            <h2 style="font-weight: bold;">Our Mission</h2>
+            <p style="font-family: 'Inconsolata', monospace; font-size: 18px; margin-bottom: 20px;">The 0K Foundation fuels mental health support by fundraising for existing advocacy organizations. We believe in universal access to mental health care and champion tangible change through partnerships and community engagement.</p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'images/mission.png' %}" alt="Mission Image" style="max-width: 70%; height: 100%;">
+        </div>      
+    </div>
+  
+    <!-- Vision Section -->
+    <div class="row vision-section" data-aos="fade-up">
+        <div class="col-md-6 order-md-2">
+            <h2 style="font-weight: bold;">Our Vision</h2>
+            <p style="font-family: 'Inconsolata', monospace; font-size: 18px; margin-bottom: 20px;">The 0K Foundation is dedicated to raising funds to support existing organizations in their mission to eliminate suicide as an option for everyone. By providing resources to these communities, we aim to strengthen their efforts in suicide prevention and mental health support. Together, we're working towards a future where every person feels valued, supported, and knows that suicide is never the answer. Join us in making this vision a reality by contributing to our cause today.</p>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <img src="{% static 'images/vision.png' %}" alt="Vision Image" style="max-width: 70%; height: auto;">
+        </div>
+    </div>
+
+    <!-- The inspiration Section -->
+    <div class="row justify-content-center align-items-center">
+        <h1 class="text-center mb-4" data-aos="fade-down" style="font-family: 'Inconsolata', monospace;">The inspiration behind The 0K Foundation</h1>
+        <div class="col-lg-6 mb-4" data-aos="fade-down" data-aos-delay="50">
+            <img src="{% static 'images/Jacob.png' %}" alt="" class="img-fluid">
+            <a href="https://www.forevermissed.com/jacob-stephen-wetzel/about" class="btn btn-primary mt-3 d-block mx-auto">Learn More</a>
+        </div>
+        <div class="col-lg-5 px-lg-3" data-aos="fade-down" data-aos-delay="150">
+            <p class="mt-3 mb-4" style="font-size: 20px; font-weight: bold;">Celebrating a witty, sarcastic, snarky, beloved, and missed life.</p>
+
+            <div class="d-flex mb-3">
+                <div class="iconbox me-4">
+                    <i class="ri-mail-send-fill"></i>
+                </div>
+                <div>
+                    <h5>25 years old</h5>
+                </div>
+            </div>
+            <div class="d-flex mb-3">
+                <div class="iconbox me-4">
+                    <i class="ri-user-5-fill"></i>
+                </div>
+                <div>
+                    <h5>Born on November 18, 1997 in Johnstown, Ohio, United States</h5>
+                </div>
+            </div>
+            <div class="d-flex">
+                <div class="iconbox me-4">
+                    <i class="ri-rocket-2-fill"></i>
+                </div>
+                <div>
+                    <h5>Found unresponsive on December 18, 2023</h5>
+                    <h5>Took his last breath January 17, 2023 in Harborview Medical Center in Seattle</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-gradient">
+    <div class="d-flex align-items-center justify-content-center vh-75" style="background-image: url('{% static "images/aboutuss.png" %}'); background-size: cover;">
+        <div class="text-center text-white" data-aos="fade-down" data-aos-delay="150">
+            <!-- Add class for h1 transition -->
+            <h1 class="display-4 fw-bold mb-4 text-uppercase text-white h1-transition">TOGETHER, WE CAN BE LIFE-SAVERS!</h1>
+            <!-- Add class for a transition -->
+            <a href="{% url 'registration' %}" class="btn btn-primary btn-lg rounded-pill a-transition">Join us at our next event</a>
+        </div>
+    </div>
+    <!-- Placeholder for background image description -->
+    <div class="d-none">Description of the background image: A grayscale photo that captures a moment of intensity and determination during a strength training session. It shows the hands of an individual gripping onto a heavy boxing bag, suggesting an environment of physical fitness and exercise.</div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
