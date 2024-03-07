@@ -250,3 +250,6 @@ def fun(request):
 
 def Web_Contact_Form_Template(request):
     return render(request, 'Web_Contact_Form_Template.html')
+
+def homee(request):
+    return render(request, 'homee.html')

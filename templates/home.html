@@ -175,7 +175,75 @@
             width: 100%;
             height: auto;
         }
-    </style
+  
+
+        #tribute-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+
+  #tribute-container .left-column {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  #tribute-container .right-column {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  #tribute-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  #tribute-subheader {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: black;
+  }
+
+  #register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #73079e;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  #register-button:hover {
+    background-color: #9548b3ee;
+  }
+
+  #tribute-image {
+    width: 100%;
+    height: auto;
+  }
+
+    /* Media queries for mobile responsiveness */
+    @media only screen and (max-width: 768px) {
+    #tribute-container {
+      flex-direction: column;
+    }
+
+    #tribute-container .left-column,
+    #tribute-container .right-column {
+      flex: 1;
+      padding: 0;
+    }
+
+    #tribute-container .left-column {
+      margin-bottom: 20px;
+    }
+  }
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -245,6 +313,7 @@
                     Life-Savers!</h1>
                 <h5 class="text-white mt-3 mb-4" data-aos="fade-right"></h5>
                 <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
+                  <a href="{% url 'registration' %}" class="engage-button">Register Now</a>
                 </div>
             </div>
         </div>
@@ -253,9 +322,9 @@
 
 <section id="bannerr" class="text-center py-5">
   <div class="container">
-      <h2 class="banner-title text-uppercase text-white fw-bold">Say their name, sign their name... this is their tribute!</h2>
+      <h2 class="banner-title text-uppercase text-white fw-bold" data-aos="fade-up" data-aos-delay="50">Say their name, sign their name... this is their tribute!</h2>
       <img src="{% static 'images/new.png' %}" class="landscape-picture" alt="Landscape Picture">
-      <a href="{% url 'registration' %}" class="engage-button">Engage Now</a>
+      <a href="{% url 'registration' %}" class="engage-button" data-aos="fade-up" data-aos-delay="50">Register Now</a>
   </div>
 </section>
 
@@ -465,79 +534,24 @@
     </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section-padding">
-  <div class="container">
-      <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6 order-lg-2 text-center mb-4 mb-lg-0" data-aos="fade-down" data-aos-delay="50">
-              <video width="100%" height="350" controls>
-                  <source src="{% static 'images/VE Project 1-12.mp4' %}" type="video/mp4">
-                  Your browser does not support the video tag.
-              </video>    
-            </div>
-          
-              <div class="col-lg-6 order-lg-1" data-aos="fade-down" data-aos-delay="150">
-                  <div class="section-title text-lg-start text-center">
-                      <h1 class="display-4 fw-semibold">About Us</h1>
-                      <div class="line"></div>
-                      <div>
-                      <p >Our Mission</p>
-                      <p style="font-family: 'Inconsolata', monospace; margin-bottom: 20px;">The 0K Foundation fuels mental health support by fundraising for existing advocacy organizations. We believe in universal access to mental health care and champion tangible change through partnerships and community engagement.</p>
-                    </div>
-                      <div>
-                      <p>Our Vision</p>
-                      <p style="font-family: 'Inconsolata', monospace;">The 0K Foundation is dedicated to raising funds to support existing organizations in their mission to eliminate suicide as an option for everyone. By providing resources to these communities, we aim to strengthen their efforts in suicide prevention and mental health support. Together, we're working towards a future where every person feels valued, supported, and knows that suicide is never the answer. Join us in making this vision a reality by contributing to our cause today.
-                  </p>
-                    </div>    
-                  </div>
-              </div>
-          </div>
-      </div>
 
-      <div class="row justify-content-between align-items-center">
-          <div class="col-lg-6" data-aos="fade-down" data-aos-delay="50">
-              <img src="{% static 'images/Jacob.png' %}" alt="">
-              <a href="https://www.forevermissed.com/jacob-stephen-wetzel/about" class="btn btn-primary mt-3">Learn
-                  More</a>
-          </div>
-          <div data-aos="fade-down" data-aos-delay="150" class="col-lg-5" style="font-family: 'Inconsolata', monospace;">
-            <h1 style="font-family: 'Inconsolata', monospace;"></h1>The inspiration behind The 0K Foundation</h1>
-              <p class="mt-3 mb-4">Celebrating a witty, sarcastic, snarky, beloved, and missed life.
-              </p>
-
-              <div class="d-flex pt-4 mb-3">
-                  <div class="iconbox me-4">
-                      <i class="ri-mail-send-fill"></i>
-                  </div>
-                  <div>
-                      <h5>25 years old</h5>
-
-                  </div>
-              </div>
-              <div class="d-flex mb-3">
-                  <div class="iconbox me-4">
-                      <i class="ri-user-5-fill"></i>
-                  </div>
-                  <div>
-                      <h5>Born on November 18, 1997 in Johnstown, Ohio, United States</h5>
-
-                  </div>
-              </div>
-              <div class="d-flex">
-                  <div class="iconbox me-4">
-                      <i class="ri-rocket-2-fill"></i>
-                  </div>
-                  <div>
-                      <h5>Found unresponsive on December 18, 2023</h5>
-                      <h5>Took his last breath January 17, 2023 in Harborview Medical Center in Seattle </h5>
-
-                  </div>
-              </div>
-          </div>
-      </div>
+<div id="tribute-container">
+  <div class="left-column">
+    <div id="tribute-header" data-aos="fade-right" data-aos-delay="50">Say Their Name, Sign Their Name...</div>
+    <div id="tribute-header" data-aos="fade-right" data-aos-delay="55">This Is Their Tribute!</div>
+    <div id="tribute-subheader" data-aos="fade-right" data-aos-delay="60">
+      Together, we're not just working to eliminate suicide as an option. <br>
+      We're nurturing resilience, fostering connections, and building a future where every individual knows they are valued and supported. <br>
+      Together We Can Be Life-Savers!
+    </div>
+    <a href="{% url 'registration' %}" id="register-button" data-aos="fade-righ" data-aos-delay="50">Register Now</a>
   </div>
-</section>
+  <div class="right-column" data-aos="fade-left" data-aos-delay="50">
+    <img src="{% static 'images/purple.png' %}" alt="Image Box" id="tribute-image">
+  </div>
+</div>
+
+
 
 <div class="shopify-header">
     <h1 style="font-family: 'Inconsolata', monospace;">Exclusive 0K Merchandise</h1>

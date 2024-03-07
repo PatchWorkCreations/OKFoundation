@@ -41,16 +41,35 @@ input[type="text"]:not(:placeholder-shown) + label {
     transition: all 0.3s ease;
 }
 
+.registration-page {
+    background-image: url('static/images/rename.png'); /* Replace 'path/to/your/image.jpg' with the path to your background image */
+    background-size: cover; /* Adjusts the size of the background image to cover the entire element */
+    background-repeat: no-repeat; /* Prevents the background image from repeating */
+}
+
+.registration-container {
+    /*background-color: rgba(255, 255, 255, 0.8); /* Background color with some transparency */
+    background: #A020F0;
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding inside the container */
+    box-shadow: 0 4px 6px rgba(148, 15, 165, 0.514);
+    text-align: left; /* Center the content */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.registration-container h1,h2{
+    color: #eff0f1;
+    text-align: center;
+}
+.registration-container p,
+.registration-container label,
+.registration-container  {
+    color: #eff0f1; /* Change font color to black */
+    text-align: left;
+}
 </style>
 
-<body>
-
-
-
-<div class="rectangle-barr">
-    <p>Welcome to The 0K Foundation</p>
-    <a href="{% url 'johnstown_2024' %}" class="buttonone">Johnstown 2024</a>
-</div>
+<body class="registration-page">
 
 <!-- PHOTO SECTION -->
 <section id="photo-section" class="mt-5 my-5">
@@ -194,7 +213,7 @@ input[type="text"]:not(:placeholder-shown) + label {
                         <div id="start_team_name_input" style="display: none;">
                             <label for="team_name">Enter your team name:</label>
                             <input type="text" id="team_name" placeholder="Enter team name">
-                            <p>For more ideas for fundraising as a team captain <a href="{% url 'fun' %}">click here</a>.</p>
+                            <p>For more ideas for fundraising as a team captain <a href="{% url 'fun' %}" style="color: rgb(0, 232, 220);">click here</a>.</p>
                         </div>
                     
                         <div id="join_team_name_input" style="display: none;">
@@ -208,7 +227,7 @@ input[type="text"]:not(:placeholder-shown) + label {
                                 join a team.</p>
                         </div>
 
-                        <p>If you would like to volunteer at the event, please register <a href="{% url 'volunteer' %}">here</a>.
+                        <p>If you would like to volunteer at the event, please register <a href="{% url 'volunteer' %}" style="color: rgb(0, 232, 220);">here</a>.
                         </p>
 
 
@@ -302,11 +321,11 @@ input[type="text"]:not(:placeholder-shown) + label {
                                                                                                           class="text-decoration-none"
                                                                                                           type="button"
                                                                                                           data-bs-toggle="modal"
-                                                                                                          data-bs-target="#exampleModal">waiver</a>.
+                                                                                                          data-bs-target="#exampleModal" style="color: rgb(0, 232, 220);">waiver</a>.
 
                                 You'll receive email updates from The 0K Foundation. You can unsubscribe at any time.
-                                Learn more about our <a href="#" class="text-decoration-none">privacy policy</a> and <a
-                                    href="#" class="text-decoration-none">privacy rights</a>.</small>
+                                Learn more about our <a href="#" class="text-decoration-none" style="color: rgb(0, 232, 220);">privacy policy</a> and <a
+                                    href="#" class="text-decoration-none"style="color: rgb(0, 232, 220);">privacy rights</a>.</small>
                         </div>
 
                         <div class="center-button">
@@ -314,7 +333,7 @@ input[type="text"]:not(:placeholder-shown) + label {
                         </div>
                     </form>
                     <div class="row text-center mt-2">
-                        <small>Do you have an account? <a href="{% url 'login' %}">Login</a></small>
+                        <small>Do you have an account? <a href="{% url 'login' %}" style="color: rgb(0, 232, 220);">Login</a></small>
                     </div>
                 </div>
             </div>
@@ -609,18 +628,6 @@ input[type="text"]:not(:placeholder-shown) + label {
             disclaimer.style.display = "none";
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </script>
