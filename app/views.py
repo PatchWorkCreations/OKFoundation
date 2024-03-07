@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Participant
+from .models import *
 from django.contrib import messages
 
 
@@ -144,8 +144,15 @@ def admin_dashboard(request):
     participants = Participant.objects.all()
     participants_count = participants.count() - 1
 
-    return render(request, 'admin_dashboard.html',
-                  {'participants': participants, 'participants_count': participants_count})
+    volunteers = Volunteer.objects.all()
+    volunteers_count = volunteers.count() - 1
+
+    context = {'participants': participants,
+               'participants_count': participants_count,
+               'volunteers': volunteers,
+               'volunteers_count': volunteers_count,
+               }
+    return render(request, 'admin_dashboard.html', context=context)
 
 
 def fetch_user_details(request, pk):
@@ -185,14 +192,61 @@ def eventinyourcity(request):
 
 
 def volunteer(request):
+    if request.method == 'POST':
+        # Extract data from the form
+        full_name = request.POST.get('name')  # Update the field name to match the form
+        email = request.POST.get('email')
+        role = request.POST.get('role')
+
+        # Create a Volunteer object and save it to the database
+        Volunteer.objects.create(
+            full_name=full_name,
+            email=email,
+            role=role,
+        )
+        messages.success(request, f'Thank you for volunteering at the event as a {role}.')
+        return redirect('volunteer')  # Redirect to the same page or specify the desired URL
+
     return render(request, 'volunteer.html')
+
+
+def fetch_volunteer_details(request, pk):
+    volunteer = Volunteer.objects.get(id=pk)
+
+    return render(request, 'fetch_volunteer_details.html', {'volunteer': volunteer})
+
+
+def update_volunteer_detail(request, pk):
+    if request.method == 'POST':
+        # Retrieve the form data
+        full_name = request.POST.get('name')
+        email = request.POST.get('email')
+        role = request.POST.get('role')
+
+        # Update the user profile
+        volunteer = Volunteer.objects.get(id=pk)
+        volunteer.full_name = full_name
+        volunteer.email = email
+        volunteer.role = role
+        volunteer.save()
+
+        messages.success(request, 'Volunteer updated successfully.')
+        return redirect('admin_dashboard')
+
+
+def delete_volunteer(request, pk):
+    volunteer = Volunteer.objects.get(id=pk)
+    volunteer.delete()
+    return redirect('admin_dashboard')
 
 
 def engagement(request):
     return render(request, 'engagement.html')
 
+
 def fun(request):
     return render(request, 'fun.html')
+
 
 def Web_Contact_Form_Template(request):
     return render(request, 'Web_Contact_Form_Template.html')

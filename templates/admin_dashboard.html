@@ -35,6 +35,36 @@
         {% endfor %}
         </tbody>
     </table>
+
+
+    <div class="card text-bg-primary" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Volunteer Total: {{ volunteers_count }}</h5>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for volunteer in volunteers %}
+        <tr>
+            <td>{{ volunteer.full_name }}</td>
+            <td>{{ volunteer.email }}</td>
+            <td>{{ volunteer.role }}</td>
+            <td>
+                <a href="{% url 'fetch_volunteer_details' volunteer.id %}" class="btn btn-sm btn-primary">Edit</a>
+                <a href="{% url 'delete_volunteer' volunteer.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 
 {% include 'footer.html' %}

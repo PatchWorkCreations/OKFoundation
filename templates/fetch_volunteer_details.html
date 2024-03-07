@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% include 'navbar.html' %}
+
+
+<div class="container my-3">
+    <form method="post" action="{% url 'update_volunteer_detail' volunteer.id %}">
+        {% csrf_token %}
+        <div class="modal-body">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" value="{{ volunteer.full_name }}"
+                       id="name"
+                       placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" value="{{ volunteer.email }}"
+                       id="email"
+                       placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select" name="role" id="role" required>
+                    <option value="{{ volunteer.role }}" selected>{{ volunteer.role }}</option>
+                    <option value="Parking Attendants">Parking Attendants</option>
+                    <option value="Registration Team">Registration Team</option>
+                    <option value="DJ Booth Assistants">DJ Booth Assistants</option>
+                    <option value="Event Greeters">Event Greeters</option>
+                    <option value="Information Booth Attendants">Information Booth Attendants</option>
+                    <option value="Food and Beverage Team">Food and Beverage Team</option>
+                    <option value="Fundraising Ambassadors">Fundraising Ambassadors</option>
+                    <option value="Security Personnel">Security Personnel</option>
+                    <option value="Cleanup Crew">Cleanup Crew</option>
+                    <option value="Photographers/Videographers">Photographers/Videographers</option>
+                    <option value="Social Media Team">Social Media Team</option>
+                    <option value="Volunteer Coordinators">Volunteer Coordinators</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </form>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}

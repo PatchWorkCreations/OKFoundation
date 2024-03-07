@@ -19,3 +19,12 @@ class Participant(AbstractUser):
 
     def __str__(self):
         return self.name
+
+
+class Volunteer(models.Model):
+    full_name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    role = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.full_name
