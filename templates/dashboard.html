@@ -141,7 +141,7 @@
             </div>
         </div>
     </div>
-    <h1>Hi {{ request.user.name }}. Your Team is {{ request.user.team_name }}!</h1>
+    <h1>Hi {{ request.user.name }}. {% if request.user.team_name %}Your Team is {{ request.user.team_name }}!{% endif %}</h1>
     <p>Your Basic Information:</p>
     <ul>
         <li><strong>Name:</strong> {{ request.user.name }}</li>
