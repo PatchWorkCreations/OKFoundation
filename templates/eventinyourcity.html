@@ -3,108 +3,6 @@
 {% load static %}
 {% include 'navbar.html' %}
 <style>
-    /* Reset styles */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* Container styles */
-    .containerr {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #f9f9f9;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Typography */
-    .containerr h1, .containerr h2, .containerr h3 {
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    .containerr p {
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 15px;
-    }
-
-    .containerr a {
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    .containerr a:hover {
-        text-decoration: underline;
-    }
-
-    /* Image styles */
-
-    .image-containerr {
-    max-width: 400px;
-    margin: 0 auto 20px;
-    text-align: left; /* Align the content to the left */
-}
-
-.image-containerr img {
-    width: 100%; /* Set the width to fill the container */
-    max-width: 100%; /* Ensure the image doesn't exceed its original size */
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-    border-radius: 5px;
-}
-
-    /* Step styles */
-    .containerr .step {
-        margin-bottom: 30px;
-    }
-
-    .containerr .step h2 {
-        margin-top: 0;
-        font-size: 24px;
-        color: #333;
-    }
-
-    .containerr .step ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-    .containerr .step ul li {
-        margin-bottom: 8px;
-    }
-
-    .containerr .step ul li::before {
-        content: "▪";
-        color: #007bff;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1em;
-        margin-right: 5px;
-    }
-
-    /* Call to action styles */
-    .containerr .rectangle-barr, .containerr .rectangle-bar {
-        background-color: #007bff;
-        color: #fff;
-        padding: 15px;
-        border-radius: 5px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    /* Responsive styles */
-    @media screen and (max-width: 768px) {
-        .containerr {
-            padding: 15px;
-        }
-        .containerr h2 {
-            font-size: 20px;
-        }
-    }
 
     #johnstown_2024_button {
         position: absolute;
@@ -121,12 +19,15 @@
     }
 
     .contact-form {
-  max-width: 600px;
-  margin: 0 auto;
+  
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  float: left;
+
+  max-width: 50%; /* Adjust width as needed */
+  margin-right: 20px; /* Adjust margin between form and image */
 }
 
 .contact-form h2 {
@@ -166,6 +67,122 @@ button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
+.image-container {
+  float: right; /* Align image to the right */
+  max-width: 50%;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.contact-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+#welcome-section {
+    background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('static/images/ipatchwork_44223_community_engagement_d428d78a-bc00-44c4-bd21-eecae194f589.png');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    min-height: 60vh; /* Adjust the height as needed */
+    padding: 0 20px; /* Add padding to prevent content from sticking to the edges */
+}
+
+/* Styling for the text content */
+/* Adjusting the text alignment */
+/* Adjusting the text alignment */
+#welcome-section .container {
+    position: relative; /* Ensure content stays above the background */
+    display: flex;
+    flex-direction: column; /* Stack columns vertically */
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    max-width: 70%; /* Limit container width to 70% of its parent */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Centering hero content */
+.hero-content {
+    text-align: center; /* Center text inside the hero content */
+}
+
+
+
+/* Adjusting the text alignment */
+#welcome-section .col-md-6 {
+    text-align: center; /* Align text to the left */
+}
+
+/* Other styles for headings and paragraphs if needed */
+#welcome-section h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: whitesmoke; /* Dark text color */
+    margin-bottom: 20px;
+    text-align: center; /* Align heading text to the left */
+    max-width: 100%;
+}
+
+#welcome-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: whitesmoke; /* Slightly darker text color */
+    margin-bottom: 15px;
+    text-align: left; /* Align paragraph text to the left */
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    #welcome-section .col-md-6 {
+        text-align: center; /* Align text to the center on smaller screens */
+    }
+}
+
+.container-movement {
+            width: 80%;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .container-movement h1 {
+            color: #673ab7;
+        }
+        .container-movement p {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: #673ab7;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .cta-btn:hover {
+            background-color: #512da8;
+        }
+        .image-container {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
 </style>
 
 <body>
@@ -179,73 +196,59 @@ button[type="submit"]:hover {
     <p>9am - 12 Noon</p>
 </a>
 
-<div class="containerr">
-    <h1>Host an Event in Your City</h1>
-    <div class="image-containerr">
-        <img src="../static/images/ipatchwork_44223_community_engagement_d428d78a-bc00-44c4-bd21-eecae194f589.png" alt="Host an Event">
-    </div>   
-    <p>Join Us in Spreading Kindness and Empowerment</p>
-    
-    <div class="step">
-        <h2>Step 1: Connect With Us</h2>
-        <p>Begin your journey by reaching out to our team. Share your vision, your city, and the type of event you’re passionate about. Whether it’s a workshop, a seminar, or a community service project, we’re here to support you. Email us at <a href="mailto:hello@0kfoundation.org">hello@0kfoundation.org</a> or fill out our <a href="form.html">online form</a>. Remember, every big change starts with a simple conversation.</p>
+<section id="welcome-section" class="min-vh-60 d-flex align-items-center text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 hero-content">
+                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1 text-center">Host AN EVENT IN YOUR CITY!</h1> 
+                <h5 class="text-white mt-3 mb-4" data-aos="fade-right"></h5>
+                <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
+                  <a href="{% url 'registration' %}" class="engage-button">Schedule a call</a>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="step">
-        <h2>Step 2: Plan Your Event</h2>
-        <ul>
-            <li><strong>Purpose:</strong> What is the goal of your event? Whether it’s to educate, inspire, or help, having a clear purpose will guide your planning.</li>
-            <li><strong>Audience:</strong> Who are you aiming to reach? Understanding your audience helps tailor your event to their interests and needs.</li>
-            <li><strong>Venue:</strong> Find a space that fits your event’s size and vibe. Local community centers, parks, or even virtual platforms can be perfect spots.</li>
-            <li><strong>Date and Time:</strong> Choose a date and time that maximizes attendance. Consider your audience’s availability and any significant local events.</li>
-        </ul>
-    </div>
-    
-    <div class="step">
-        <h2>Step 3: Mobilize Your Community</h2>
-        <p>Spread the word and get people excited. Use social media, local press, and community bulletin boards. Engage local businesses and influencers to amplify your message. Remember, enthusiasm is contagious—ignite it.</p>
-    </div>
-    
-    <div class="step">
-        <h2>Step 4: Collaborate and Execute</h2>
-        <p>You don’t have to do it alone. Gather a team of volunteers who share your passion. Assign roles based on skills and interests, from logistics to guest speakers. On the big day, ensure everything runs smoothly, but also take a moment to enjoy the impact of your work.</p>
-    </div>
-    
-    <div class="step">
-        <h2>Step 5: Reflect and Celebrate</h2>
-        <p>After the event, gather feedback from participants and volunteers. What worked well? What could be improved? Celebrating your success and learning from the experience sets the foundation for future events.</p>
-    </div>
-    
-    <p><strong>You Are the Change</strong></p>
-    <p>By hosting an event in your city, you’re not just organizing an activity; you’re leading a movement of compassion, wisdom, and empowerment. Join us in making a difference. Let’s light up the world, one city at a time.</p>
+</section>
+
+<div class="container-movement">
+    <h1>Join the Movement</h1>
+    <p>Are you passionate about suicide prevention and mental health awareness? Do you want to make a tangible difference in your community? Join our movement and become a Life-Saver by hosting an event in your city!</p>
+    <a href="#" class="cta-btn">Get Involved</a>
+    <!---
+    <div class="image-container">
+        
+        <img src="your-image-url.jpg" alt="Event Image">
+    </div>  <!-- Add your image here -->
 </div>
 
-<div class="contact-form">
-    <h2>Contact Us for Further Information</h2>
-    <form action="/submit-contact-form" method="post">
-      <!-- Add CSRF token for security -->
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="form-group">
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-      </div>
-      <button type="submit">Send Message</button>
-    </form>
+
+<div class="contact-form-wrapper clearfix">
+    <div class="contact-form">
+      <h2>Contact Us for Further Information</h2>
+      <form action="/submit-contact-form" method="post">
+        <!-- Add CSRF token for security -->
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Your Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Your Message:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+    <div class="image-container">
+      <img src="{% static 'images/new.png' %}" alt="Your Image">
+    </div>
   </div>
   
 <!-- End of inserted code -->
-
-<div class="rectangle-bar">
-    <p>Help is available. Speak with someone today. Call 988.</p>
-</div>
 
 <!-- FOOTER -->
 {% include 'footer.html' %}

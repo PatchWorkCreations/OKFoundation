@@ -56,6 +56,152 @@
     }
 }
 
+#tribute-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #80149b;
+  }
+
+  #tribute-container .left-column {
+    flex: 1;
+    padding-right: 40px;
+  }
+
+  #tribute-container .right-column {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  #tribute-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(244, 237, 237);
+  }
+
+  #tribute-subheader {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: rgb(252, 251, 251);
+  }
+
+  #register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #73079e;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  #register-button:hover {
+    background-color: #9548b3ee;
+  }
+
+  #tribute-video {
+    width: 100%;
+    height: auto;
+  }
+
+    /* Media queries for mobile responsiveness */
+    @media only screen and (max-width: 768px) {
+    #tribute-container {
+      flex-direction: column;
+    }
+
+    #tribute-container .left-column,
+    #tribute-container .right-column {
+      flex: 1;
+      padding: 0;
+    }
+
+    #tribute-container .left-column {
+      margin-bottom: 20px;
+    }
+  }
+
+
+
+.container-box {
+  flex: 1;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+#additional-info-section h1 {
+      text-align: center;
+      color: white; /* Make font color white */
+    }
+
+.card_boxxx,
+.card_boxxxx {
+  width: 400px;
+  height: 450px;
+  border-radius: 20px;
+  background: linear-gradient(170deg, rgba(58, 56, 56, 0.623) 0%, rgb(31, 31, 31) 100%);
+  position: relative;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 0 10px;
+}
+
+.card_boxxx:hover,
+.card_boxxxx:hover {
+  transform: scale(0.9);
+}
+
+.card_boxxx span,
+.card_boxxxx span {
+  position: absolute;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  top: -10px;
+  left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card_boxxx span::before,
+.card_boxxxx span::before {
+  content: attr(data-title);
+  position: absolute;
+  width: 150%;
+  height: 40px;
+  background-image: linear-gradient(45deg, #ff6547 0%, #ffb144 51%, #ff7053 100%);
+  transform: rotate(-45deg) translateY(-20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.23);
+}
+
+.card_boxxx span::after,
+.card_boxxxx span::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  bottom: 0;
+  left: 0;
+  height: 10px;
+  z-index: -1;
+  box-shadow: 140px -140px #cc3f47;
+  background-image: linear-gradient(45deg, #ff512f 0%, #f09819 51%, #ff512f 100%);
+}
+
 </style>
 
 <body class="body-johnstown2024">
@@ -226,16 +372,25 @@
 </section>
 
 <!-- How to Join Section -->
-<section id="how-to-join-section" class="centered-btn">
-    <div class="containerone">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>How to Join</h2>
-                <a href="{% url 'registration' %}" class="btn btn-primary">Join Us in Making a Difference</a>
-            </div>
-        </div>
+
+<div id="tribute-container">
+    <div class="left-column">
+      <div id="tribute-header" data-aos="fade-right" data-aos-delay="50">How to Join</div>
+      <div id="tribute-subheader" data-aos="fade-right" data-aos-delay="60">
+        Join us today to make a difference! By registering, you'll become part of our mission to eradicate suicide as an option. Together, we're cultivating resilience, nurturing connections, and shaping a future where everyone feels valued and supported. 
+        <br> Together We Can Be Life-Savers! Register now!
+      </div>
+      <a href="{% url 'registration' %}" id="register-button" data-aos="fade-righ" data-aos-delay="50">Register Now</a>
     </div>
-</section>
+    <div class="right-column" data-aos="fade-left" data-aos-delay="50">
+        <video autoplay loop muted controls id="tribute-video">
+          <source src="{% static 'images/Alecandria Ohio - 0k video.mp4' %}" type="video/mp4">
+          <!-- Include additional source elements for different video formats if needed -->
+          Your browser does not support the video tag.
+        </video>
+    </div>
+      
+  </div>
 
 <!-- Call to Action for Hosting an Event Section -->
 <section id="cta-host-event-section" class="centered-btn">
@@ -254,13 +409,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>More Ways to Get Involved and Support</h2>
+                <h1 data-aos="fade-right" data-aos-delay="50">More Ways to get Involved</h1>
                 <!-- Add additional information here -->
-                <div class="buttons">
-                    <a href="{% url 'registration' %}" class="btn btn-primary">Volunteer</a>
-                    <a target="_blank" data-url="https://square.link/u/5g6XQwWE?src=embd"
-                    href="https://square.link/u/5g6XQwWE?src=embed" class="btn btn-success">Donate</a>
+
+                <div class="container-box">
+                    <div class="card_boxxx">
+                      <a href="{% url 'registration' %}">
+                        <img src="{% static 'images/volunteer.jpg' %}" alt="Volunteer Image">
+                        <span data-title="Volunteer"></span>
+                      </a>
+                    </div>
+                    <div class="card_boxxxx">
+                      <a target="_blank" data-url="https://square.link/u/5g6XQwWE?src=embd" href="https://square.link/u/5g6XQwWE?src=embed">
+                        <img src="{% static 'images/donating.jpg' %}" alt="Donate Image">
+                        <span data-title="Donate"></span>
+                      </a>
+                    </div>
                 </div>
+                  
             </div>
         </div>
     </div>
