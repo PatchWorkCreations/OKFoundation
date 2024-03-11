@@ -14,6 +14,81 @@ chatbotId="-ZhhUBqaiWd8gtGYL5Hyj"
 domain="www.chatbase.co"
 defer>
 </script>
+<style>
+
+    
+.floatbutton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+
+     /* Mobile Styles */
+    @media (max-width: 768px) {
+        width: 40px; /* Adjust width for smaller screens */
+        height: 150px; /* Adjust height for smaller screens */
+        top: 120px; /* Adjust top position for smaller screens */
+    }
+
+    /* Tablet Styles */
+    @media (max-width: 992px) {
+        width: 45px; /* Adjust width for tablet screens */
+        height: 170px; /* Adjust height for tablet screens */
+        top: 140px; /* Adjust top position for tablet screens */
+    }
+}
+
+.clickbutton {
+    width: 50px;
+    z-index: 999;
+    height: 200px;
+    cursor: pointer;
+    box-shadow: -20px 7px 18px -7px rgba(87, 184, 151, .09);
+    border-radius: 0 30px 30px 0; /* Reversed curve */
+    display: inline-block;
+    padding-top: 0;
+    vertical-align: top;
+    margin-top: 100px;
+    color: #e9e3e3;
+    font-size: 16px;
+    font-weight: 700;
+    position: fixed;
+    left: 0; /* Align to the left edge */
+    top: 160px; /* Adjust as needed */
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    background-color: #7c0f9a;
+    box-shadow: 0 0 40px #00000026;
+    -webkit-box-shadow: 0 0 40px #00000026;
+    -ms-box-shadow: 0 0 40px #00000026;
+}
+
+.crossplus {
+    position: absolute;
+    display: block;
+    transform: rotate(-90deg);
+    -webkit-transition: .4s;
+    -moz-transition: .4s;
+    -o-transition: .4s;
+    transition: .4s;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    color: white;
+}
+
+.clickbutton a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+}
+
+.clickbutton a:hover {
+    color: inherit; /* Inherit color from parent */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+
+</style>
 
 <head>
     <meta charset="utf-8">
@@ -35,6 +110,15 @@ defer>
 
 <body data-bs-spy="scroll" data-bs-target=".navbar">
 
+    <div class="floatbutton">
+        <div class="clickbutton" id="pullButton">
+            <a href="https://48b389-2.myshopify.com/">
+                <div class="crossplus">0K Merchandise</div>
+            </a>
+        </div>
+    </div>
+    
+    
 {% block content %}
 
 {% endblock %}

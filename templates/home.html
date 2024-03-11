@@ -320,13 +320,22 @@
     </div>
 </section>
 
-<section id="bannerr" class="text-center py-5">
-  <div class="container">
-      <h2 class="banner-title text-uppercase text-white fw-bold" data-aos="fade-up" data-aos-delay="50">Say their name, sign their name... this is their tribute!</h2>
-      <img src="{% static 'images/new.png' %}" class="landscape-picture" alt="Landscape Picture">
-      <a href="{% url 'registration' %}" class="engage-button" data-aos="fade-up" data-aos-delay="50">Register Now</a>
+<div id="tribute-container">
+  <div class="left-column">
+    <div id="tribute-header" data-aos="fade-right" data-aos-delay="50">Say Their Name, Sign Their Name...</div>
+    <div id="tribute-header" data-aos="fade-right" data-aos-delay="55">This Is Their Tribute!</div>
+    <div id="tribute-subheader" data-aos="fade-right" data-aos-delay="60">
+      Together, we're not just working to eliminate suicide as an option. <br>
+      We're nurturing resilience, fostering connections, and building a future where every individual knows they are valued and supported. <br>
+      Together We Can Be Life-Savers!
+    </div>
+    <a href="{% url 'registration' %}" id="register-button" data-aos="fade-righ" data-aos-delay="50">Register Now</a>
   </div>
-</section>
+  <div class="right-column" data-aos="fade-left" data-aos-delay="50">
+    <img src="{% static 'images/purple.png' %}" alt="Image Box" id="tribute-image">
+  </div>
+</div>
+
 
 <div class="video-container">
   <video controls>
@@ -535,22 +544,13 @@
 </section>
 
 
-<div id="tribute-container">
-  <div class="left-column">
-    <div id="tribute-header" data-aos="fade-right" data-aos-delay="50">Say Their Name, Sign Their Name...</div>
-    <div id="tribute-header" data-aos="fade-right" data-aos-delay="55">This Is Their Tribute!</div>
-    <div id="tribute-subheader" data-aos="fade-right" data-aos-delay="60">
-      Together, we're not just working to eliminate suicide as an option. <br>
-      We're nurturing resilience, fostering connections, and building a future where every individual knows they are valued and supported. <br>
-      Together We Can Be Life-Savers!
-    </div>
-    <a href="{% url 'registration' %}" id="register-button" data-aos="fade-righ" data-aos-delay="50">Register Now</a>
+<section id="bannerr" class="text-center py-5">
+  <div class="container">
+      <h2 class="banner-title text-uppercase text-white fw-bold" data-aos="fade-up" data-aos-delay="50">Say their name, sign their name... this is their tribute!</h2>
+      <img src="{% static 'images/new.png' %}" class="landscape-picture" alt="Landscape Picture">
+      <a href="{% url 'registration' %}" class="engage-button" data-aos="fade-up" data-aos-delay="50">Register Now</a>
   </div>
-  <div class="right-column" data-aos="fade-left" data-aos-delay="50">
-    <img src="{% static 'images/purple.png' %}" alt="Image Box" id="tribute-image">
-  </div>
-</div>
-
+</section>
 
 
 <div class="shopify-header">
