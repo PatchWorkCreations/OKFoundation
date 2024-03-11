@@ -187,7 +187,7 @@
 
   #tribute-container .left-column {
     flex: 1;
-    padding-right: 40px;
+    padding-right: 30px;
   }
 
   #tribute-container .right-column {
@@ -337,12 +337,25 @@
 </div>
 
 
-<div class="video-container">
-  <video controls>
-      <!-- Include the path to your video file -->
-      <source src="{% static 'images/VE Project 2-5.mp4' %}" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
+<div id="tribute-container">
+  <div class="left-column" data-aos="fade-left" data-aos-delay="50">
+    <div class="video-container">
+      <video controls>
+          <!-- Include the path to your video file -->
+          <source src="{% static 'images/VE Project 2-5.mp4' %}" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <div class="right-column">
+    <div id="tribute-header" data-aos="fade-right" data-aos-delay="50">How it works?</div>
+    <div id="tribute-subheader" data-aos="fade-right" data-aos-delay="60">
+      The Finish Line will move over the people.
+    </div>
+    <a href="{% url 'registration' %}" id="register-button" data-aos="fade-righ" data-aos-delay="50">Register Now</a>
+  </div>
+  
 </div>
 
 
