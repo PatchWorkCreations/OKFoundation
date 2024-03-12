@@ -1,7 +1,9 @@
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.contrib import messages
+from django.core.mail import EmailMessage
 
 
 def home_page(request):
@@ -249,7 +251,23 @@ def fun(request):
 
 
 def Web_Contact_Form_Template(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        subject = 'Contact Form Submission'
+        content = f'Name: {name}\nEmail: {email}\nMessage: {message}'
+        to_email = 'ilightproducts@gmail.com'  # Replace with the recipient's email address
+
+        email = EmailMessage(subject, content, to=[to_email])
+        email.send()
+
+        messages.success(request, 'Submitted successfully!')
+        return redirect('Web_Contact_Form_Template')
+
     return render(request, 'Web_Contact_Form_Template.html')
+
 
 def homee(request):
     return render(request, 'homee.html')

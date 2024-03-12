@@ -25,7 +25,7 @@
         <tr>
             <td>{{ participant.name }}</td>
             <td>{{ participant.email }}</td>
-            <td>January 1, 2024</td>
+            <td>{{ participant.created }}</td>
             <td>
                 <a href="{% url 'fetch_user_details' participant.id %}" class="btn btn-sm btn-primary">Edit</a>
                 <a href="{% url 'delete_user' participant.id %}" class="btn btn-sm btn-danger">Delete</a>
