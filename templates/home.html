@@ -267,12 +267,6 @@
         <p>Register Here</p>
     </a>
 
-    <!-- Button trigger modal (hidden) -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="johnstown_2024_button" style="font-family: 'Inconsolata', monospace;">
-  Johnstown 2024
-</button>
-
-
 
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -284,10 +278,10 @@
           </div>
           <div class="modal-body text-center">
   <div class = "larger-text">       <!-- Modal content here -->
-    <h1 id="white-heading">FREE COMMUNITY EVENT!</h1>  
+    <h1 id="white-heading">FREE COMMUNITY EVENT!</h1>
     <p>May 18, 2024</p>
       <p>9am - 12 Noon</p>
-       </div>     
+       </div>
       <p>North Athletic Fields, by the American Legion</p>
       <p>Wall of Honor</p>
        <p>Maple & Oregon Streets </p>
@@ -610,5 +604,13 @@
 <!-- FOOTER -->
 </head>
 {% include 'footer.html' %}
+
+
+  <script>
+    // Trigger the modal on page load
+    $(document).ready(function(){
+      $('#exampleModal').modal('show');
+    });
+  </script>
 
 {% endblock %}
