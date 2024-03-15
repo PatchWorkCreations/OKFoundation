@@ -271,3 +271,6 @@ def Web_Contact_Form_Template(request):
 
 def homee(request):
     return render(request, 'homee.html')
+
+def blog1(request):
+    return render(request, 'blog1.html')

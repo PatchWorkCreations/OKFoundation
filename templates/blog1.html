@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<!-- Include Tailwind CSS -->
+<style>
+    .blog-container {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    max-width: 10in; /* Adjust the maximum width as needed */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff; /* Set your desired background color */
+    border: 1px solid #ddd; /* Add a border if desired */
+    border-radius: 0.5rem; /* Add border-radius for rounded corners */
+}
+</style>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+{% include 'navbar.html' %}
+
+<div class="blog-container p-5 md:p-10 mb-20">
+    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        The 0K Foundation’s Mission:
+        <span class="text-blue-600 dark:text-purple-500">Preventing Suicide</span>
+        and
+        <span class="text-blue-600 dark:text-purple-500">Honoring Heroes</span>
+    </h1>
+   
+    <p class="mb-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">
+        In Johnstown, Ohio, there's a special event called "0K: The Finish Line Moves," organized by the 0K Foundation.
+    </p>
+    <p class="mb-6 text-gray-500 dark:text-gray-400">
+        This event is all about preventing suicide, especially among those who've served in the military, and remembering the brave soldiers we've lost. It's a gathering where people come together not to run or walk, but to stand strong against the tragedy of suicide.
+    </p>
+
+    <div class="flex flex-col md:flex-row items-center md:space-x-6 mb-6">
+        <img class="h-auto max-w-full md:max-w-lg mb-6 md:mb-0" src="{% static 'images/mspatch-ezgif.com-webp-to-png-converter.png' %}" alt="mother">
+        <p class="max-w-full">
+            The heart of this event is a mother's story, who started the 0K Foundation after her son 
+            <a href="https://www.forevermissed.com/jacob-stephen-wetzel/about">Jacob Wetzel</a>, 
+            a soldier, tragically chose to end his life. She turned her sorrow into action, creating a day to help stop others from feeling hopeless that they think about suicide as their only option.
+        </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center md:space-x-6 mb-6">
+        <div class="max-w-full md:w-1/2 order-2 md:order-1 p-4">
+            <div style="background-color: #f3f4f6; width: 100%; height: auto;">
+                <video controls style="max-width: 100%; height: auto;">
+                    <source src="{% static 'images/VE Project 2-6.mp4' %}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="max-w-full md:w-1/2 order-1 md:order-2 p-4">
+            <p class="max-w-full">
+                "0K: The Finish Line Moves" brings people together in a unique way. Instead of a physical race, it’s a gathering where everyone’s efforts go toward raising money and awareness to fight against suicide. It’s a day where the community shows up, not to exercise, but to express solidarity and offer hope to those who are struggling.
+            </p>
+        </div>
+    </div>
+    
+
+    <div class="text-gray-500 dark:text-gray-400 p-4">
+        <p class="max-w-full mb-4">
+            The funds raised help provide support for people who are considering suicide, giving them access to the help and care they need to find other options and hope for the future. It’s like a big, community-wide effort to say, “There’s help available, and we don’t want to lose anyone else.”
+        </p>
+        <p class="max-w-full mb-4">
+            The event also serves as a tribute to military veterans who have died by suicide, honoring their memory and highlighting the importance of addressing mental health issues in the veteran community.
+        </p>
+        <p class="max-w-full">
+            To sum up, "0K: The Finish Line Moves" is more than just a charity event; it's a powerful stand against suicide. It shows that by coming together, ordinary people can make an extraordinary difference, offering support to those in despair and paying respects to fallen heroes. It's a day of hope, healing, and remembrance, proving that suicide should never be an option.
+        </p>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}
