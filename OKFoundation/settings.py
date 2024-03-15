@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-zvbntl+=m#dxqqvyl!3_r#74u^hwn+!t98xmpg6)dnc1_63!8^
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://okfoundation.up.railway.app', 'https://www.0kfoundation.org']
+CSRF_TRUSTED_ORIGINS = ['https://0kfoundation.up.railway.app', 'https://www.0kfoundation.org']
 
 
 # Application definition
