@@ -13,6 +13,74 @@
     border: 1px solid #ddd; /* Add a border if desired */
     border-radius: 0.5rem; /* Add border-radius for rounded corners */
 }
+
+#tribute-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 55px;
+    border: 1px solid #ccc;
+  }
+
+  #tribute-container .left-column {
+    flex: 1;
+    padding-right: 50px;
+  }
+
+  #tribute-container .right-column {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  #tribute-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+  }
+
+  #tribute-subheader {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: black;
+  }
+
+  #register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #73079e;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  #register-button:hover {
+    background-color: #9548b3ee;
+  }
+
+  #tribute-image {
+    width: 100%;
+    height: auto;
+  }
+
+    /* Media queries for mobile responsiveness */
+    @media only screen and (max-width: 768px) {
+    #tribute-container {
+      flex-direction: column;
+    }
+
+    #tribute-container .left-column,
+    #tribute-container .right-column {
+      flex: 1;
+      padding: 0;
+    }
+
+    #tribute-container .left-column {
+      margin-bottom: 20px;
+    }
+  }
 </style>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
@@ -71,6 +139,22 @@
         </p>
     </div>
 </div>
+
+<div id="tribute-container">
+    <div class="left-column">
+      <div id="tribute-header" data-aos="fade-right" data-aos-delay="50">Say Their Name, Sign Their Name...</div>
+      <div id="tribute-header" data-aos="fade-right" data-aos-delay="55">This Is Their Tribute!</div>
+      <div id="tribute-subheader" data-aos="fade-right" data-aos-delay="60">
+        Together, we're not just working to eliminate suicide as an option. <br>
+        We're nurturing resilience, fostering connections, and building a future where every individual knows they are valued and supported. <br>
+        Together We Can Be Life-Savers!
+      </div>
+      <a href="{% url 'registration' %}" id="register-button" data-aos="fade-righ" data-aos-delay="50">Register Now</a>
+    </div>
+    <div class="right-column" data-aos="fade-left" data-aos-delay="50">
+      <img src="{% static 'images/purple.png' %}" alt="OK Foundation" id="tribute-image">
+    </div>
+  </div>
 
 {% include 'footer.html' %}
 {% endblock %}
