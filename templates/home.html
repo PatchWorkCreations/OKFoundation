@@ -617,11 +617,21 @@
 {% include 'footer.html' %}
 
 
-  <script>
-    // Trigger the modal on page load
-    $(document).ready(function(){
+<script>
+  $(document).ready(function(){
+    // Remove the automatic modal show to replace with click event
+    // $('#exampleModal').modal('show');
+
+    // Listen for a click event on the entire document
+    $(document).click(function(){
       $('#exampleModal').modal('show');
     });
-  </script>
+
+    // If you want to restrict the click to open the modal only when clicking on a specific element, use its ID or class instead of document, like this:
+    // $("#yourElementId").click(function(){
+    //   $('#exampleModal').modal('show');
+    // });
+  });
+</script>
 
 {% endblock %}
