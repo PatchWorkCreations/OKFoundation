@@ -4,50 +4,7 @@
 
 
 <style>
-  #johnstown_2024_buttonn {
-      position: absolute;
-      top: 7.3rem; /* Adjust this value as needed */
-      right: 1rem; /* Adjust this value as needed */
-      padding: 2rem 2rem; /* Adjust padding for height and width */
-      background-color: #673ab7; /* Deep purple color */
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 0 0 10px 10px; /* Rounded corners for the bottom */
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-      overflow: hidden; /* Hide overflowing content */
-  }
 
-  #johnstown_2024_buttonn:after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 20px solid transparent; /* Adjust size as needed */
-      border-right: 20px solid transparent; /* Adjust size as needed */
-      border-bottom: 20px solid #673ab7; /* Deep purple color */
-      z-index: 1; /* Place the triangle above the button content */
-  }
-
-  #johnstown_2024_buttonn:hover {
-      background-color: #512da8; /* Darken the color on hover */
-  }
-
-  #bannerr {
-    background: linear-gradient(135deg, #6f42c1, #007bff); /* Gradient background with purple and blue */
-    background-color: #6f42c1; /* Fallback color for older browsers */
-}
-
-.banner-title {
-    color: #fff; /* White text color */
-    font-size: 28px; /* Adjust font size as needed */
-    font-family: "Arial", sans-serif; /* Choose a font that's engaging and easy to read */
-    padding: 20px; /* Add padding for spacing */
-}
 
 .landscape-picture {
     width: 7in; /* Set the width to 2 inches */
@@ -244,6 +201,45 @@
       margin-bottom: 20px;
     }
   }
+  .my-custom-container {
+    text-align: center;
+    border-radius: 0px;
+    padding: 40px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom right, #800080, #008080);
+    color: white; /* Set text color to white for better contrast */
+}
+
+.my-custom-container h1 {
+    font-size: 45px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.my-custom-container #countdown {
+    font-size: 80px;
+    margin-top: 20px;
+    color: #ff5e3a;
+}
+
+.my-custom-container #join-button {
+    background-color: #73079e;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 30px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+
+    
+}
+
+.my-custom-container #join-button:hover {
+    background-color: #0056b3;
+}
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -256,17 +252,6 @@
 {% include 'navbar.html' %}
 
 <head>
-<div class="rectangle-barr">
-    <p style="font-family: 'Inconsolata', monospace;">Welcome to The 0K Foundation</p>
-</div>
-
-    <a href="{% url 'registration' %}" id="johnstown_2024_buttonn">
-        <p>Johnstown 2024</p>
-        <p>May 18, 2024</p>
-        <p>9am - 12 Noon</p>
-        <p>Register Here</p>
-    </a>
-
 
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -299,20 +284,29 @@
 
 <!-- HERO -->
 <section id="hero" class="min-vh-100 d-flex align-items-center text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 hero-content">
-                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1">Together, we
-                    can be</h1> <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1">
-                    Life-Savers!</h1>
-                <h5 class="text-white mt-3 mb-4" data-aos="fade-right"></h5>
-                <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
-                  <a href="{% url 'registration' %}" class="engage-button">Register Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 hero-content text-md-start">
+              <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1">Together, we
+                  can be</h1>
+              <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1">
+                  Life-Savers!</h1>
+              <h5 class="text-white mt-3 mb-4" data-aos="fade-right"></h5>
+              <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
+                <a href="{% url 'registration' %}" class="engage-button">Register Now</a>
+              </div>
+          </div>
+          <div class="col-md-6"></div>
+      </div>
+  </div>
 </section>
+
+<div class="existing-container my-custom-container">
+  <h1 style="font-family: 'Inconsolata', monospace;">0K: The Finish Line Moves</h1>
+  <div id="countdown"></div>
+  <button id="join-button">Join Us</button>
+</div>
+
 
 <div id="tribute-container">
   <div class="left-column">
@@ -345,7 +339,7 @@
   <div class="right-column">
     <div id="tribute-header" data-aos="fade-right" data-aos-delay="50">How it works?</div>
     <div id="tribute-subheader" data-aos="fade-right" data-aos-delay="60">
-      The Finish Line will move over the people.
+      Experience the power of unity and compassion at our groundbreaking "0K" event for Suicide Prevention in Johnstown, Ohio. Join us on Saturday, May 18, from 9 am to noon, as we redefine traditional fundraising with a unique twist: the finish line moves over participants, symbolizing solidarity and support. Honor your loved ones lost to suicide by signing their names on our commemorative banner from 8:30 to 10 am. Our event starts at the intersection of Maple and Oregon Streets, extending towards the Wall of Honor and the American Legion.
     </div>
     <a href="{% url 'registration' %}" id="register-button" data-aos="fade-righ" data-aos-delay="50">Register Now</a>
   </div>
@@ -455,35 +449,6 @@
 
         <div class="space-after-card"></div>
         <div class="row g-4 text-center">  
-            <!-- March 07, 2024 -->
-            <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="150">
-                <div class="service theme-shadow p-lg-5 p-4">
-                    <div class="iconbox">
-                        <i class="ri-pen-nib-fill"></i>
-                    </div>
-                    <h5 class="mt-4 mb-3" style="font-family: 'Inconsolata', monospace;">0K: The Finish Line Moves Meeting (1st Thursday of the Month)</h5>
-                    <p>March 07, 2024</p>
-                    <p>CHAIRpersons and Committee Meeting, 5:30pm</p>
-                    <p>Captain(s), Committee Meeting, 6:30pm </p>
-                    <p>Alexandria Public Library</p>
-                    <a href="https://fb.me/e/5b7f2dcR9" class="more">Learn More...</a>
-                </div>
-            </div>
-
-            <!-- March 21, 2024 -->
-            <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="150">
-                <div class="service theme-shadow p-lg-5 p-4">
-                    <div class="iconbox">
-                        <i class="ri-pen-nib-fill"></i>
-                    </div>
-                    <h5 class="mt-4 mb-3" style="font-family: 'Inconsolata', monospace;">0K: The Finish Line Moves Meeting (3rd Thursday of the Month)</h5>
-                    <p>March 21, 2024</p>
-                    <p>CHAIRpersons and Committee Meeting, 5:30pm</p>
-                    <p>Captain(s), Committee Meeting, 6:30pm </p>
-                    <p>Alexandria Public Library</p>
-                    <a href="https://fb.me/e/5hFZxMdim" class="more">Learn More...</a>
-                </div>
-            </div>
 
             <!-- April 04, 2024 -->
             <div class="col-lg-4 col-sm-6" data-aos="fade-down" data-aos-delay="150">
@@ -632,6 +597,34 @@
     //   $('#exampleModal').modal('show');
     // });
   });
+
+ 
+ // Set the date we're counting down to
+ var countDownDate = new Date("May 18, 2024 09:00:00").getTime();
+
+// Update the countdown every second
+var x = setInterval(function() {
+
+// Get the current date and time
+var now = new Date().getTime();
+
+// Calculate the time remaining
+var distance = countDownDate - now;
+
+// Calculate days, hours, and minutes
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+// Display the countdown
+document.getElementById("countdown").innerHTML = days + "Days " + hours + "Hours " + minutes + "Minutes ";
+
+// If the countdown is finished, display text
+if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+}
+}, 1000);
 </script>
 
 {% endblock %}
