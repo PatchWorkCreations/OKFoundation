@@ -51,12 +51,6 @@ def registration_page(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
-        fundraising_goal = request.POST.get('fundraising_goal')
-        donation_amount = request.POST.get('donation_amount', 0)  # Default to 0 if not provided
-        team_option = request.POST.get('team_option')
-        team_name = request.POST.get('team_name', '') if team_option == 'start_team' else ''
-        under_18 = request.POST.get('under_18') == 'yes'
-        mailing_address = request.POST.get('mailing_address')
         zip_code = request.POST.get('zip_code')
         city = request.POST.get('city')
         state = request.POST.get('state')
@@ -74,18 +68,20 @@ def registration_page(request):
                     email=email,
                     username=username,
                     password=password,
-                    fundraising_goal=fundraising_goal,
-                    donation_amount=donation_amount,
-                    team_option=team_option,
-                    team_name=team_name,
-                    under_18=under_18,
-                    mailing_address=mailing_address,
                     zip_code=zip_code,
                     city=city,
                     state=state,
                     country=country,
                     phone_number=phone_number
                 )
+
+                subject = 'Successful Registration'
+                content = f' Hello {name}, your registration was successful.'
+                to_email = email  # Replace with the recipient's email address
+
+                email = EmailMessage(subject, content, to=[to_email])
+                email.send()
+
                 messages.success(request, 'Registration successful. You can now log in.')
                 return redirect('login')
 

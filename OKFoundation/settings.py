@@ -146,5 +146,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = '0K Foundation Admin'
-EMAIL_HOST_USER = 'test_email@gmail.com'  # Your Gmail email address
-EMAIL_HOST_PASSWORD = ''  # Your Gmail app password or regular password
+EMAIL_HOST_USER = 'officialpatchwork07@gmail.com'  # Your Gmail email address
+EMAIL_HOST_PASSWORD = 'nqvw pwlo rjlw oaik'  # Your Gmail app password or regular password

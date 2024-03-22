@@ -583,22 +583,28 @@
 
 
 <script>
-  $(document).ready(function(){
-    // Remove the automatic modal show to replace with click event
-    // $('#exampleModal').modal('show');
+$(document).ready(function() {
+    var modalShown = false;
 
-    // Listen for a click event on the entire document
-    $(document).click(function(){
-      $('#exampleModal').modal('show');
+    function showModal() {
+        if (!modalShown) {
+            $('#exampleModal').modal('show');
+            modalShown = true;
+        }
+    }
+
+    // Show modal when the page is clicked
+    $(document).click(function() {
+        showModal();
     });
 
-    // If you want to restrict the click to open the modal only when clicking on a specific element, use its ID or class instead of document, like this:
-    // $("#yourElementId").click(function(){
-    //   $('#exampleModal').modal('show');
-    // });
-  });
+    // Show modal when the page is scrolled
+    $(window).scroll(function() {
+        showModal();
+    });
+});
 
- 
+
  // Set the date we're counting down to
  var countDownDate = new Date("May 18, 2024 09:00:00").getTime();
 
