@@ -202,7 +202,7 @@
     }
   }
   .my-custom-container {
-    text-align: center;
+    text-align: center; /* Center align all contents inside this container */
     border-radius: 0px;
     padding: 40px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
@@ -213,13 +213,15 @@
 .my-custom-container h1 {
     font-size: 45px;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
+    font-weight: bolder;
 }
 
-.my-custom-container #countdown {
-    font-size: 80px;
-    margin-top: 20px;
-    color: #2f15c2;
+.my-custom-container h2 {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 12px;
+    
 }
 
 .my-custom-container #join-button {
@@ -231,14 +233,34 @@
     cursor: pointer;
     margin-top: 30px;
     border-radius: 25px;
-    transition: background-color 0.3s ease;
-
-    
+    transition: background-color 0.3s ease;  
 }
+
+.number {
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 10px;
+  }
+  .unit {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .highlight {
+    background: #e53e3e;
+  }
 
 .my-custom-container #join-button:hover {
     background-color: #0056b3;
 }
+
+#countdownn {
+   
+    justify-content: center; /* Horizontally center the items */
+    align-items: center; /* Vertically center the items */
+}
+
 
 </style>
 
@@ -246,6 +268,7 @@
 
 <!-- Include Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 
 
 
@@ -301,9 +324,35 @@
   </div>
 </section>
 
-<div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="existing-container my-custom-container">
+<div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="my-custom-container">
   <h1 style="font-family: 'Inconsolata', monospace;">0K: The Finish Line Moves</h1>
-  <div id="countdown"></div>
+  <h2>Johnstown Ohio - Inaugural Event</h2>
+  <h2>May 18,2024 | 9am - 12nn</h2>
+  <h2>North Athletic Fields by the American Legion</h2>
+  <h2>Wall of Honor
+    Maple and Oregon Streets</h2>
+  <div id="countdownn" class="flex">
+    <div class="number" id="weeks">
+      <span class="text-5xl" id="weeks-number">00</span>
+      <div class="unit">Weeks</div>
+    </div>
+    <div class="number" id="days">
+      <span class="text-5xl" id="days-number">00</span>
+      <div class="unit">Days</div>
+    </div>
+    <div class="number" id="hours">
+      <span class="text-5xl" id="hours-number">00</span>
+      <div class="unit">Hours</div>
+    </div>
+    <div class="number" id="minutes">
+      <span class="text-5xl" id="minutes-number">00</span>
+      <div class="unit">Minutes</div>
+    </div>
+    <div class="number highlight" id="seconds">
+      <span class="text-5xl" id="seconds-number">00</span>
+      <div class="unit">Seconds</div>
+    </div>
+  </div>
   <button id="join-button">Join Us</button>
 </div>
 
@@ -583,54 +632,47 @@
 
 
 <script>
-$(document).ready(function() {
-    var modalShown = false;
+  $(document).ready(function(){
+    // Remove the automatic modal show to replace with click event
+    // $('#exampleModal').modal('show');
 
-    function showModal() {
-        if (!modalShown) {
-            $('#exampleModal').modal('show');
-            modalShown = true;
-        }
-    }
-
-    // Show modal when the page is clicked
-    $(document).click(function() {
-        showModal();
+    // Listen for a click event on the entire document
+    $(document).click(function(){
+      $('#exampleModal').modal('show');
     });
 
-    // Show modal when the page is scrolled
-    $(window).scroll(function() {
-        showModal();
-    });
-});
+    // If you want to restrict the click to open the modal only when clicking on a specific element, use its ID or class instead of document, like this:
+    // $("#yourElementId").click(function(){
+    //   $('#exampleModal').modal('show');
+    // });
+  });
 
 
- // Set the date we're counting down to
- var countDownDate = new Date("May 18, 2024 09:00:00").getTime();
+  const countdownn = () => {
+    const countToDate = new Date('May 18, 2024 09:00:00').getTime();
+    const now = new Date().getTime();
+    const difference = countToDate - now;
 
-// Update the countdown every second
-var x = setInterval(function() {
+    const seconds = 1000;
+    const minutes = seconds * 60;
+    const hours = minutes * 60;
+    const days = hours * 24;
+    const weeks = days * 7;
 
-// Get the current date and time
-var now = new Date().getTime();
+    let timeWeeks = Math.floor(difference / weeks);
+    let timeDays = Math.floor((difference % weeks) / days);
+    let timeHours = Math.floor((difference % days) / hours);
+    let timeMinutes = Math.floor((difference % hours) / minutes);
+    let timeSeconds = Math.floor((difference % minutes) / seconds);
 
-// Calculate the time remaining
-var distance = countDownDate - now;
+    document.getElementById('weeks-number').innerText = timeWeeks;
+    document.getElementById('days-number').innerText = timeDays;
+    document.getElementById('hours-number').innerText = timeHours;
+    document.getElementById('minutes-number').innerText = timeMinutes;
+    document.getElementById('seconds-number').innerText = timeSeconds;
+  };
 
-// Calculate days, hours, and minutes
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-// Display the countdown
-document.getElementById("countdown").innerHTML = days + "Days " + hours + "Hours " + minutes + "Minutes ";
-
-// If the countdown is finished, display text
-if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("countdown").innerHTML = "EXPIRED";
-}
-}, 1000);
+  setInterval(countdownn, 1000);
 </script>
 
 {% endblock %}
