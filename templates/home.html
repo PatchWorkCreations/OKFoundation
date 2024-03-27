@@ -66,7 +66,7 @@
     font-weight: bold; /* Optionally, make the text bold */
 }
 
-  
+
 
 .monospace-custom {
     font-family: Consolas, Menlo, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
@@ -132,7 +132,7 @@
             width: 100%;
             height: auto;
         }
-  
+
 
         #tribute-container {
     display: flex;
@@ -221,7 +221,7 @@
     font-size: 30px;
     color: white;
     margin-bottom: 12px;
-    
+
 }
 
 .my-custom-container #join-button {
@@ -233,7 +233,7 @@
     cursor: pointer;
     margin-top: 30px;
     border-radius: 25px;
-    transition: background-color 0.3s ease;  
+    transition: background-color 0.3s ease;
 }
 
 .number {
@@ -256,7 +256,7 @@
 }
 
 #countdownn {
-   
+
     justify-content: center; /* Horizontally center the items */
     align-items: center; /* Vertically center the items */
 }
@@ -268,7 +268,7 @@
 
 <!-- Include Bootstrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+<!--<script src="https://cdn.tailwindcss.com"></script>-->
 
 
 
@@ -634,17 +634,9 @@
 <script>
   $(document).ready(function(){
     // Remove the automatic modal show to replace with click event
-    // $('#exampleModal').modal('show');
+    $('#exampleModal').modal('show');
 
-    // Listen for a click event on the entire document
-    $(document).click(function(){
-      $('#exampleModal').modal('show');
-    });
 
-    // If you want to restrict the click to open the modal only when clicking on a specific element, use its ID or class instead of document, like this:
-    // $("#yourElementId").click(function(){
-    //   $('#exampleModal').modal('show');
-    // });
   });
 
 
