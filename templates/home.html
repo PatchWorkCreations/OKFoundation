@@ -202,12 +202,12 @@
     }
   }
   .my-custom-container {
-    text-align: center; /* Center align all contents inside this container */
+    text-align: center;
     border-radius: 0px;
     padding: 40px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     background-image: linear-gradient(to bottom right, #762fb9, #54b6b6);
-    color: white; /* Set text color to white for better contrast */
+    color: white;
 }
 
 .my-custom-container h1 {
@@ -221,7 +221,6 @@
     font-size: 30px;
     color: white;
     margin-bottom: 12px;
-
 }
 
 .my-custom-container #join-button {
@@ -236,29 +235,44 @@
     transition: background-color 0.3s ease;
 }
 
-.number {
-    background: #333;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 0 10px;
-  }
-  .unit {
-    text-align: center;
-    font-size: 0.75rem;
-    margin-top: 0.5rem;
-  }
-  .highlight {
-    background: #e53e3e;
-  }
-
 .my-custom-container #join-button:hover {
     background-color: #0056b3;
 }
 
-#countdownn {
+.number {
+    background: #333;
+    width: 120px; /* Adjust the width as needed */
+    height: 120px; /* Set the same value as width to make it a square */
+    border-radius: 10px;
+    margin: 0 10px;
+    text-align: center;
+}
 
-    justify-content: center; /* Horizontally center the items */
-    align-items: center; /* Vertically center the items */
+..unit, .text-5xl {
+    text-align: center;
+    margin-top: 0.5rem;
+    line-height: 1; /* Adjust line-height as needed */
+}
+
+.text-5xl {
+    font-size: 2rem; /* Adjust font-size as needed */
+}
+
+.unit {
+    font-size: 0.75rem; /* Adjust font-size as needed */
+}
+
+
+
+.highlight {
+    background: #e53e3e;
+}
+
+#countdownn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 
