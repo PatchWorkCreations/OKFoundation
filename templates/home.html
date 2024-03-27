@@ -346,10 +346,7 @@
   <h2>Wall of Honor
     Maple and Oregon Streets</h2>
   <div id="countdownn" class="flex">
-    <div class="number" id="weeks">
-      <span class="text-5xl" id="weeks-number">00</span>
-      <div class="unit">Weeks</div>
-    </div>
+    
     <div class="number" id="days">
       <span class="text-5xl" id="days-number">00</span>
       <div class="unit">Days</div>
@@ -663,20 +660,18 @@
     const minutes = seconds * 60;
     const hours = minutes * 60;
     const days = hours * 24;
-    const weeks = days * 7;
 
-    let timeWeeks = Math.floor(difference / weeks);
-    let timeDays = Math.floor((difference % weeks) / days);
+    let timeDays = Math.floor(difference / days);
     let timeHours = Math.floor((difference % days) / hours);
     let timeMinutes = Math.floor((difference % hours) / minutes);
     let timeSeconds = Math.floor((difference % minutes) / seconds);
 
-    document.getElementById('weeks-number').innerText = timeWeeks;
     document.getElementById('days-number').innerText = timeDays;
     document.getElementById('hours-number').innerText = timeHours;
     document.getElementById('minutes-number').innerText = timeMinutes;
     document.getElementById('seconds-number').innerText = timeSeconds;
-  };
+};
+
 
   setInterval(countdownn, 1000);
 </script>
