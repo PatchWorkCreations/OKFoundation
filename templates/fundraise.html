@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+    .header-section {
+        background-image: url('{% static "images/aboutus2.png" %}');
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50vh;
+        margin-bottom: -15px;
+        width: 100%; /* Adjusted width */
+    }
+
+    .container-rectangle {
+        display: flex;
+        justify-content: space-between; /* To evenly distribute rectangles */
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+        width: 100%; /* Make container full width */
+    }
+
+    
+    .container-rectangle a {
+        flex: 1; /* Distribute available space equally among links */
+        height: 100px; /* Set the height */
+        background: #d1c4e9; /* Default background color */
+        display: flex; /* Use flexbox to align content */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+        text-decoration: none; /* Remove underline */
+        color: whitesmoke;
+    }
+
+    /* Style only for demonstration purpose */
+    .container-rectangle a:nth-child(2) {
+        background: #9575cd;
+    }
+
+    .container-rectangle a:nth-child(3) {
+        background: #7e57c2;
+    }
+
+    .goal-container {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+
+    .goal-bar {
+        background-color: #8a1bf24b;
+        height: 30px;
+        border-radius: 5px;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .goal-progress {
+        background-color: #480983cc; /* Same as .goal-bar background */
+        height: 100%;
+        border-radius: 5px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0; /* Initial width set to 0 */
+        transition: width 0.5s ease-in-out; /* Smooth transition for width changes */
+    }
+
+    .goal-amount {
+        margin-top: 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .container-rectangle a {
+    text-decoration: none; /* Remove underline */
+    color: white; /* Set font color to white */
+    text-align: center; /* Center the content */
+    display: block; /* Make the anchor tag behave like a block element */
+}
+
+
+.my-custom-containerr {
+    border-radius: 0px;
+    padding: 40px;
+    color: white;
+    padding-left: 65px;
+}
+
+.my-custom-containerr h1 {
+    font-size: 45px;
+    color: rgb(8, 8, 8);
+    margin-bottom: 8px;
+    font-weight: bolder;
+}
+
+.my-custom-containerr h3 {
+    font-size: 20px;
+    color: rgb(8, 8, 8);
+    margin-bottom: 12px;
+}
+
+.my-custom-containerr p {
+    color: rgb(8, 8, 8);
+    margin-bottom: 12px;
+}
+
+.search-container {
+    border-radius: 0px;
+    padding: 40px;
+    color: white;
+    padding-left: 65px;
+    }
+
+    /* Style the input field */
+    .search-input {
+        padding: 10px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box; /* Ensure padding and border are included in element's total width */
+    }
+
+    /* Style the search button */
+    .search-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Style the search button on hover */
+    .search-button:hover {
+        background-color: #45a049;
+    }
+
+    .helpateam{
+        border-radius: 0px;
+    padding: 40px;
+    color: white;
+    padding-left: 65px;
+    text-align: center;
+    }
+</style>
+
+{% include 'navbar.html' %}
+
+<div class="header-section" style="font-family: 'Inconsolata', monospace;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 headerr">
+                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The 0K Foundation</h1>
+                <h1 class="text-white mt-3 mb-4" data-aos="fade-left">It's Going To Be 0K</h1>
+                <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-rectangle">
+    <a href="https://square.link/u/5g6XQwWE?src=embd">
+        <h5 style="color: white; margin-top: 10px; margin-bottom: 0px;">Be a Life-Saver</h5>
+        <h2 style="color: white;">Donate Now</h2>
+    </a>
+    <a href="https://example.com">
+        <h5 style="color: white; margin-top: 10px; margin-bottom: 0px;">Be a volunteer</h5>
+        <h2 style="color: white;">Join Us Now</h2>
+    </a>
+    <a href="https://example.com">
+        <h5 style="color: white; margin-top: 10px; margin-bottom: 0px;">Register as a</h5>
+        <h2 style="color: white;">Team Captain</h2>
+    </a>
+</div>
+
+<div class="container">
+    <h1 style="margin-top: 10px; margin-bottom: 2px;">Fundraise Goal</h1>
+    <div class="goal-container" style="margin-top: 2px;">
+        <div class="goal-bar">
+            <div class="goal-progress"></div>
+        </div>
+        <div class="goal-amount">$600 raised of $20,000 goal</div>
+    </div>
+</div>
+
+<div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="my-custom-containerr">
+    <h2>Taking Action: Combatting Johnstown's Suicide Crisis</h2>
+    <p>Every year in Johnstown, Ohio, the suicide rate remains a pressing concern, with 15 per 100,000 individuals succumbing to preventable deaths. This rate is significantly higher than the national average, emphasizing the urgent need for action and support within our community. Join us for 0K: The Finish Line Moves in Johnstown, Ohio, where we're tackling the local suicide crisis head-on. We're raising funds to aid those who've lost loved ones or are struggling. Let's unite to prevent further tragedies. Together, we can ALL be Life-Savers.</p>
+
+</div>
+
+<div class="helpateam">
+    <h1>Help a fundraiser team below!</h1>
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search...">
+        <button class="search-button">Search</button>
+    </div>
+    
+</div>
+
+
+<script>
+   
+    // JavaScript to update the width of the progress bar based on current progress
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the progress bar element
+        var progressBar = document.querySelector(".goal-progress");
+        
+        // Set the current progress (you can replace this with actual progress data)
+        var currentProgress = 600; // $600 raised
+        var goalAmount = 20000; // $1000 goal
+        
+        // Calculate the width percentage based on current progress and goal amount
+        var widthPercentage = (currentProgress / goalAmount) * 100;
+        
+        // Update the width of the progress bar
+        progressBar.style.width = widthPercentage + "%";
+    });
+</script>
+</script>
+{% include 'footer.html' %}
+{% endblock %}

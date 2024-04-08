@@ -270,9 +270,37 @@
 
 #countdownn {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Center horizontally */
     align-items: center;
     margin-top: 20px;
+}
+
+
+.my-custom-containerr {
+    border-radius: 0px;
+    padding: 40px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom right, #e0cbf3, #e4e4e4);
+    color: white;
+    padding-left: 55px;
+}
+
+.my-custom-containerr h1 {
+    font-size: 45px;
+    color: rgb(8, 8, 8);
+    margin-bottom: 8px;
+    font-weight: bolder;
+}
+
+.my-custom-containerr h3 {
+    font-size: 20px;
+    color: rgb(8, 8, 8);
+    margin-bottom: 12px;
+}
+
+.my-custom-containerr p {
+    color: rgb(8, 8, 8);
+    margin-bottom: 12px;
 }
 
 
@@ -325,18 +353,31 @@
       <div class="row">
           <div class="col-md-6 hero-content text-md-start">
               <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1">Together, we
-                  can be</h1>
+                  can ALL be</h1>
               <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1">
                   Life-Savers!</h1>
               <h5 class="text-white mt-3 mb-4" data-aos="fade-right"></h5>
-              <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
-                <a href="{% url 'registration' %}" class="engage-button">Register Now</a>
-              </div>
+              <div class="buttons-container">
+                <a href="{% url 'registration' %}" class="engage-button">REGISTRATION</a>
+                <a href="{% url 'fundraise' %}" class="engage-button">FUNDRAISE</a>
+            </div>           
           </div>
           <div class="col-md-6"></div>
       </div>
   </div>
 </section>
+
+<div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="my-custom-containerr">
+  <h2>Taking Action: Combatting Johnstown's Suicide Crisis</h2>
+  <p>Every year in Johnstown, Ohio, the suicide rate remains a pressing concern, with 15 per 100,000 individuals succumbing to preventable deaths. This rate is significantly higher than the national average, emphasizing the urgent need for action and support within our community. Join us for 0K: The Finish Line Moves in Johnstown, Ohio, where we're tackling the local suicide crisis head-on. We're raising funds to aid those who've lost loved ones or are struggling. Let's unite to prevent further tragedies. Together, we can ALL be Life-Savers.</p>
+ 
+  <div class="buttons-container">
+    <a href="{% url 'registration' %}" class="engage-button">REGISTER</a>
+    <a href="{% url 'fundraise' %}" class="engage-button">FUNDRAISE</a>
+</div>
+</div>
+
+
 
 <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="my-custom-container">
   <h1 style="font-family: 'Inconsolata', monospace;">0K: The Finish Line Moves</h1>

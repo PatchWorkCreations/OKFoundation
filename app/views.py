@@ -270,3 +270,6 @@ def homee(request):
 
 def blog1(request):
     return render(request, 'blog1.html')
+
+def fundraise(request):
+    return render(request, 'fundraise.html')

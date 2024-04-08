@@ -33,4 +33,5 @@ urlpatterns = [
     path('cWeb_Contact_Form_Template', Web_Contact_Form_Template, name='Web_Contact_Form_Template'),
     path('homee', homee, name='homee'),
     path('blog1', blog1, name='blog1'),
+    path('fundraise', fundraise, name='fundraise'),
 ]
