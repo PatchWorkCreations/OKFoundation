@@ -1,143 +1,96 @@
 {% load static %}
 
 <style>
-    
-.dropdown-menu ul {
-  list-style: none;
-  padding: 0;
+    .nav-link.dropdown-toggle svg {
+    width: 1.5rem; /* Adjust the width */
+    height: 1.5rem; /* Adjust the height */
+    /* Add more styles as needed */}
+
+    /* Adjust the Bootstrap dropdown arrow icon */
+    .nav-link.dropdown-toggle::after {
+    width: 0;
+    height: 0;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-bottom: 0;
+    border-left: .3em solid transparent;
+    }
+
+    /* Remove black border from dropdown toggle button */
+    .dropdown-toggle {
+    border: none; /* Remove any border */
+    outline: none; /* Remove outline when button is focused */
+    /* Add any additional styles as needed */
+    background-color: white;
 }
 
-.dropdown-menu.show {
-  display: flex !important;
-}
 
-.dropdown-menu li .dropdown-item {
-  color: whitesmoke;
-  font-size: 1em;
-  padding: 0.5em 1em;
-}
-
-.dropdown-menu {
-  border: none;
-  border-radius: 5px;
-  padding: 0.7em;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: #6e5c5c;
-}
-
-@media only screen and (min-width: 992px) {
-  .dropdown:hover .dropdown-menu {
-    display: flex !important;
-  }
-  .dropdown-menu.show {
-    display: flex !important;
-  }
-}
-
-.navbar-dark .navbar-nav a.nav-link {
-  color: #010101;
-  font-size: 1.1em;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover {
-  color: #ffffff; /* Font color when link is hovered over */
-  background-color: #c27b7f; /* Background color when link is hovered over */
-  border-radius: 5px;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-}
-
-@media only screen and (max-width: 992px) {
-  .dropdown:hover .dropdown-menu {
-    max-height: 350px;
-    overflow-y: scroll;
-  }
-}
-
-.navbar-brand img {
-  max-width: 120px; /* Adjust width as needed */
-  height: auto;
-}
-
-.navbar-brand {
-  margin-right: 80px; /* Adjust margin as needed */
-  padding: 5px; /* Adjust padding as needed */
-}
-
-.navbar-toggler-icon {
-  color: #010101; /* Set toggler icon color */
-}
 </style>
-<!-- ========== Header start ========== -->
 
+<nav class="navbar navbar-expand-lg bg-white sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="{% static 'images/Ok Run BG New 02.png' %}" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item {% if request.path == '/' %}active{% endif %}" >
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+                <li class="nav-item {% if request.resolver_match.view_name == 'home' and request.resolver_match.kwargs.anchor == 'about' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'homee' %}">About Us</a>
+                </li>
+                <li class="nav-item {% if request.resolver_match.view_name == 'engagement' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'engagement' %}">Your Engagement</a>
+                </li>
+                <li class="nav-item dropdown {% if request.resolver_match.view_name == 'fun' %}active{% endif %}">
+                    <button id="dropdownNavbarLink" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Resources
+                    </button>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="dropdownNavbarLink">
+                        <li>
+                            <a href="{% url 'fun' %}" class="dropdown-item">"FUN" in Fundraising</a>
+                        </li>
+                    </ul>
+                </li>
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #f7f7f7;">
-    <div class="container-fluid">
-      <a class="navbar-brand"href="{% url 'home' %}">
-        <img src="{% static 'assets/images/logo1.png' %}" alt="Your Logo"/>
-      </a>
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav justify-content-center me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{% url 'home' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">About</a>
-              </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Ghostwriting
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <ul>
-                    <li><a class="dropdown-item" href="{% url 'biography' %}">Biography Writing</a></li>
-                    <li><a class="dropdown-item" href="{% url 'memoir' %}">Memoir Writing</a></li>
-                    <li><a class="dropdown-item" href="{% url 'manuscript' %}">Manuscript Writing</a></li>
-                    <li><a class="dropdown-item" href="{% url 'comic-book' %}">Comic Book Writing</a></li>
-                    <li><a class="dropdown-item" href="{% url 'childrens-book' %}">Children's Book Writing</a></li>
-                  </ul>
-                  <ul>
-                    <li><a class="dropdown-item" href="{% url 'non-fiction' %}">Non-Fiction Writing</a></li>
-                    <li><a class="dropdown-item" href="{% url 'screen-writing' %}">Screenwriting Services</a></li>
-                    <li><a class="dropdown-item" href="{% url 'horror-writing' %}">Horror Writing Services</a></li>
-                    <li><a class="dropdown-item" href="{% url 'audiobook' %}">Audiobook Services</a></li>
-                    <li><a class="dropdown-item" href="{% url 'book-trailer' %}">Book Trailer Services</a></li>
-                  </ul>
-            </div>
-          </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'editing' %}">Editing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'publishing' %}">Publishing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'design' %}">Design</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'marketing' %}">Marketing</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'blog' %}">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-              </li>
-        </ul>
-      </div>
+                <li class="nav-item dropdown {% if request.resolver_match.view_name == 'fun' %}active{% endif %}">
+                    <button id="dropdownNavbarLink" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Events
+                    </button>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="dropdownNavbarLink">
+                        <li>
+                            <a href="{% url 'johnstown_2024' %}" class="dropdown-item">Jonstown 2024</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item {% if request.resolver_match.view_name == 'home' and request.resolver_match.kwargs.anchor == 'services' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'home' %}#services">Join Us</a>
+                </li>
+                <li class="nav-item {% if request.resolver_match.view_name == 'web_contact_form_template' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'Web_Contact_Form_Template' %}">Contact</a>
+                </li>
+                <li class="nav-item {% if request.resolver_match.view_name == 'home' and request.resolver_match.kwargs.anchor == 'blog' %}active{% endif %}">
+                    <a class="nav-link" href="{% url 'home' %}#blog">Blog</a>
+                </li>
+            </ul>
+            <a target="_blank" data-url="https://square.link/u/5g6XQwWE?src=embd"
+               href="https://square.link/u/5g6XQwWE?src=embed" class="btn btn-info ms-lg-3">Donation</a>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="btn btn-danger ms-lg-3">Logout</a>
+            {% else %}
+            <a href="{% url 'registration' %}" class="btn btn-brand ms-lg-3">Registration</a>
+            {% endif %}
+        </div>
     </div>
-  </nav>
-
-<script>
-$(document).ready(function(){
-  $('.navbar-nav .nav-link').click(function(){
-    $('.navbar-nav .nav-link').removeClass('active');
-    $(this).addClass('active');
-  });
-});
-</script>
-<!-- ========== Header end ========== -->
+</nav>
