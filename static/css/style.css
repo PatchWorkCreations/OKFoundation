@@ -896,6 +896,11 @@ main {
     border-radius: 5px; /* Rounded corners */
 }
 
+.buttons-container a + a {
+    margin-left: 10px;
+}
+
+
 /* Adjust shadow on hover */
 .engage-button:hover {
     background-color: #5a3a9e; /* Darker shade of purple on hover */
