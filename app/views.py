@@ -95,13 +95,22 @@ def dashboard(request):
     return render(request, 'dashboard.html')
 
 
+from decimal import Decimal
+
 def update_user(request):
     if request.method == 'POST':
         # Retrieve the form data
         name = request.POST.get('name')
         username = request.POST.get('username')
         email = request.POST.get('email')
-        fundraising_goal = request.POST.get('fundraising_goal')
+        fundraising_goal_str = request.POST.get('fundraising_goal')
+
+        # Convert fundraising goal to Decimal
+        try:
+            fundraising_goal = Decimal(fundraising_goal_str)
+        except:
+            # Handle the case where fundraising_goal_str is not a valid Decimal
+            fundraising_goal = Decimal('0.00')  # Set a default value or handle it as you wish
 
         # Update the user profile
         request.user.name = name
@@ -112,6 +121,7 @@ def update_user(request):
 
         messages.success(request, 'Profile updated successfully.')
         return redirect('dashboard')
+
 
 
 def update_account_settings(request):
