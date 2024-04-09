@@ -166,11 +166,11 @@ input[type="text"]:not(:placeholder-shown) + label {
                         </div>
                         
                         <p id="start_team_name_label" style="display: none; text-align: center; font-weight: bold;">Please type in your Team Name</p>
-                        <input type="text" id="start_team_name_input" style="display: none;" placeholder="Team Name">
+                        <input type="text" id="start_team_name_input" name="team_name" style="display: none;" placeholder="Team Name">
 
 
                         <p id="join_team_message" style="display: none; text-align: center; font-weight: bold;">Let's find your team. What's it called?</p>
-                        <input type="text" id="join_team_name_input" style="display: none; margin: 0 auto; text-align: center;" placeholder="Team Name">
+                        <input type="text" id="join_team_name_input" name="team_name" style="display: none; margin: 0 auto; text-align: center;" placeholder="Team Name">
 
 
                         <div id="solo_response" style="display: none;">
@@ -490,9 +490,9 @@ input[type="text"]:not(:placeholder-shown) + label {
     document.querySelectorAll('input[name="motivation"]').forEach(checkbox => {
         checkbox.addEventListener('change', handleMotivationSelection);
     });
-  
-    // team FORM 
-    function handleTeamOptionSelection() {
+  // team FORM 
+// team FORM 
+function handleTeamOptionSelection() {
     const startTeamNameLabel = document.getElementById('start_team_name_label');
     const startTeamNameInput = document.getElementById('start_team_name_input');
     const joinTeamNameInput = document.getElementById('join_team_name_input');
@@ -517,6 +517,7 @@ input[type="text"]:not(:placeholder-shown) + label {
             }
 
             joinTeamNameInput.style.display = 'none';
+            joinTeamNameInput.value = ''; // Clear the value if switching from "Join a team"
         } else if (teamOption.value === 'join_team') {
             startTeamQuestion.style.display = 'none';
             startTeamNameLabel.style.display = 'none';
@@ -524,12 +525,14 @@ input[type="text"]:not(:placeholder-shown) + label {
             soloResponse.style.display = 'none';
 
             if (teamCaptainOption && teamCaptainOption.value === 'yes') {
-                joinTeamNameInput.style.display = 'block';
                 joinTeamMessage.style.display = 'block';
             } else {
-                joinTeamNameInput.style.display = 'block';
                 joinTeamMessage.style.display = 'none';
             }
+
+            startTeamNameInput.style.display = 'none';
+            startTeamNameInput.value = ''; // Clear the value if switching from "Start a team"
+            joinTeamNameInput.style.display = 'block';
         } else {
             startTeamQuestion.style.display = 'none';
             startTeamNameLabel.style.display = 'none';
@@ -577,10 +580,14 @@ function handleTeamNameEntered() {
     fundraisingGoalInput.style.display = 'block';
 }
 
-// Add event listener to team name input field
+// Add event listener to team name input field for starting a team
 document.getElementById('start_team_name_input').addEventListener('input', handleTeamNameEntered);
 
+// Add event listener to team name input field for joining a team
+document.getElementById('join_team_name_input').addEventListener('input', handleTeamNameEntered);
+
 // end of team form
+
 
         function handleDonationSelection() {
             const donationOption = document.querySelector('input[name="donation"]:checked');

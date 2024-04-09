@@ -8,7 +8,7 @@ class Participant(AbstractUser):
     fundraising_goal = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     # donation_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.0)
     # team_option = models.CharField(max_length=20)
-    # team_name = models.CharField(max_length=255, blank=True, null=True)
+    team_name = models.CharField(max_length=255, blank=True, null=True)
     # under_18 = models.BooleanField(default=False)
     # mailing_address = models.TextField()
     zip_code = models.CharField(max_length=10)

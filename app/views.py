@@ -57,6 +57,8 @@ def registration_page(request):
         country = request.POST.get('country')
         phone_number = request.POST.get('phone_number', '')  # Optional field
         fundraising_goal = request.POST.get('fundraising_goal')  # New field for fundraising goal
+        team_name = request.POST.get('team_name')  # Add this line to retrieve team_name
+
 
         if password == confirm_password:
             # Check if the username is already taken
@@ -73,7 +75,8 @@ def registration_page(request):
                     city=city,
                     state=state,
                     phone_number=phone_number,
-                    fundraising_goal=fundraising_goal  # Save fundraising goal along with other user details
+                    fundraising_goal=fundraising_goal
+                    team_name=team_name
                 )
 
                 subject = 'Successful Registration'
@@ -103,25 +106,19 @@ def update_user(request):
         name = request.POST.get('name')
         username = request.POST.get('username')
         email = request.POST.get('email')
-        fundraising_goal_str = request.POST.get('fundraising_goal')
-
-        # Convert fundraising goal to Decimal
-        try:
-            fundraising_goal = Decimal(fundraising_goal_str)
-        except:
-            # Handle the case where fundraising_goal_str is not a valid Decimal
-            fundraising_goal = Decimal('0.00')  # Set a default value or handle it as you wish
+        fundraising_goal = request.POST.get('fundraising_goal')
+        team_name = request.POST.get('team_name')  # Add this line to retrieve team_name
 
         # Update the user profile
         request.user.name = name
         request.user.username = username
         request.user.email = email
         request.user.fundraising_goal = fundraising_goal
+        request.user.team_name = team_name  # Assign the retrieved team_name to the user's team_name field
         request.user.save()
 
         messages.success(request, 'Profile updated successfully.')
         return redirect('dashboard')
-
 
 
 def update_account_settings(request):
