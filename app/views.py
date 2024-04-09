@@ -152,12 +152,14 @@ def update_user_detail(request, pk):
         username = request.POST.get('username')
         email = request.POST.get('email')
         fundraising_goal = request.POST.get('fundraising_goal')
+        team_name = request.POST.get('team_name')
 
         participant = Participant.objects.get(id=pk)
         participant.name = name
         participant.username = username
         participant.email = email
         participant.fundraising_goal = fundraising_goal
+        participant.team_name = team_name
         participant.save()
 
         messages.success(request, 'Profile updated successfully.')
