@@ -56,6 +56,7 @@ def registration_page(request):
         state = request.POST.get('state')
         country = request.POST.get('country')
         phone_number = request.POST.get('phone_number', '')  # Optional field
+        fundraising_goal = request.POST.get('fundraising_goal')  # New field for fundraising goal
 
         if password == confirm_password:
             # Check if the username is already taken
@@ -71,8 +72,8 @@ def registration_page(request):
                     zip_code=zip_code,
                     city=city,
                     state=state,
-                    country=country,
-                    phone_number=phone_number
+                    phone_number=phone_number,
+                    fundraising_goal=fundraising_goal  # Save fundraising goal along with other user details
                 )
 
                 subject = 'Successful Registration'
@@ -89,7 +90,6 @@ def registration_page(request):
             messages.warning(request, 'Passwords did not match. Please try again.')
 
     return render(request, 'registration.html')  # Update with your actual template name
-
 
 def dashboard(request):
     return render(request, 'dashboard.html')
