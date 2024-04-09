@@ -68,6 +68,21 @@ input[type="text"]:not(:placeholder-shown) + label {
     text-align: left;
 }
 
+/* Style the response spans */
+#response_mental_health,
+#response_support_mental_health,
+#response_fight_suicide,
+#response_prefer_not_to_say {
+    color: white; /* Set font color to white */
+    text-align: center; /* Center-align the text */
+    margin-top: 10px; /* Add margin space at the top */
+    font-size: 22px; /* Set font size */
+    font-family: 'Inconsolata', monospace; /* Set font family */
+    font-weight: bolder;
+}
+
+
+
 
 </style>
 
@@ -88,6 +103,94 @@ input[type="text"]:not(:placeholder-shown) + label {
                     <form method="post" id="registrationForm">    <!-- Form content goes here -->
                         {% csrf_token %}
 
+                        <!-- Question 1 -->
+                        <div class="mb-4">
+                            <p style="font-weight: bold; margin-bottom: 8px;">We all participate in 0K: The Finish Line Moves for various motivations. What motivates you to join? (Please select all that apply.)</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="mental_health" id="motivation_mental_health" name="motivation">
+                                <label class="form-check-label" for="motivation_mental_health">
+                                    I'm currently experiencing challenges with my mental well-being.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="support_mental_health" id="motivation_support_mental_health" name="motivation">
+                                <label class="form-check-label" for="motivation_support_mental_health">
+                                    I know someone who is facing mental health difficulties, or I'm supporting someone through their mental health journey.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="fight_suicide" id="motivation_fight_suicide" name="motivation">
+                                <label class="form-check-label" for="motivation_fight_suicide">
+                                    I want to contribute to suicide prevention efforts.
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="prefer_not_to_say" id="motivation_prefer_not_to_say" name="motivation">
+                                <label class="form-check-label" for="motivation_prefer_not_to_say">
+                                    Prefer not to say
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div id="response_mental_health"></div>
+                        <div id="response_support_mental_health"></div>
+                        <div id="response_fight_suicide"></div>
+                        
+
+                        <div class="mb-4">
+                            <p style="font-weight: bold;">How do you want to start 0K?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_option" id="start_team" value="start_team">
+                                <label class="form-check-label" for="start_team">Start a team</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_option" id="join_team" value="join_team">
+                                <label class="form-check-label" for="join_team">Join a team</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_option" id="participate_solo" value="participate_solo">
+                                <label class="form-check-label" for="participate_solo">Participate Solo</label>
+                            </div>
+                        </div>
+                        
+                        <div id="start_team_question" style="display: none;">
+                            <p>Are you the team captain?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_captain_option" id="team_captain_yes" value="yes">
+                                <label class="form-check-label" for="team_captain_yes">Yes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_captain_option" id="team_captain_no" value="no" checked>
+                                <label class="form-check-label" for="team_captain_no">No</label>
+                            </div>
+                        </div>
+                        
+                        <p id="start_team_name_label" style="display: none; text-align: center; font-weight: bold;">Please type in your Team Name</p>
+                        <input type="text" id="start_team_name_input" style="display: none;" placeholder="Team Name">
+
+
+                        <p id="join_team_message" style="display: none; text-align: center; font-weight: bold;">Let's find your team. What's it called?</p>
+                        <input type="text" id="join_team_name_input" style="display: none; margin: 0 auto; text-align: center;" placeholder="Team Name">
+
+
+                        <div id="solo_response" style="display: none;">
+                            <p>Thanks for joining us! You can always change your mind later if you decide you want to join a team.</p>
+                        </div>
+
+                        <!-- Response message -->
+                        <p id="team_name_response" style="display: none; text-align: center;">Thank you for supporting our cause!</p>
+
+                        <!-- Response message -->
+                        <p id="team_name_response" style="display: none; text-align: center;">Thank you for supporting our cause!</p>
+
+                        <!-- Question about fundraising goal -->
+                        <div id="fundraising_goal_question" style="display: none; text-align: center; margin-bottom: 10px; margin-top: 8px;">
+                            <p style="font-weight: bold;">What's your team's fundraising goal?</p>
+                            <input type="number" id="fundraising_goal_input" placeholder="Enter your fundraising goal">
+                        </div>
+                        
+
+                        
 
                         <!-- Your Contact Information Section -->
                         <h2 class="mb-4">Your Contact Information</h2>
@@ -356,90 +459,128 @@ input[type="text"]:not(:placeholder-shown) + label {
 
 
 <script>
-        // Function to handle the selection of motivation checkboxes
-        function handleMotivationSelection() {
-            const checkboxes = document.querySelectorAll('input[name="motivation"]');
-            checkboxes.forEach(checkbox => {
-                const responseId = "response_" + checkbox.value;
-                const responseSpan = document.getElementById(responseId);
-                if (checkbox.checked) {
-                    switch (checkbox.value) {
-                        case 'mental_health':
-                            responseSpan.innerText = "You're the heart of our 0K Foundation";
-                            break;
-                        case 'support_mental_health':
-                            responseSpan.innerText = "Thank you for your continued support to our cause.";
-                            break;
-                        case 'fight_suicide':
-                            responseSpan.innerText = "Thanks! You're in the right place.";
-                            break;
-                        case 'prefer_not_to_say':
-                            responseSpan.innerText = ""; // Clear response if checkbox is unchecked
-                            break;
-                    }
-                } else {
-                    responseSpan.innerText = ""; // Clear response if checkbox is unchecked
+       // Function to handle the selection of motivation checkboxes
+    function handleMotivationSelection() {
+        const checkboxes = document.querySelectorAll('input[name="motivation"]');
+        checkboxes.forEach(checkbox => {
+            const responseId = "response_" + checkbox.value;
+            const responseSpan = document.getElementById(responseId);
+            if (checkbox.checked) {
+                switch (checkbox.value) {
+                    case 'mental_health':
+                        responseSpan.innerText = "You're the heart of our 0K Foundation";
+                        break;
+                    case 'support_mental_health':
+                        responseSpan.innerText = "Thank you for your continued support to our cause.";
+                        break;
+                    case 'fight_suicide':
+                        responseSpan.innerText = "Thank you! You're in the right place.";
+                        break;
+                    case 'prefer_not_to_say':
+                        responseSpan.innerText = ""; // Clear response if checkbox is unchecked
+                        break;
                 }
-            });
-        }
-    
-       
-    
-        // Add event listeners to checkboxes and radio buttons
-        document.querySelectorAll('input[name="motivation"]').forEach(checkbox => {
-            checkbox.addEventListener('change', handleMotivationSelection);
-        });
-    
-        document.querySelectorAll('input[name="team_option"]').forEach(radio => {
-            radio.addEventListener('change', handleTeamOptionSelection);
-        });
-    
-    
-       function handleTeamOptionSelection() {
-        const startTeamNameInput = document.getElementById('start_team_name_input');
-        const joinTeamNameInput = document.getElementById('join_team_name_input');
-        const soloResponse = document.getElementById('solo_response');
-        const teamOption = document.querySelector('input[name="team_option"]:checked');
-        const startTeamQuestion = document.getElementById('start_team_question');
-
-        if (teamOption) {
-            if (teamOption.value === 'start_team') {
-                startTeamQuestion.style.display = 'block';
-                startTeamNameInput.style.display = 'none';
-                joinTeamNameInput.style.display = 'none';
-                soloResponse.style.display = 'none';
-            } else if (teamOption.value === 'join_team') {
-                startTeamNameInput.style.display = 'none';
-                joinTeamNameInput.style.display = 'block';
-                soloResponse.style.display = 'none';
-                startTeamQuestion.style.display = 'none';
             } else {
-                startTeamNameInput.style.display = 'none';
-                joinTeamNameInput.style.display = 'none';
-                soloResponse.style.display = 'block';
-                startTeamQuestion.style.display = 'none';
+                responseSpan.innerText = ""; // Clear response if checkbox is unchecked
             }
-        }
+        });
     }
 
-    // Add event listener to team option radio buttons
-    document.querySelectorAll('input[name="team_option"]').forEach(radio => {
-        radio.addEventListener('change', handleTeamOptionSelection);
-    });
-
-    // Add event listener to team captain option radio buttons
-    document.querySelectorAll('input[name="team_captain_option"]').forEach(radio => {
-        radio.addEventListener('change', function () {
-            const startTeamNameInput = document.getElementById('start_team_name_input');
-            const teamCaptainYes = document.getElementById('team_captain_yes');
-            if (teamCaptainYes.checked) {
-                startTeamNameInput.style.display = 'block';
-            } else {
-                startTeamNameInput.style.display = 'none';
-            }
-        });
+    // Add event listeners to motivation checkboxes
+    document.querySelectorAll('input[name="motivation"]').forEach(checkbox => {
+        checkbox.addEventListener('change', handleMotivationSelection);
     });
     
+    function handleTeamOptionSelection() {
+    const startTeamNameLabel = document.getElementById('start_team_name_label');
+    const startTeamNameInput = document.getElementById('start_team_name_input');
+    const joinTeamNameInput = document.getElementById('join_team_name_input');
+    const soloResponse = document.getElementById('solo_response');
+    const teamOption = document.querySelector('input[name="team_option"]:checked');
+    const startTeamQuestion = document.getElementById('start_team_question');
+    const teamCaptainOption = document.querySelector('input[name="team_captain_option"]:checked');
+    const joinTeamMessage = document.getElementById('join_team_message');
+
+    if (teamOption) {
+        if (teamOption.value === 'start_team') {
+            startTeamQuestion.style.display = 'block';
+            soloResponse.style.display = 'none';
+            joinTeamMessage.style.display = 'none';
+
+            if (teamCaptainOption && teamCaptainOption.value === 'yes') {
+                startTeamNameLabel.style.display = 'block';
+                startTeamNameInput.style.display = 'block';
+            } else {
+                startTeamNameLabel.style.display = 'none';
+                startTeamNameInput.style.display = 'none';
+            }
+
+            joinTeamNameInput.style.display = 'none';
+        } else if (teamOption.value === 'join_team') {
+            startTeamQuestion.style.display = 'none';
+            startTeamNameLabel.style.display = 'none';
+            startTeamNameInput.style.display = 'none';
+            soloResponse.style.display = 'none';
+
+            if (teamCaptainOption && teamCaptainOption.value === 'yes') {
+                joinTeamNameInput.style.display = 'block';
+                joinTeamMessage.style.display = 'block';
+            } else {
+                joinTeamNameInput.style.display = 'block';
+                joinTeamMessage.style.display = 'none';
+            }
+        } else {
+            startTeamQuestion.style.display = 'none';
+            startTeamNameLabel.style.display = 'none';
+            startTeamNameInput.style.display = 'none';
+            joinTeamNameInput.style.display = 'none';
+            joinTeamMessage.style.display = 'none';
+            soloResponse.style.display = 'block';
+        }
+    }
+}
+
+// Add event listener to team option radio buttons
+document.querySelectorAll('input[name="team_option"]').forEach(radio => {
+    radio.addEventListener('change', handleTeamOptionSelection);
+});
+
+// Add event listener to team captain option radio buttons
+document.querySelectorAll('input[name="team_captain_option"]').forEach(radio => {
+    radio.addEventListener('change', handleTeamOptionSelection);
+});
+
+// Add event listener to "Join a team" radio button
+document.getElementById('join_team').addEventListener('change', function () {
+    const joinTeamMessage = document.getElementById('join_team_message');
+    if (this.checked) {
+        joinTeamMessage.style.display = 'block'; // Show the message for joining a team
+    } else {
+        joinTeamMessage.style.display = 'none'; // Hide the message for joining a team
+    }
+});
+
+
+// Function to handle entering team name
+function handleTeamNameEntered() {
+    // Display response message
+    const responseMessage = document.getElementById('team_name_response');
+    responseMessage.textContent = 'Thank you for supporting our cause!';
+    responseMessage.style.display = 'block';
+
+    // Prompt user with question about fundraising goal
+    const fundraisingGoalQuestion = document.getElementById('fundraising_goal_question');
+    fundraisingGoalQuestion.style.display = 'block';
+
+    // Show fundraising goal input field
+    const fundraisingGoalInput = document.getElementById('fundraising_goal_input');
+    fundraisingGoalInput.style.display = 'block';
+}
+
+// Add event listener to team name input field
+document.getElementById('start_team_name_input').addEventListener('change', handleTeamNameEntered);
+
+
         function handleDonationSelection() {
             const donationOption = document.querySelector('input[name="donation"]:checked');
             if (donationOption && donationOption.value === 'other') {
