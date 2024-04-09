@@ -186,7 +186,7 @@ input[type="text"]:not(:placeholder-shown) + label {
                         <!-- Question about fundraising goal -->
                         <div id="fundraising_goal_question" style="display: none; text-align: center; margin-bottom: 10px; margin-top: 8px;">
                             <p style="font-weight: bold;">What's your team's fundraising goal?</p>
-                            <input type="number" id="fundraising_goal_input" placeholder="Enter your fundraising goal">
+                            <input type="number" id="fundraising_goal" placeholder="Enter your fundraising goal">
                         </div>
                         
 
@@ -490,7 +490,8 @@ input[type="text"]:not(:placeholder-shown) + label {
     document.querySelectorAll('input[name="motivation"]').forEach(checkbox => {
         checkbox.addEventListener('change', handleMotivationSelection);
     });
-    
+  
+    // team FORM 
     function handleTeamOptionSelection() {
     const startTeamNameLabel = document.getElementById('start_team_name_label');
     const startTeamNameInput = document.getElementById('start_team_name_input');
@@ -560,12 +561,11 @@ document.getElementById('join_team').addEventListener('change', function () {
     }
 });
 
-
 // Function to handle entering team name
 function handleTeamNameEntered() {
     // Display response message
     const responseMessage = document.getElementById('team_name_response');
-    responseMessage.textContent = 'Thank you for supporting our cause!';
+    responseMessage.textContent = 'Thank you for entering your team name!';
     responseMessage.style.display = 'block';
 
     // Prompt user with question about fundraising goal
@@ -573,13 +573,14 @@ function handleTeamNameEntered() {
     fundraisingGoalQuestion.style.display = 'block';
 
     // Show fundraising goal input field
-    const fundraisingGoalInput = document.getElementById('fundraising_goal_input');
+    const fundraisingGoalInput = document.getElementById('fundraising_goal');
     fundraisingGoalInput.style.display = 'block';
 }
 
 // Add event listener to team name input field
-document.getElementById('start_team_name_input').addEventListener('change', handleTeamNameEntered);
+document.getElementById('start_team_name_input').addEventListener('input', handleTeamNameEntered);
 
+// end of team form
 
         function handleDonationSelection() {
             const donationOption = document.querySelector('input[name="donation"]:checked');
