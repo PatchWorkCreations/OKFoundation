@@ -210,6 +210,13 @@
         <button class="search-button">Search</button>
     </div>
     
+    {% for team in team_name %}
+    <div class="team-box">
+        <h2>Team Name: {{ team.name }}</h2>
+        <p>Fundraising Goal: ${{ team.fundraising_goal }}</p>
+        <a href="#">Donate to {{ team.name }}</a>
+    </div>
+    {% endfor %}
 </div>
 
 

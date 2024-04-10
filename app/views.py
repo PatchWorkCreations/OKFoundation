@@ -68,7 +68,7 @@ def registration_page(request):
                         state=state,
                         phone_number=phone_number,
                         fundraising_goal=fundraising_goal,
-                        team_name=team_name
+                        team_name=team_name  # Save team_name here
                     )
 
                     subject = 'Successful Registration'
@@ -245,3 +245,8 @@ def blog1(request):
 
 def fundraise(request):
     return render(request, 'fundraise.html')
+
+def fundraising_page(request):
+    registered_teams = Participant.objects.filter(team_name__isnull=False).values_list('team_name', flat=True).distinct()
+    return render(request, 'fundraising.html', {'team_name': registered_teams})
+
