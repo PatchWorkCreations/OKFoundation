@@ -1,4 +1,7 @@
+import decimal
+
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
@@ -7,8 +10,10 @@ from django.contrib import messages
 from django.core.mail import EmailMessage
 from decimal import Decimal
 
+
 def home_page(request):
     return render(request, 'home.html')
+
 
 def login_user(request):
     if request.method == 'POST':
@@ -27,68 +32,98 @@ def login_user(request):
 
     return render(request, 'login.html')
 
+
 def logout_user(request):
     logout(request)
     return redirect('login')
 
+
 def donate_user(request):
     return render(request, 'donate.html')
+
 
 def johnstown_2024_page(request):
     return render(request, 'johnstown2024.html')
 
+
 def registration_page(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            confirm_password = form.cleaned_data['confirm_password']
-            zip_code = form.cleaned_data['zip_code']
-            city = form.cleaned_data['city']
-            state = form.cleaned_data['state']
-            country = form.cleaned_data['country']
-            phone_number = form.cleaned_data['phone_number']
-            fundraising_goal = form.cleaned_data['fundraising_goal']
-            team_name = form.cleaned_data['team_name']
+        # Extract the form data from the request
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        zip_code = request.POST.get('zip_code')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        country = request.POST.get('country')
+        phone_number = request.POST.get('phone_number', '')
 
-            if password == confirm_password:
-                if Participant.objects.filter(username=username).exists():
-                    messages.warning(request, 'Username is already taken. Please choose another.')
-                else:
-                    Participant.objects.create_user(
-                        name=name,
-                        email=email,
-                        username=username,
-                        password=password,
-                        zip_code=zip_code,
-                        city=city,
-                        state=state,
-                        phone_number=phone_number,
-                        fundraising_goal=fundraising_goal,
-                        team_name=team_name  # Save team_name here
-                    )
+        # Motivations
+        motivation_mental_health = 'mental_health' in request.POST.getlist('motivation')
+        motivation_support_mental_health = 'support_mental_health' in request.POST.getlist('motivation')
+        motivation_fight_suicide = 'fight_suicide' in request.POST.getlist('motivation')
 
-                    subject = 'Successful Registration'
-                    content = f' Hello {name}, your registration was successful.'
-                    to_email = email
+        # Team fields
+        team_option = request.POST.get('team_option', '')
+        team_name = request.POST.get('team_name', '')
+        is_team_captain = request.POST.get('team_captain_option', '') == 'yes'
 
-                    email = EmailMessage(subject, content, to=[to_email])
-                    email.send()
+        # Check if username already exists
+        if Participant.objects.filter(username=username).exists():
+            messages.error(request, 'Username already in use. Please choose another one.')
+            return render(request, 'registration.html')
 
-                    messages.success(request, 'Registration successful. You can now log in.')
-                    return redirect('login')
-            else:
-                messages.warning(request, 'Passwords did not match. Please try again.')
-    else:
-        form = RegistrationForm()
+        # Check if passwords match
+        if password != confirm_password:
+            messages.error(request, 'Passwords do not match. Please try again.')
+            return render(request, 'registration.html')
 
-    return render(request, 'registration.html', {'form': form})
+        # Validate fundraising_goal as a decimal number
+        try:
+            fundraising_goal = request.POST.get('fundraising_goal')
+            if fundraising_goal:  # Check if input is not empty
+                fundraising_goal = decimal.Decimal(fundraising_goal)  # Convert to decimal
+        except decimal.InvalidOperation:
+            messages.error(request, 'Fundraising goal must be a decimal number.')
+            return render(request, 'registration.html')
+
+        # Create and save the participant record
+        participant = Participant(
+            username=username,
+            email=email,
+            password=make_password(password),  # Properly hash the password
+            zip_code=zip_code,
+            city=city,
+            state=state,
+            country=country,
+            phone_number=phone_number,
+            motivation_mental_health=motivation_mental_health,
+            motivation_support_mental_health=motivation_support_mental_health,
+            motivation_fight_suicide=motivation_fight_suicide,
+            team_option=team_option,
+            team_name=team_name,
+            is_team_captain=is_team_captain,
+            fundraising_goal=fundraising_goal if fundraising_goal else None,  # Use validated value
+        )
+        participant.save()
+
+        subject = 'Successful Registration'
+        content = f' Hello {username}, your registration was successful.'
+        to_email = email
+
+        email = EmailMessage(subject, content, to=[to_email])
+        email.send()
+
+        messages.success(request, 'Thank you for registering!')
+        return redirect('login')  # Redirect to a new URL
+
+    return render(request, 'registration.html')  # Change 'registration.html' to your template name
+
 
 def dashboard(request):
     return render(request, 'dashboard.html')
+
 
 def update_user(request):
     if request.method == 'POST':
@@ -107,6 +142,7 @@ def update_user(request):
 
         messages.success(request, 'Profile updated successfully.')
         return redirect('dashboard')
+
 
 def update_account_settings(request):
     if request.method == 'POST':
@@ -128,6 +164,7 @@ def update_account_settings(request):
             messages.success(request, 'Password successfully updated.')
             return redirect('logout')
 
+
 def admin_dashboard(request):
     participants = Participant.objects.all()
     participants_count = participants.count() - 1
@@ -142,9 +179,11 @@ def admin_dashboard(request):
                }
     return render(request, 'admin_dashboard.html', context=context)
 
+
 def fetch_user_details(request, pk):
     participant = Participant.objects.get(id=pk)
     return render(request, 'fetch_user_details.html', {'participant': participant})
+
 
 def update_user_detail(request, pk):
     if request.method == 'POST':
@@ -165,13 +204,16 @@ def update_user_detail(request, pk):
         messages.success(request, 'Profile updated successfully.')
         return redirect('admin_dashboard')
 
+
 def delete_user(request, pk):
     participant = Participant.objects.get(id=pk)
     participant.delete()
     return redirect('admin_dashboard')
 
+
 def eventinyourcity(request):
     return render(request, 'eventinyourcity.html')
+
 
 def volunteer(request):
     if request.method == 'POST':
@@ -189,9 +231,11 @@ def volunteer(request):
 
     return render(request, 'volunteer.html')
 
+
 def fetch_volunteer_details(request, pk):
     volunteer = Volunteer.objects.get(id=pk)
     return render(request, 'fetch_volunteer_details.html', {'volunteer': volunteer})
+
 
 def update_volunteer_detail(request, pk):
     if request.method == 'POST':
@@ -208,16 +252,20 @@ def update_volunteer_detail(request, pk):
         messages.success(request, 'Volunteer updated successfully.')
         return redirect('admin_dashboard')
 
+
 def delete_volunteer(request, pk):
     volunteer = Volunteer.objects.get(id=pk)
     volunteer.delete()
     return redirect('admin_dashboard')
 
+
 def engagement(request):
     return render(request, 'engagement.html')
 
+
 def fun(request):
     return render(request, 'fun.html')
+
 
 def Web_Contact_Form_Template(request):
     if request.method == 'POST':
@@ -237,16 +285,20 @@ def Web_Contact_Form_Template(request):
 
     return render(request, 'Web_Contact_Form_Template.html')
 
+
 def homee(request):
     return render(request, 'homee.html')
+
 
 def blog1(request):
     return render(request, 'blog1.html')
 
+
 def fundraise(request):
     return render(request, 'fundraise.html')
 
-def fundraising_page(request):
-    registered_teams = Participant.objects.filter(team_name__isnull=False).values_list('team_name', flat=True).distinct()
-    return render(request, 'fundraising.html', {'team_name': registered_teams})
 
+def fundraising_page(request):
+    registered_teams = Participant.objects.filter(team_name__isnull=False).values_list('team_name',
+                                                                                       flat=True).distinct()
+    return render(request, 'fundraising.html', {'team_name': registered_teams})

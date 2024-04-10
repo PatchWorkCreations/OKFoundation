@@ -84,6 +84,7 @@ input[type="text"]:not(:placeholder-shown) + label {
 
 
 
+
 </style>
 
 <body class="registration-page">
@@ -100,104 +101,137 @@ input[type="text"]:not(:placeholder-shown) + label {
             <div class="col-md-6 offset-md-3">
                 <div class="registration-container">
 
+
+                    {% if messages %}
+                    <div class="container">
+                        {% for message in messages %}
+                        <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-danger{% endif %} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
                     <form method="post" id="registrationForm">    <!-- Form content goes here -->
                         {% csrf_token %}
 
                         <!-- Question 1 -->
                         <div class="mb-4">
-                            <p style="font-weight: bold; margin-bottom: 8px;">We all participate in 0K: The Finish Line Moves for various motivations. What motivates you to join? (Please select all that apply.)</p>
+                            <p style="font-weight: bold; margin-bottom: 8px;">We all participate in 0K: The Finish Line
+                                Moves for various motivations. What motivates you to join? (Please select all that
+                                apply.)</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="mental_health" id="motivation_mental_health" name="motivation">
+                                <input class="form-check-input" type="checkbox" value="mental_health"
+                                       id="motivation_mental_health" name="motivation">
                                 <label class="form-check-label" for="motivation_mental_health">
                                     I'm currently experiencing challenges with my mental well-being.
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="support_mental_health" id="motivation_support_mental_health" name="motivation">
+                                <input class="form-check-input" type="checkbox" value="support_mental_health"
+                                       id="motivation_support_mental_health" name="motivation">
                                 <label class="form-check-label" for="motivation_support_mental_health">
-                                    I know someone who is facing mental health difficulties, or I'm supporting someone through their mental health journey.
+                                    I know someone who is facing mental health difficulties, or I'm supporting someone
+                                    through their mental health journey.
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="fight_suicide" id="motivation_fight_suicide" name="motivation">
+                                <input class="form-check-input" type="checkbox" value="fight_suicide"
+                                       id="motivation_fight_suicide" name="motivation">
                                 <label class="form-check-label" for="motivation_fight_suicide">
                                     I want to contribute to suicide prevention efforts.
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="prefer_not_to_say" id="motivation_prefer_not_to_say" name="motivation">
+                                <input class="form-check-input" type="checkbox" value="prefer_not_to_say"
+                                       id="motivation_prefer_not_to_say" name="motivation">
                                 <label class="form-check-label" for="motivation_prefer_not_to_say">
                                     Prefer not to say
                                 </label>
                             </div>
                         </div>
-                        
+
                         <div id="response_mental_health"></div>
                         <div id="response_support_mental_health"></div>
                         <div id="response_fight_suicide"></div>
-                        
+
 
                         <div class="mb-4">
                             <p style="font-weight: bold;">How do you want to start 0K?</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_option" id="start_team" value="start_team">
+                                <input class="form-check-input" type="radio" name="team_option" id="start_team"
+                                       value="start_team">
                                 <label class="form-check-label" for="start_team">Start a team</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_option" id="join_team" value="join_team">
+                                <input class="form-check-input" type="radio" name="team_option" id="join_team"
+                                       value="join_team">
                                 <label class="form-check-label" for="join_team">Join a team</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_option" id="participate_solo" value="participate_solo">
+                                <input class="form-check-input" type="radio" name="team_option" id="participate_solo"
+                                       value="participate_solo">
                                 <label class="form-check-label" for="participate_solo">Participate Solo</label>
                             </div>
                         </div>
-                        
+
                         <div id="start_team_question" style="display: none;">
                             <p>Are you the team captain?</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_captain_option" id="team_captain_yes" value="yes">
+                                <input class="form-check-input" type="radio" name="team_captain_option"
+                                       id="team_captain_yes" value="yes">
                                 <label class="form-check-label" for="team_captain_yes">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="team_captain_option" id="team_captain_no" value="no" checked>
+                                <input class="form-check-input" type="radio" name="team_captain_option"
+                                       id="team_captain_no" value="no" checked>
                                 <label class="form-check-label" for="team_captain_no">No</label>
                             </div>
                         </div>
-                        
-                        <p id="start_team_name_label" style="display: none; text-align: center; font-weight: bold;">Please type in your Team Name</p>
-                        <input type="text" id="start_team_name_input" name="team_name" style="display: none;" placeholder="Team Name">
+
+                        <p id="start_team_name_label" style="display: none; text-align: center; font-weight: bold;">
+                            Please type in your Team Name</p>
+                        <input type="text" id="start_team_name_input" name="team_name" style="display: none;"
+                               placeholder="Team Name">
 
 
-                        <p id="join_team_message" style="display: none; text-align: center; font-weight: bold;">Let's find your team. What's it called?</p>
-                        <input type="text" id="join_team_name_input" name="team_name" style="display: none; margin: 0 auto; text-align: center;" placeholder="Team Name">
+                        <p id="join_team_message" style="display: none; text-align: center; font-weight: bold;">Let's
+                            find your team. What's it called?</p>
+                        <input type="text" id="join_team_name_input" name="team_name"
+                               style="display: none; margin: 0 auto; text-align: center;" placeholder="Team Name">
 
 
                         <div id="solo_response" style="display: none;">
-                            <p>Thanks for joining us! You can always change your mind later if you decide you want to join a team.</p>
+                            <p>Thanks for joining us! You can always change your mind later if you decide you want to
+                                join a team.</p>
                         </div>
 
                         <!-- Response message -->
-                        <p id="team_name_response" style="display: none; text-align: center;">Thank you for supporting our cause!</p>
+                        <p id="team_name_response" style="display: none; text-align: center;">Thank you for supporting
+                            our cause!</p>
 
                         <!-- Response message -->
-                        <p id="team_name_response" style="display: none; text-align: center;">Thank you for supporting our cause!</p>
+                        <p id="team_name_response" style="display: none; text-align: center;">Thank you for supporting
+                            our cause!</p>
 
                         <!-- Question about fundraising goal -->
-                        <div id="fundraising_goal_question" style="display: none; text-align: center; margin-bottom: 10px; margin-top: 8px;">
+                        <div id="fundraising_goal_question"
+                             style="display: none; text-align: center; margin-bottom: 10px; margin-top: 8px;">
                             <p style="font-weight: bold;">What's your team's fundraising goal?</p>
-                            <input type="number" id="fundraising_goal" name="fundraising_goal" placeholder="Enter your fundraising goal">
+                            <input type="number" id="fundraising_goal" name="fundraising_goal"
+                                   placeholder="Enter your fundraising goal">
                         </div>
-                        
 
-                        
 
                         <!-- Your Contact Information Section -->
                         <h2 class="mb-4">Your Contact Information</h2>
 
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name" required>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" name="name"
+                                   required>
                         </div>
 
                         <div class="mb-3">
@@ -273,7 +307,8 @@ input[type="text"]:not(:placeholder-shown) + label {
                         </div>
                     </form>
                     <div class="row text-center mt-2">
-                        <small>Do you have an account? <a href="{% url 'login' %}" style="color: rgb(0, 89, 232);">Login</a></small>
+                        <small>Do you have an account? <a href="{% url 'login' %}"
+                                                          style="color: rgb(0, 89, 232);">Login</a></small>
                     </div>
                 </div>
             </div>
@@ -614,6 +649,7 @@ document.getElementById('join_team_name_input').addEventListener('input', handle
             disclaimer.style.display = "none";
         }
     }
+
 
 
 
