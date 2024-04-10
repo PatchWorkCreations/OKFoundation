@@ -49,6 +49,7 @@ def johnstown_2024_page(request):
 def registration_page(request):
     if request.method == 'POST':
         # Extract the form data from the request
+        name = request.POST.get('name')
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
@@ -90,6 +91,7 @@ def registration_page(request):
 
         # Create and save the participant record
         participant = Participant(
+            name=name,
             username=username,
             email=email,
             password=make_password(password),  # Properly hash the password
@@ -109,7 +111,7 @@ def registration_page(request):
         participant.save()
 
         subject = 'Successful Registration'
-        content = f' Hello {username}, your registration was successful.'
+        content = f' Hello {name}, your registration was successful.'
         to_email = email
 
         email = EmailMessage(subject, content, to=[to_email])

@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Participant(AbstractUser):
+    name = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=10)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
@@ -20,9 +21,7 @@ class Participant(AbstractUser):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        # Return the participant's full name
-        full_name = f"{self.first_name} {self.last_name}".strip()
-        return full_name if full_name else self.username
+        return self.name
 
 
 class Volunteer(models.Model):
