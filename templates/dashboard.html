@@ -43,6 +43,11 @@
 
 
 
+
+
+
+
+
 </style>
 
 <div class="dashboard-content">
@@ -92,6 +97,14 @@
                                    value="{{ request.user.fundraising_goal }}" id="fundraising_goal"
                                    placeholder="Enter your fundraising goal">
                         </div>
+                        {% if request.user.is_team_captain %}
+                        <div class="mb-3">
+                            <label for="team_name" class="form-label">Team Name</label>
+                            <input type="text" class="form-control" name="team_name"
+                                   value="{{ request.user.team_name }}"
+                                   id="team_name" placeholder="Enter your team name">
+                        </div>
+                        {% endif %}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -131,6 +144,33 @@
                             <input type="password" class="form-control" name="confirm_password" id="confirm_password"
                                    placeholder="Confirm your new password">
                         </div>
+                        {% if request.user.team_option == "participate_solo" %}
+                        <div class="mb-3">
+                            <p>Would you like to join or start a team, or continue participating solo?</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_option" id="participate_solo"
+                                       value="participate_solo" checked>
+                                <label class="form-check-label" for="participate_solo">Participate Solo</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_option" id="join_team"
+                                       value="join_team">
+                                <label class="form-check-label" for="join_team">Join a team</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="team_option" id="start_team"
+                                       value="start_team">
+                                <label class="form-check-label" for="start_team">Start a team</label>
+                            </div>
+
+                            <!-- Input field for team name for joining or starting a team -->
+                            <div class="mb-3" id="team_name_field" style="display: none;">
+                                <label for="team_name" class="form-label">Team Name</label>
+                                <input type="text" class="form-control" name="team_name" id="team_name"
+                                       placeholder="Enter team name">
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -141,16 +181,49 @@
             </div>
         </div>
     </div>
-    <h1>Hi {{ request.user.name }}. {% if request.user.team_name %}Your Team is {{ request.user.team_name }}!{% endif %}</h1>
+    <h1>Hi {{ request.user.name }}.</h1>
+
+    {% if request.user.team_name %}
+    <h2>Your Team is {{ request.user.team_name }}!</h2>
+    {% if request.user.is_team_captain %}
+    <p>You are the captain of your team.</p>
+    {% else %}
+    <p>You are a member of this team.</p>
+    {% endif %}
+    {% else %}
+    <h2>You are participating solo.</h2>
+    {% endif %}
+
     <p>Your Basic Information:</p>
     <ul>
         <li><strong>Name:</strong> {{ request.user.name }}</li>
         <li><strong>Username:</strong> {{ request.user.username }}</li>
         <li><strong>Email:</strong> {{ request.user.email }}</li>
-        <li><strong>Fundraising Goal: $</strong>{{ request.user.fundraising_goal }}</li>
+        {% if request.user.fundraising_goal %}
+        <li><strong>Fundraising Goal:</strong> ${{ request.user.fundraising_goal }}</li>
+        {% else %}
+        <li><strong>Fundraising Goal:</strong> Not set</li>
+        {% endif %}
         <!-- Add more information as needed -->
     </ul>
+
 </div>
 
 {% include 'footer.html' %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Toggle team name input based on team option selection
+    document.querySelectorAll('input[name="team_option"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const teamNameField = document.getElementById('team_name_field');
+            if (this.value === 'join_team' || this.value === 'start_team') {
+                teamNameField.style.display = 'block';
+            } else if (this.value === 'participate_solo') {
+                teamNameField.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

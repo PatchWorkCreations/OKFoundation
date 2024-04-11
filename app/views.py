@@ -151,20 +151,31 @@ def update_account_settings(request):
         username = request.POST.get('username')
         new_password = request.POST.get('new_password')
         confirm_password = request.POST.get('confirm_password')
+        team_option = request.POST.get('team_option', 'participate_solo')  # Default to 'participate_solo'
+        team_name = request.POST.get('team_name', '')  # Get the team name, if provided
 
         user = request.user
 
+        # Update username
         if username and username != user.username:
             user.username = username
-            user.save()
-            messages.success(request, 'Username successfully updated.')
-            return redirect('dashboard')
 
+        # Update password
         if new_password and confirm_password and new_password == confirm_password:
             user.set_password(new_password)
-            user.save()
-            messages.success(request, 'Password successfully updated.')
-            return redirect('logout')
+
+        # Handle team options
+        if team_option == 'start_team' or team_option == 'join_team':
+            user.team_name = team_name
+            user.team_option = team_option
+            # Set the user as a team captain if they chose to start a team
+            user.is_team_captain = team_option == 'start_team'
+
+        user.save()
+
+        messages.success(request, 'Account settings updated successfully.')
+        return redirect('dashboard')
+
 
 
 def admin_dashboard(request):
