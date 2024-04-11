@@ -307,11 +307,19 @@ def blog1(request):
     return render(request, 'blog1.html')
 
 
-def fundraise(request):
-    return render(request, 'fundraise.html')
 
 
 def fundraising_page(request):
     registered_teams = Participant.objects.filter(team_name__isnull=False).values_list('team_name',
                                                                                        flat=True).distinct()
     return render(request, 'fundraising.html', {'team_name': registered_teams})
+
+
+def fundraise(request):
+    # Retrieve all registered teams along with their fundraising goals
+    registered_teams = Participant.objects.filter(team_name__isnull=False).values('team_name', 'fundraising_goal')
+    
+    context = {
+        'registered_teams': registered_teams,
+    }
+    return render(request, 'fundraise.html', context)
