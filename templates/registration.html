@@ -524,7 +524,9 @@ input[type="text"]:not(:placeholder-shown) + label {
         checkbox.addEventListener('change', handleMotivationSelection);
     });
   // team FORM 
-// team FORM 
+  <!-- Add this part at the end of your <script> section -->
+
+// Function to handle team option selection
 function handleTeamOptionSelection() {
     const teamNameLabel = document.getElementById('team_name_label');
     const teamNameInput = document.getElementById('team_name_input');
@@ -538,26 +540,48 @@ function handleTeamOptionSelection() {
 
     if (teamOption) {
         if (teamOption.value === 'start_team' || teamOption.value === 'join_team') {
-            teamNameLabel.style.display = 'block';
-            teamNameInput.style.display = 'block';
+            // If user selects to start or join a team, show the team captain question
+            const startTeamQuestion = document.getElementById('start_team_question');
+            startTeamQuestion.style.display = 'block';
         } else if (teamOption.value === 'participate_solo') {
+            // If user selects to participate solo, show solo response
             soloResponse.style.display = 'block';
         }
     }
 }
 
-// Initialize and add event listeners
+// Initialize and add event listeners for team option selection
 document.addEventListener('DOMContentLoaded', handleTeamOptionSelection);
 document.querySelectorAll('input[name="team_option"]').forEach(radio => {
     radio.addEventListener('change', handleTeamOptionSelection);
 });
 
+// Function to handle team captain option selection
+function handleTeamCaptainSelection() {
+    const teamNameLabel = document.getElementById('team_name_label');
+    const teamNameInput = document.getElementById('team_name_input');
+    const fundraisingGoalQuestion = document.getElementById('fundraising_goal_question');
+    const teamCaptainOption = document.querySelector('input[name="team_captain_option"]:checked');
+
+    if (teamCaptainOption) {
+        if (teamCaptainOption.value === 'yes') {
+            // If user is the team captain, show team name input and fundraising goal question
+            teamNameLabel.style.display = 'block';
+            teamNameInput.style.display = 'block';
+            fundraisingGoalQuestion.style.display = 'block';
+        } else if (teamCaptainOption.value === 'no') {
+            // If user is not the team captain, hide team name input and fundraising goal question
+            teamNameLabel.style.display = 'none';
+            teamNameInput.style.display = 'none';
+            fundraisingGoalQuestion.style.display = 'none';
+        }
+    }
+}
 
 // Add event listener to team captain option radio buttons
 document.querySelectorAll('input[name="team_captain_option"]').forEach(radio => {
-    radio.addEventListener('change', handleTeamOptionSelection);
+    radio.addEventListener('change', handleTeamCaptainSelection);
 });
-
 
 // Function to handle entering team name
 function handleTeamNameEntered() {
@@ -565,23 +589,11 @@ function handleTeamNameEntered() {
     const responseMessage = document.getElementById('team_name_response');
     responseMessage.textContent = 'Thank you for entering your team name!';
     responseMessage.style.display = 'block';
-
-    // Prompt user with question about fundraising goal
-    const fundraisingGoalQuestion = document.getElementById('fundraising_goal_question');
-    fundraisingGoalQuestion.style.display = 'block';
-
-    // Show fundraising goal input field
-    const fundraisingGoalInput = document.getElementById('fundraising_goal');
-    fundraisingGoalInput.style.display = 'block';
 }
 
 // Add event listener to team name input field for starting a team
-document.getElementById('start_team_name_input').addEventListener('input', handleTeamNameEntered);
+document.getElementById('team_name_input').addEventListener('input', handleTeamNameEntered);
 
-// Add event listener to team name input field for joining a team
-document.getElementById('join_team_name_input').addEventListener('input', handleTeamNameEntered);
-
-// end of team form
 
 
         function handleDonationSelection() {
