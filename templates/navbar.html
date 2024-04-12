@@ -32,7 +32,7 @@
 
 <nav class="navbar navbar-expand-lg bg-white sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'home' %}">
             <img src="{% static 'images/Ok Run BG New 02.png' %}" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -73,9 +73,20 @@
                         </li>
                     </ul>
                 </li>
-                
-                <li class="nav-item {% if request.resolver_match.view_name == 'home' and request.resolver_match.kwargs.anchor == 'services' %}active{% endif %}">
-                    <a class="nav-link" href="{% url 'home' %}#services">Join Us</a>
+
+                <li class="nav-item dropdown {% if request.resolver_match.view_name == 'home,login' %}active{% endif %}">
+                    <button id="dropdownNavbarLink" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Join Us
+                    </button>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="dropdownNavbarLink">
+                        <li>
+                            <a class="nav-link" href="{% url 'home' %}#services">Join Us</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item {% if request.resolver_match.view_name == 'web_contact_form_template' %}active{% endif %}">
                     <a class="nav-link" href="{% url 'Web_Contact_Form_Template' %}">Contact</a>

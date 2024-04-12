@@ -1,4 +1,5 @@
 {% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-G8T5gXUyvS4yW0gic5IpMjsl59aKrZ0/67Nwaa/+U8PzRUXAh4zO8K0ZhQk1SZZ7+vgwJlZPLbq1B0qKumf44g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <div class="rectangle-bar">
     <p>Call or text 988 National Suicide Prevention for free and confidential support 24/7</p>
@@ -28,17 +29,25 @@
                     <div class="line"></div>
                     <ul>
                         <li><a href="{% url 'volunteer' %}">Become a Volunteer</a></li>
-                        
+                        <li><a href="{% url 'fundraise' %}">Fundraise</a></li>
+                        <li><a href="https://square.link/u/5g6XQwWE?src=embed">Donate</a></li>
+                        <li><a href="{% url 'registration' %}">Register</a></li>
+                        <li><a href="{% url 'login' %}">Login</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-sm-6">
-                    <h5 class="mb-0 text-white">CONTACT</h5>
+                    <h5 class="mb-0 text-white" style="font-size: 20px;">CONTACT</h5>
                     <div class="line"></div>
                     <ul>
-                        <li>Johnstown, OH</li>
-                        <li style="font-family: 'Inconsolata', monospace;">hello@0kfoundation.org/</li>
+                        <li style="font-size: 20px;"><i class="fas fa-map-marker-alt"></i> Johnstown, OH</li>
+                        <li style="font-family: 'Inconsolata', monospace; font-size: 20px;"><i class="far fa-envelope"></i> hello@0kfoundation.org</li>
+                        <li style="font-family: 'Inconsolata', monospace; font-size: 20px;"><i class="fas fa-globe"></i> 0kfoundation.org</li>
                     </ul>
                 </div>
+                
+
+                
+                
             </div>
         </div>
     </div>
