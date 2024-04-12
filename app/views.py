@@ -323,3 +323,21 @@ def fundraise(request):
         'registered_teams': registered_teams,
     }
     return render(request, 'fundraise.html', context)
+
+
+
+def team_detail(request, team_name):
+    # Retrieve the team captain
+    team_captain = Participant.objects.filter(team_name=team_name, is_team_captain=True).first()
+
+    # Check if the team captain exists and retrieve their fundraising amount
+    if team_captain:
+        team_captain_fundraising_amount = team_captain.fundraising_goal
+    else:
+        team_captain_fundraising_amount = None
+
+    # Retrieve other participants with the same team_name
+    participants = Participant.objects.filter(team_name=team_name)
+
+    # Pass the participants and team captain's fundraising amount to the template
+    return render(request, 'team_detail.html', {'participants': participants, 'team_name': team_name, 'team_captain_fundraising_amount': team_captain_fundraising_amount})

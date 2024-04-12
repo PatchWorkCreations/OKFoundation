@@ -168,7 +168,7 @@
 }
 
 .team-box {
-    width: 200px; /* Set a fixed width */
+    width: 210px; /* Set a fixed width */
     height: 300px;
     background-color: #f0f0f0;
     margin: 10px;
@@ -177,8 +177,12 @@
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     border: 1px solid black; /* Border color and thickness */
     color: black; /* Font color */
+    
 }
 
+.one-line {
+    white-space: nowrap;
+}
 
 /* Add some shadows to create a card effect */
 @media only screen and (min-width: 768px) {         
@@ -200,7 +204,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 headerr">
-                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">The 0K Foundation</h1>
+                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">{{ team_name }}</h1>
                 <h1 class="text-white mt-3 mb-4" data-aos="fade-left">It's Going To Be 0K</h1>
                 <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
                 </div>
@@ -228,13 +232,29 @@
     </a>
 </div>
 
+<div class="team-container">
+    {% if participants %}
+        {% for participant in participants %}
+            <div class="team-box">
+                <h3 class="one-line">{{ participant.name }}</h3>
+                <p>Fundraising Goal: ${{ participant.fundraising_goal }}</p>
+                <!-- Add other participant information here -->
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No participants found for this team.</p>
+    {% endif %}
+</div>
+
+
 <div class="container">
-    <h1 style="margin-top: 10px; margin-bottom: 2px;">Fundraise Goal</h1>
+    <h1 style="margin-top: 10px; margin-bottom: 2px;">{{ team_name }} Fundraise Goal</h1>
     <div class="goal-container" style="margin-top: 2px;">
         <div class="goal-bar">
             <div class="goal-progress"></div>
         </div>
-        <div class="goal-amount">$600 raised of $20,000 goal</div>
+        <div class="goal-amount">{{ team_name }} raised ${{ total_raised }} of ${{ fundraising_goal }} goal</div>
+
     </div>
 </div>
 
@@ -244,47 +264,24 @@
 
 </div>
 
-<div class="helpateam">
-    <h1>Help a fundraiser team below!</h1>
-    <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search...">
-        <button class="search-button">Search</button>
-    </div>
-
-    <div class="team-container">
-        {% for team in registered_teams %}
-        <a href="{% url 'team_detail' team.team_name %}" class="team-box">
-            <h2>{{ team.team_name }}</h2>
-            <p>Fundraising Goal: ${{ team.fundraising_goal }}</p>
-            <!-- Add more information as needed -->
-        </a>
-        {% endfor %}
-    </div>
-    
-    
-    
-    
-</div>
-
-
 <script>
-   
-    // JavaScript to update the width of the progress bar based on current progress
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get the progress bar element
-        var progressBar = document.querySelector(".goal-progress");
-        
-        // Set the current progress (you can replace this with actual progress data)
-        var currentProgress = 600; // $600 raised
-        var goalAmount = 20000; // $1000 goal
-        
-        // Calculate the width percentage based on current progress and goal amount
-        var widthPercentage = (currentProgress / goalAmount) * 100;
-        
-        // Update the width of the progress bar
-        progressBar.style.width = widthPercentage + "%";
-    });
-</script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Get the progress bar element
+    var progressBar = document.querySelector(".goal-progress");
+
+    // Set the actual progress and goal amount obtained from Django template variables
+    var currentProgress = {{ current_progress }};
+    var goalAmount = {{ fundraising_goal }};
+
+    // Calculate the width percentage based on current progress and goal amount
+    var widthPercentage = (currentProgress / goalAmount) * 100;
+
+    // Ensure widthPercentage is within the range [0, 100]
+    widthPercentage = Math.min(Math.max(widthPercentage, 0), 100);
+
+    // Update the width of the progress bar
+    progressBar.style.width = widthPercentage + "%";
+});
 </script>
 {% include 'footer.html' %}
 {% endblock %}
