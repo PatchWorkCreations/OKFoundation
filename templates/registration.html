@@ -86,6 +86,12 @@ input[type="text"]:not(:placeholder-shown) + label {
 
 
 
+
+
+
+
+
+
 </style>
 
 <body class="registration-page">
@@ -194,11 +200,23 @@ input[type="text"]:not(:placeholder-shown) + label {
                         </div>
 
                         <!-- Single team name input field for both starting and joining a team -->
-                        <p id="team_name_label" style="display: none; text-align: center; font-weight: bold;">
-                            Please type in your Team Name
-                        </p>
-                        <input type="text" id="team_name_input" name="team_name" style="display: none;"
-                               placeholder="Team Name">
+                        <div id="team_name" style="display: none;">
+                            <p style="text-align: center; font-weight: bold;">
+                                Please type in your Team Name
+                            </p>
+                            <input type="text" id="team_name_input" name="new_team_name" placeholder="Team Name">
+                        </div>
+
+                        <div id="choose_team_name" style="display: none;">
+                            <p style="text-align: center; font-weight: bold;">
+                                Choose your Team Name
+                            </p>
+                            <select name="existing_team_name" class="form-select">
+                                {% for team_name in unique_team_names %}
+                                <option value="{{ team_name }}">{{ team_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
 
 
                         <div id="solo_response" style="display: none;">
@@ -528,24 +546,31 @@ input[type="text"]:not(:placeholder-shown) + label {
 
 // Function to handle team option selection
 function handleTeamOptionSelection() {
-    const teamNameLabel = document.getElementById('team_name_label');
-    const teamNameInput = document.getElementById('team_name_input');
+    const startTeamQuestion = document.getElementById('start_team_question');
+    const teamName = document.getElementById('team_name');
+    const chooseTeamName = document.getElementById('choose_team_name');
     const soloResponse = document.getElementById('solo_response');
     const teamOption = document.querySelector('input[name="team_option"]:checked');
 
-    // Reset display states
-    teamNameLabel.style.display = 'none';
-    teamNameInput.style.display = 'none';
+    // Hide all initially
+    startTeamQuestion.style.display = 'none';
+    teamName.style.display = 'none';
+    chooseTeamName.style.display = 'none';
     soloResponse.style.display = 'none';
 
     if (teamOption) {
-        if (teamOption.value === 'start_team' || teamOption.value === 'join_team') {
-            // If user selects to start or join a team, show the team captain question
-            const startTeamQuestion = document.getElementById('start_team_question');
-            startTeamQuestion.style.display = 'block';
-        } else if (teamOption.value === 'participate_solo') {
-            // If user selects to participate solo, show solo response
-            soloResponse.style.display = 'block';
+        switch (teamOption.value) {
+            case 'start_team':
+                startTeamQuestion.style.display = 'block';
+                teamName.style.display = 'block';
+                break;
+            case 'join_team':
+                // 'start_team_question' is not shown if 'Join a Team' is selected
+                chooseTeamName.style.display = 'block';
+                break;
+            case 'participate_solo':
+                soloResponse.style.display = 'block';
+                break;
         }
     }
 }
@@ -555,6 +580,8 @@ document.addEventListener('DOMContentLoaded', handleTeamOptionSelection);
 document.querySelectorAll('input[name="team_option"]').forEach(radio => {
     radio.addEventListener('change', handleTeamOptionSelection);
 });
+
+
 
 // Function to handle team captain option selection
 function handleTeamCaptainSelection() {
@@ -621,6 +648,12 @@ document.getElementById('team_name_input').addEventListener('input', handleTeamN
             disclaimer.style.display = "none";
         }
     }
+
+
+
+
+
+
 
 
 

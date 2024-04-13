@@ -2,6 +2,7 @@ import decimal
 
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
+from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
@@ -47,6 +48,11 @@ def johnstown_2024_page(request):
 
 
 def registration_page(request):
+    participants = Participant.objects.all()
+    # Generate a set of unique, non-empty team names
+    unique_team_names = {participant.team_name for participant in participants if
+                         participant.team_name and participant.team_name.strip()}
+
     if request.method == 'POST':
         # Extract the form data from the request
         name = request.POST.get('name')
@@ -66,9 +72,14 @@ def registration_page(request):
         motivation_fight_suicide = 'fight_suicide' in request.POST.getlist('motivation')
 
         # Team fields
-        team_option = request.POST.get('team_option', '')
-        team_name = request.POST.get('team_name', '')
         is_team_captain = request.POST.get('team_captain_option', '') == 'yes'
+        team_option = request.POST.get('team_option', '')
+        if team_option == 'start_team':
+            team_name = request.POST.get('new_team_name', '')
+        elif team_option == 'join_team':
+            team_name = request.POST.get('existing_team_name', '')
+        else:
+            team_name = None  # No team name for solo participants
 
         # Check if username already exists
         if Participant.objects.filter(username=username).exists():
@@ -120,7 +131,7 @@ def registration_page(request):
         messages.success(request, 'Thank you for registering!')
         return redirect('login')  # Redirect to a new URL
 
-    return render(request, 'registration.html')  # Change 'registration.html' to your template name
+    return render(request, 'registration.html', {'unique_team_names': unique_team_names})
 
 
 def dashboard(request):
@@ -175,7 +186,6 @@ def update_account_settings(request):
 
         messages.success(request, 'Account settings updated successfully.')
         return redirect('dashboard')
-
 
 
 def admin_dashboard(request):
@@ -307,8 +317,6 @@ def blog1(request):
     return render(request, 'blog1.html')
 
 
-
-
 def fundraising_page(request):
     registered_teams = Participant.objects.filter(team_name__isnull=False).values_list('team_name',
                                                                                        flat=True).distinct()
@@ -318,26 +326,18 @@ def fundraising_page(request):
 def fundraise(request):
     # Retrieve all registered teams along with their fundraising goals
     registered_teams = Participant.objects.filter(team_name__isnull=False).values('team_name', 'fundraising_goal')
-    
+
     context = {
         'registered_teams': registered_teams,
     }
     return render(request, 'fundraise.html', context)
 
 
-
 def team_detail(request, team_name):
     # Retrieve the team captain
-    team_captain = Participant.objects.filter(team_name=team_name, is_team_captain=True).first()
+    team_name_list = Participant.objects.filter(team_name=team_name)
+    total_fundraising_goal = team_name_list.aggregate(total_goal=Sum('fundraising_goal'))['total_goal']
 
-    # Check if the team captain exists and retrieve their fundraising amount
-    if team_captain:
-        team_captain_fundraising_amount = team_captain.fundraising_goal
-    else:
-        team_captain_fundraising_amount = None
-
-    # Retrieve other participants with the same team_name
-    participants = Participant.objects.filter(team_name=team_name)
 
     # Pass the participants and team captain's fundraising amount to the template
-    return render(request, 'team_detail.html', {'participants': participants, 'team_name': team_name, 'team_captain_fundraising_amount': team_captain_fundraising_amount})
+    return render(request, 'team_detail.html', {'team_name_list': team_name_list, 'team_name': team_name, 'total_fundraising_goal': total_fundraising_goal})

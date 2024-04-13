@@ -196,6 +196,10 @@
     }               
 }
 
+
+
+
+
 </style>
 
 {% include 'navbar.html' %}
@@ -204,7 +208,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 headerr">
-                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">{{ team_name }}</h1>
+                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1"
+                    style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">{{ team_name }}</h1>
                 <h1 class="text-white mt-3 mb-4" data-aos="fade-left">It's Going To Be 0K</h1>
                 <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
                 </div>
@@ -232,19 +237,32 @@
     </a>
 </div>
 
+<h3 class="text-center">{{ team_name }}</h3>
+
+
+{% if team_name_list %}
+{% for team_name in team_name_list %}
+{% if team_name.is_team_captain %}
 <div class="team-container">
-    {% if participants %}
-        {% for participant in participants %}
-            <div class="team-box">
-                <h3 class="one-line">{{ participant.name }}</h3>
-                <p>Fundraising Goal: ${{ participant.fundraising_goal }}</p>
-                <!-- Add other participant information here -->
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No participants found for this team.</p>
-    {% endif %}
+    <div class="team-box">
+        <h2>Team Captain</h2>
+        <h3 class="one-line">{{ team_name.name }}</h3>
+        <!-- Add other participant information here -->
+    </div>
 </div>
+{% endif %}
+{% endfor %}
+{% else %}
+<p>No participants found for this team.</p>
+{% endif %}
+
+<h2>Members</h2>
+
+{% for team_name in team_name_list %}
+{% if not team_name.is_team_captain %}
+<p class="text-center">{{ team_name.name }}</p>
+{% endif %}
+{% endfor %}
 
 
 <div class="container">
@@ -253,14 +271,18 @@
         <div class="goal-bar">
             <div class="goal-progress"></div>
         </div>
-        <div class="goal-amount">{{ team_name }} raised ${{ total_raised }} of ${{ fundraising_goal }} goal</div>
+        <div class="goal-amount">{{ team_name }} raised ${{ total_fundraising_goal }} goal</div>
 
     </div>
 </div>
 
 <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="my-custom-containerr">
     <h2>Taking Action: Combatting Johnstown's Suicide Crisis</h2>
-    <p>Every year in Johnstown, Ohio, the suicide rate remains a pressing concern, with 15 per 100,000 individuals succumbing to preventable deaths. This rate is significantly higher than the national average, emphasizing the urgent need for action and support within our community. Join us for 0K: The Finish Line Moves in Johnstown, Ohio, where we're tackling the local suicide crisis head-on. We're raising funds to aid those who've lost loved ones or are struggling. Let's unite to prevent further tragedies. Together, we can ALL be Life-Savers.</p>
+    <p>Every year in Johnstown, Ohio, the suicide rate remains a pressing concern, with 15 per 100,000 individuals
+        succumbing to preventable deaths. This rate is significantly higher than the national average, emphasizing the
+        urgent need for action and support within our community. Join us for 0K: The Finish Line Moves in Johnstown,
+        Ohio, where we're tackling the local suicide crisis head-on. We're raising funds to aid those who've lost loved
+        ones or are struggling. Let's unite to prevent further tragedies. Together, we can ALL be Life-Savers.</p>
 
 </div>
 
@@ -282,6 +304,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Update the width of the progress bar
     progressBar.style.width = widthPercentage + "%";
 });
+
+
+
+
 </script>
 {% include 'footer.html' %}
 {% endblock %}
