@@ -250,20 +250,26 @@
         <!-- Add other participant information here -->
     </div>
 </div>
+
 {% endif %}
 {% endfor %}
 {% else %}
 <p>No participants found for this team.</p>
 {% endif %}
 
-<h2>Members</h2>
-
-{% for team_name in team_name_list %}
-{% if not team_name.is_team_captain %}
-<p class="text-center">{{ team_name.name }}</p>
-{% endif %}
-{% endfor %}
-
+<div>
+    <h2>Members</h2>
+<div class="team-container">
+    
+    {% for team_name in team_name_list %}
+        {% if not team_name.is_team_captain %}
+    <div class="team-box">
+        <p class="text-center">{{ team_name.name }}</p>
+    </div>
+    {% endif %}
+        {% endfor %}
+</div>
+</div>
 
 <div class="container">
     <h1 style="margin-top: 10px; margin-bottom: 2px;">{{ team_name }} Fundraise Goal</h1>
