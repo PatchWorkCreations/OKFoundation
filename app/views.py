@@ -325,7 +325,8 @@ def fundraising_page(request):
 
 def fundraise(request):
     # Retrieve all registered teams along with their fundraising goals
-    registered_teams = Participant.objects.filter(team_name__isnull=False).values('team_name', 'fundraising_goal')
+    registered_teams = Participant.objects.exclude(team_name__isnull=True).exclude(team_name='').values('team_name',
+                                                                                                        'fundraising_goal').distinct()
 
     context = {
         'registered_teams': registered_teams,
@@ -338,6 +339,6 @@ def team_detail(request, team_name):
     team_name_list = Participant.objects.filter(team_name=team_name)
     total_fundraising_goal = team_name_list.aggregate(total_goal=Sum('fundraising_goal'))['total_goal']
 
-
     # Pass the participants and team captain's fundraising amount to the template
-    return render(request, 'team_detail.html', {'team_name_list': team_name_list, 'team_name': team_name, 'total_fundraising_goal': total_fundraising_goal})
+    return render(request, 'team_detail.html', {'team_name_list': team_name_list, 'team_name': team_name,
+                                                'total_fundraising_goal': total_fundraising_goal})

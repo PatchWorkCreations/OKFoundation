@@ -34,6 +34,6 @@ urlpatterns = [
     path('homee', homee, name='homee'),
     path('blog1', blog1, name='blog1'),
     path('fundraise', fundraise, name='fundraise'),
-   path('team/<str:team_name>/', team_detail, name='team_detail'),
+    path('team/<str:team_name>/', team_detail, name='team_detail'),
 
 ]
