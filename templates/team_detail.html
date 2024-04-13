@@ -265,7 +265,10 @@
     <div class="team-box">
         <h3 class="text-center">{{ team_name.name }}</h3>
     </div>
+    {% else %}
+    <h3 class="text-center">{{ team_name.name }}</h3>
     {% endif %}
+
         {% endfor %}
 </div>
 </div>

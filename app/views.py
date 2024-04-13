@@ -325,8 +325,9 @@ def fundraising_page(request):
 
 def fundraise(request):
     # Retrieve all registered teams along with their fundraising goals
-    registered_teams = Participant.objects.exclude(team_name__isnull=True).exclude(team_name='').values('team_name',
-                                                                                                        'fundraising_goal').distinct()
+    registered_teams = Participant.objects.exclude(team_name__isnull=True).exclude(team_name='').exclude(
+        fundraising_goal__isnull=True).values('team_name',
+                                      'fundraising_goal').distinct()
 
     context = {
         'registered_teams': registered_teams,
