@@ -22,9 +22,10 @@
 
 /* Navbar Brand */
 .navbar-brand img {
-    height: auto; /* Ensure logo scales properly */
-    max-height: 40px; /* Set maximum height for the logo */
+    height: 40px; /* Increase the height */
+    width: 130px; /* Let the width adjust automatically based on the height */
 }
+
 
 /* Navbar Toggler Icon */
 .navbar-toggler {
