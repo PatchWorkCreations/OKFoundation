@@ -22,8 +22,8 @@
 
 /* Navbar Brand */
 .navbar-brand img {
-    height: 40px; /* Increase the height */
-    width: 130px; /* Let the width adjust automatically based on the height */
+    height: auto; /* Increase the height */
+    width: 40px; /* Let the width adjust automatically based on the height */
 }
 
 
