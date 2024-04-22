@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+{% include 'navbar.html' %}
+
+
+<img src="{% static 'images/brucewood.jpg' %}" alt="Your Photo" class="img-fluid">
+
+{% include 'footer.html' %}
+{% endblock %}
