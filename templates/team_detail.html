@@ -59,6 +59,8 @@
         margin-top: 30px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         margin-bottom: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .goal-bar {
@@ -197,6 +199,29 @@
 }
 
 
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+    .container-rectangle {
+        flex-direction: column; /* Stack rectangles vertically on small screens */
+    }
+
+    .my-custom-containerr,
+    .search-container,
+    .helpateam,
+    .team-box {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .search-input {
+        width: 100%; /* Make the search input full-width */
+        max-width: 300px; /* Limit the maximum width */
+    }
+
+    .team-box {
+        width: calc(50% - 20px); /* Two columns layout for teams */
+    }
+}
+
 
 
 
@@ -210,7 +235,7 @@
             <div class="col-12 headerr">
                 <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1"
                     style="text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">{{ team_name }}</h1>
-                <h1 class="text-white mt-3 mb-4" data-aos="fade-left">It's Going To Be 0K</h1>
+                <h1 class="text-white mt-3 mb-4" data-aos="fade-left">It's Going To Be 0K!</h1>
                 <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
                 </div>
             </div>
@@ -237,52 +262,51 @@
     </a>
 </div>
 
-<h3 class="text-center">{{ team_name }}</h3>
+<h1 style="text-align: center;">Team Captain of {{team_name}}</h1>
+
+    <!-- Team Captain Container -->
+    <div class="team-container">
+        {% if team_captain %}
+            <div class="team-box">
+                <h2>{{ team_captain.name }}</h2>
+                <p>Team Captain</p>
+                <!-- Add other team captain information here -->
+            </div>
+        {% endif %}
+    </div>
 
 
-{% if team_name_list %}
-{% for team_name in team_name_list %}
-{% if team_name.is_team_captain %}
-<div class="team-container">
-    <div class="team-box">
-        <h2>Team Captain</h2>
-        <h3 class="one-line">{{ team_name.name }}</h3>
-        <!-- Add other participant information here -->
+<h1 style="text-align: center;">Members</h1>
+<div class=""team-container">
+    <!-- Team Members Container -->
+    <div class="team-container">
+        {% if participants %}
+            {% for participant in participants %}
+                {% if not participant.is_team_captain %}
+                    <div class="team-box">
+                        <h3>{{ participant.name }}</h3>
+                        <!-- Add other participant information here -->
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>No participants found for this team.</p>
+        {% endif %}
+    </div>
+</div>    
+
+
+<!-- JavaScript logic for the progress bar -->
+
+<div class="goal-container">
+    <div class="goal-bar">
+        <div class="goal-progress" style="width: {{ captain_fundraising_progress_percentage }}%;"></div>
+    </div>
+    <div class="goal-amount">
+        {{team_name}} raised  ${{ captain_fundraising_progress }} of ${{ captain_fundraising_goal }}
     </div>
 </div>
 
-{% endif %}
-{% endfor %}
-{% else %}
-<p>No participants found for this team.</p>
-{% endif %}
-
-<div>
-    <h2>Members</h2>
-<div class="team-container">
-    {% for team_name in team_name_list %}
-        {% if not team_name.is_team_captain %}
-    <div class="team-box">
-        <h3 class="text-center">{{ team_name.name }}</h3>
-    </div>
-    {% else %}
-    <h3 class="text-center">{{ team_name.name }}</h3>
-    {% endif %}
-
-        {% endfor %}
-</div>
-</div>
-
-<div class="container">
-    <h1 style="margin-top: 10px; margin-bottom: 2px;">{{ team_name }} Fundraise Goal</h1>
-    <div class="goal-container" style="margin-top: 2px;">
-        <div class="goal-bar">
-            <div class="goal-progress"></div>
-        </div>
-        <div class="goal-amount">{{ team_name }} raised ${{ total_fundraising_goal }} goal</div>
-
-    </div>
-</div>
 
 <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="my-custom-containerr">
     <h2>Taking Action: Combatting Johnstown's Suicide Crisis</h2>
@@ -296,24 +320,22 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Get the progress bar element
-    var progressBar = document.querySelector(".goal-progress");
+        // Get the progress bar element
+        var progressBar = document.querySelector(".goal-progress");
 
-    // Set the actual progress and goal amount obtained from Django template variables
-    var currentProgress = {{ current_progress }};
-    var goalAmount = {{ fundraising_goal }};
+        // Set the actual progress and goal amount obtained from Django template variables
+        var currentProgress = {{ captain_fundraising_progress }};
+        var goalAmount = {{ captain_fundraising_goal }};
 
-    // Calculate the width percentage based on current progress and goal amount
-    var widthPercentage = (currentProgress / goalAmount) * 100;
+        // Calculate the width percentage based on current progress and goal amount
+        var widthPercentage = (currentProgress / goalAmount) * 100;
 
-    // Ensure widthPercentage is within the range [0, 100]
-    widthPercentage = Math.min(Math.max(widthPercentage, 0), 100);
+        // Ensure widthPercentage is within the range [0, 100]
+        widthPercentage = Math.min(Math.max(widthPercentage, 0), 100);
 
-    // Update the width of the progress bar
-    progressBar.style.width = widthPercentage + "%";
-});
-
-
+        // Update the width of the progress bar
+        progressBar.style.width = widthPercentage + "%";
+    });
 
 
 </script>

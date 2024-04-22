@@ -114,8 +114,14 @@ img {
     font-size: 18px; /* Adjust font size as needed */
 }
 
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust margin as needed */
+    margin: 0 10px;
+}
 
-/* Dropdown menu */
+Dropdown menu */
 .dropdown {
     position: relative;
   }
@@ -167,7 +173,7 @@ img {
 }
 
 
-/* HERO */
+
 /* HERO */
 #hero {
     background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('../images/0k image new.png');
@@ -179,35 +185,11 @@ img {
     height: 100vh; /* Adjust the height as needed */
 }
 
-.hero-content {
-    text-align: center;
-    color: #fff;
-    margin-top: 180px; /* Adjust the margin-top value to move it lower */
-}
-
-.hero-title {
-    margin-bottom: 20px;
-}
 
 .hero-buttons {
-    margin-top: 20px; /* Add margin to the top of the buttons */
+    margin-top: 8px; /* Add margin to the top of the buttons */
 }
 
-.hero-content h1 {
-    margin-top: 20px; /* Add margin to the top of the h1 elements */
-}
-
-.hero-title {
-    margin-bottom: 20px;
-}
-
-.hero-content .hero-title-lower {
-    margin-top: 80px; /* Add margin to the top of the specific h1 element */
-}
-
-.hero-title {
-    margin-bottom: 20px;
-}
 
 
 /* SECTION TITLE */
@@ -913,6 +895,11 @@ main {
     display: inline-block; /* Ensure button behaves like a block element */
     border-radius: 5px; /* Rounded corners */
 }
+
+.buttons-container a + a {
+    margin-left: 10px;
+}
+
 
 /* Adjust shadow on hover */
 .engage-button:hover {

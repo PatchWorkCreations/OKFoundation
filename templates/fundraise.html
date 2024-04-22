@@ -180,17 +180,29 @@
 }
 
 
-/* Add some shadows to create a card effect */
-@media only screen and (min-width: 768px) {         
-    .team-box {     
-        transition: all 0.3s ease-in-out;      
-    }                                    
-    
-    .team-box:hover {  
-        transform: translateY(-10px);                        
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);                         
-    }               
+/* Media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+    .container-rectangle {
+        flex-direction: column; /* Stack rectangles vertically on small screens */
+    }
+
+    .my-custom-containerr,
+    .search-container,
+    .helpateam,
+    .team-box {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+
+    .search-input {
+        width: 100%; /* Make the search input full-width */
+        max-width: 300px; /* Limit the maximum width */
+    }
+
+    .team-box {
+        width: calc(50% - 20px); /* Two columns layout for teams */
+    }
 }
+
 
 </style>
 
