@@ -20,11 +20,6 @@
     z-index: 1000; /* Ensure navbar appears above other content */
 }
 
-/* Navbar Brand */
-.navbar-brand img {
-    height: auto; /* Increase the height */
-    width: 40px; /* Let the width adjust automatically based on the height */
-}
 
 
 /* Navbar Toggler Icon */
