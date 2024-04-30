@@ -48,6 +48,8 @@
 
 
 
+
+
 </style>
 
 <div class="dashboard-content">
@@ -204,8 +206,20 @@
         {% else %}
         <li><strong>Fundraising Goal:</strong> Not set</li>
         {% endif %}
-        <!-- Add more information as needed -->
+        <br>
+        {% if team_members %}
+        <li><strong>Team Members:</strong>
+            <ul>
+                {% for member in team_members %}
+                <li>{{ member.name }} ({{ member.email }})</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% else %}
+        <li>No team members found, or you are not the team captain.</li>
+        {% endif %}
     </ul>
+
 
 </div>
 
@@ -225,5 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
 </script>
 {% endblock %}

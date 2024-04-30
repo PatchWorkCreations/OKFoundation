@@ -136,7 +136,17 @@ def registration_page(request):
 
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    # Check if the user is a team captain
+    if request.user.is_team_captain:
+        # Get all members of the user's team
+        team_members = Participant.objects.filter(team_name=request.user.team_name).exclude(id=request.user.id)
+    else:
+        team_members = []
+
+    context = {
+        'team_members': team_members,
+    }
+    return render(request, 'dashboard.html', context)
 
 
 def update_user(request):
