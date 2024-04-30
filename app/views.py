@@ -236,13 +236,17 @@ def update_user_detail(request, pk):
         participant.save()
 
         messages.success(request, 'Profile updated successfully.')
-        return redirect('admin_dashboard')
+        return redirect('dashboard')
 
 
 def delete_user(request, pk):
     participant = Participant.objects.get(id=pk)
     participant.delete()
-    return redirect('admin_dashboard')
+    referring_url = request.META.get('HTTP_REFERER', '')
+    if 'dashboard' in referring_url:
+            return redirect('dashboard')
+    else:
+            return redirect('admin_dashboard')
 
 
 def eventinyourcity(request):

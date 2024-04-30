@@ -207,18 +207,32 @@
         <li><strong>Fundraising Goal:</strong> Not set</li>
         {% endif %}
         <br>
-        {% if team_members %}
-        <li><strong>Team Members:</strong>
-            <ul>
-                {% for member in team_members %}
-                <li>{{ member.name }} ({{ member.email }})</li>
-                {% endfor %}
-            </ul>
-        </li>
-        {% else %}
-        <li>No team members found, or you are not the team captain.</li>
-        {% endif %}
     </ul>
+    {% if team_members %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in team_members %}
+            <tr>
+                <td>{{ member.name }}</td>
+                <td>{{ member.email }}</td>
+                <td>
+                    <a href="{% url 'fetch_user_details' member.id %}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{% url 'delete_user' member.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No team members found, or you are not the team captain.</p>
+{% endif %}
 
 
 </div>
