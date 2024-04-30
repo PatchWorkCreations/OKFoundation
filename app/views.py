@@ -10,6 +10,7 @@ from .forms import RegistrationForm  # Import the RegistrationForm
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from decimal import Decimal
+from django.db.models import Sum
 
 
 def home_page(request):
@@ -324,10 +325,10 @@ def fundraising_page(request):
 
 
 def fundraise(request):
-    # Retrieve all registered teams along with their fundraising goals
+    # Retrieve all registered teams along with their total fundraising goals
     registered_teams = Participant.objects.exclude(team_name__isnull=True).exclude(team_name='').exclude(
-        fundraising_goal__isnull=True).values('team_name',
-                                              'fundraising_goal').distinct()
+        fundraising_goal__isnull=True).values('team_name').annotate(
+        total_fundraising_goal=Sum('fundraising_goal')).order_by('team_name')
 
     context = {
         'registered_teams': registered_teams,

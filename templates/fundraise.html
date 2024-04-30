@@ -267,11 +267,12 @@
         {% for team in registered_teams %}
         <a href="{% url 'team_detail' team.team_name %}" class="team-box">
             <h2>{{ team.team_name }}</h2>
-            <p>Fundraising Goal: ${{ team.fundraising_goal }}</p>
+            <p>Fundraising Goal: ${{ team.total_fundraising_goal }}</p>
             <!-- Add more information as needed -->
         </a>
         {% endfor %}
     </div>
+
     
     
     
