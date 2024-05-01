@@ -11,6 +11,9 @@ from django.contrib import messages
 from django.core.mail import EmailMessage
 from decimal import Decimal
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
+
+
 
 
 def home_page(request):
@@ -370,3 +373,35 @@ def team_detail(request, team_name):
 
 def test(request):
     return render(request, 'test.html')
+
+from .forms import AddMemberForm
+@login_required
+def add_member(request):
+    if request.method == 'POST':
+        form = AddMemberForm(request.POST)
+        if form.is_valid():
+            # Retrieve form data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            username = form.cleaned_data['username']
+            
+            # Set team name as the team captain's team
+            team_name = request.user.team_name
+            
+            # Create new member
+            member = Participant(
+                name=name,
+                email=email,
+                username=username,
+                team_name=team_name,
+                is_team_captain=False,  # Ensure added member is not marked as team captain
+            )
+            member.save()
+            
+            messages.success(request, 'Member added successfully.')
+            return redirect('dashboard')
+        else:
+            messages.error(request, 'Failed to add member. Please check the form.')
+    else:
+        form = AddMemberForm()
+    return render(request, 'dashboard.html', {'form': form})

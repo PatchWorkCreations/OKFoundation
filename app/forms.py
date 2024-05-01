@@ -1,4 +1,5 @@
 from django import forms
+from .models import Participant
 
 class RegistrationForm(forms.Form):
     name = forms.CharField(max_length=100)
@@ -13,3 +14,8 @@ class RegistrationForm(forms.Form):
     phone_number = forms.CharField(max_length=20, required=False)
     fundraising_goal = forms.DecimalField(max_digits=10, decimal_places=2)
     team_name = forms.CharField(max_length=100)
+
+class AddMemberForm(forms.ModelForm):
+    class Meta:
+        model = Participant
+        fields = ['name', 'email', 'username']  # Add 'username' field here

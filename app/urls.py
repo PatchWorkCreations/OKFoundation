@@ -36,5 +36,7 @@ urlpatterns = [
     path('fundraise', fundraise, name='fundraise'),
     path('team/<str:team_name>/', team_detail, name='team_detail'),
     path('test', test, name='test'),
+    path('add_member/', add_member, name='add_member'),
+
 
 ]

@@ -39,22 +39,16 @@
     font-weight: bold;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 </style>
 
 <div class="dashboard-content">
     <!-- Button trigger modal -->
     <div class="d-flex justify-content-end gap-2 mb-2">
+        {% if request.user.is_team_captain %}
+        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addMemberModal">
+            Add member
+        </button>
+        {% endif %}
         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editProfile">
             Edit Profile
         </button>
@@ -62,6 +56,39 @@
             Change Account Settings
         </button>
     </div>
+
+    <div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMemberModalLabel">Add Member</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addMemberForm" method="post">
+                        {% csrf_token %}
+                        <!-- Form fields for adding a member -->
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Member</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
 
     <!-- Modal for Edit Profile -->
     <div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
@@ -255,6 +282,61 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const addMemberForm = document.getElementById("addMemberForm");
+
+    addMemberForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(addMemberForm);
+
+        fetch("{% url 'add_member' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCookie("csrftoken") // Function to get CSRF token from cookies
+            },
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Member added successfully.");
+            }
+        })
+        .then(data => {
+            console.log(data); // Log response data
+            // Optionally handle success message or UI update here
+            // For example, close modal, show success message, or redirect
+            $('#addMemberModal').modal('hide');
+            // Reload page or update UI as needed
+            location.reload();
+        })
+        .catch(error => {
+            console.error(error); // Log any errors
+            // Optionally handle error message or UI update here
+            // For example, display error message to user
+            alert("Failed to add member. Please try again.");
+        });
+    });
+
+    // Function to get CSRF token from cookies
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+            const cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === name + "=") {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
 
 </script>
 {% endblock %}
