@@ -245,11 +245,14 @@ def update_user_detail(request, pk):
 def delete_user(request, pk):
     participant = Participant.objects.get(id=pk)
     participant.delete()
-    referring_url = request.META.get('HTTP_REFERER', '')
-    if 'dashboard' in referring_url:
-            return redirect('dashboard')
+
+    # Check if the current user is an admin or a team captain
+    if request.user.is_superuser:
+        # Admin is deleting, redirect to admin dashboard
+        return redirect('admin_dashboard')
     else:
-            return redirect('admin_dashboard')
+        # Team captain is deleting, redirect to dashboard
+        return redirect('dashboard')
 
 
 def eventinyourcity(request):
@@ -399,7 +402,7 @@ def add_member(request):
             member.save()
             
             messages.success(request, 'Member added successfully.')
-            return redirect('dashboard')
+            form = AddMemberForm()  # Clear the form
         else:
             messages.error(request, 'Failed to add member. Please check the form.')
     else:
