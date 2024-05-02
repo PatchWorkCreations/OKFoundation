@@ -153,12 +153,18 @@ def dashboard(request):
 
 
 def update_user(request):
-    if request.method == 'POST':
+    def update_user(request):
+   
+     if request.method == 'POST':
         name = request.POST.get('name')
         username = request.POST.get('username')
         email = request.POST.get('email')
         fundraising_goal = request.POST.get('fundraising_goal')
         team_name = request.POST.get('team_name')
+
+        # Set fundraising_goal to 0 if it's None
+        if fundraising_goal is None:
+            fundraising_goal = 0
 
         request.user.name = name
         request.user.username = username
@@ -169,8 +175,7 @@ def update_user(request):
 
         messages.success(request, 'Profile updated successfully.')
         return redirect('dashboard')
-
-
+ 
 def update_account_settings(request):
     if request.method == 'POST':
         username = request.POST.get('username')

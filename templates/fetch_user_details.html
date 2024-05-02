@@ -37,13 +37,15 @@
             <div class="mb-3">
                 <label for="fundraising_goal" class="form-label">Fundraising Goal</label>
                 <input type="number" class="form-control" name="fundraising_goal"
-                       value="{{ participant.fundraising_goal }}" id="fundraising_goal"
-                       placeholder="Enter your fundraising goal">
+                    value="{% if participant.fundraising_goal %}{{ participant.fundraising_goal }}{% else %}0{% endif %}"
+                    id="fundraising_goal"
+                    placeholder="Enter your fundraising goal">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Save changes</button>
     </form>
 </div>
+
 
 {% include 'footer.html' %}
 {% endblock %}
