@@ -63,16 +63,10 @@
 .fundraise-section {
     background-color: #13293d; /* Dark blue background */
     color: #fff; /* White text color */
-    padding: 50px 0;
+   
 }
 
-.receiver-photo img {
-    width: 400px; /* Adjust size as needed */
-    height: 300px;
-    border-radius: 5%; /* Creates a circular border for the photo */
-    margin-bottom: 20px;
-    border: 5px solid #fff; /* White border around the photo */
-}
+
 
 .receiver-details h2 {
     font-size: 32px; /* Larger heading size */
@@ -90,21 +84,51 @@
     line-height: 1.6;
 }
 
-.donate-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ff9800; /* Orange button color */
-    color: #fff;
+
+
+.video-container {
+            max-width: 600px; /* Adjust the maximum width as needed */
+            margin: 0 auto; /* Center the container horizontally */
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .video-container video {
+            width: 100%;
+            height: auto;
+        }
+
+
+        #tribute-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 55px;
+    border: 1px solid #ccc;
+    background-color: #13293d;
+  }
+
+  #tribute-container .left-column {
+    flex: 1;
+    padding-right: 50px;
+  }
+
+  #tribute-container .right-column {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  #tribute-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: rgb(255, 255, 255);
+  }
+
+  #tribute-subheader {
     font-size: 18px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.donate-button:hover {
-    background-color: #f57c00; /* Darker orange on hover */
-}
-
+    margin-bottom: 20px;
+    color: rgb(255, 251, 251);
+  }
 
 </style>
 
@@ -187,19 +211,26 @@
 </div>
 
 
-<section class="fundraise-section">
-    <div class="row mission-section" data-aos="fade-up" style="padding-left: 80px;">
-        <div class="col-md-6">
-            <h2 style="font-weight: bold; color: white; padding-bottom: 5px;">The Bruce WOD | A workout to generate funds to help veterans find healing.</h2>
-            <p style="font-size: 18px; margin-bottom: 20px;">We believe healing can be found in exercise both mentally and physically. This workout is a tool to generate funds to help veterans. Please help support this cause and if you are a veteran in need of a healthy outlet contact us today.</p>
-            <a href="https://thebrucewod.com/" class="btn btn-primary" style="padding-bottom: 5px;">Learn More</a>
-        </div>
-        <div class="col-md-6">
-            <img src="{% static 'images/brucewood.jpg' %}" alt="Bruce Wod" style="max-width: 70%; height: 100%; margin-top: 10px;">
-            
-        </div>      
+
+
+<div id="tribute-container">
+    <div class="left-column" data-aos="fade-left" data-aos-delay="50">
+      <div class="video-container">
+        <video controls>
+            <!-- Include the path to your video file -->
+            <source src="{% static 'images/BRUCE WOD.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
-</section>
+  
+    <div class="right-column">
+        <h2 style="font-weight: bold; color: white; padding-bottom: 5px;">The Bruce WOD | A workout to generate funds to help veterans find healing.</h2>
+        <p style="font-size: 18px; margin-bottom: 20px; color: white;">We believe healing can be found in exercise both mentally and physically. This workout is a tool to generate funds to help veterans. Please help support this cause and if you are a veteran in need of a healthy outlet contact us today.</p>
+        <a href="https://thebrucewod.com/" class="btn btn-primary" style="padding-bottom: 5px;">Learn More</a>
+    </div>
+    
+  </div>
 
 
 
