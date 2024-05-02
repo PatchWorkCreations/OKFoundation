@@ -402,7 +402,7 @@ def add_member(request):
             member.save()
             
             messages.success(request, 'Member added successfully.')
-            form = AddMemberForm()  # Clear the form
+            return redirect('dashboard')  # Redirect to the dashboard after successful form submission
         else:
             messages.error(request, 'Failed to add member. Please check the form.')
     else:

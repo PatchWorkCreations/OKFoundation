@@ -70,7 +70,7 @@
                         <!-- Form fields for adding a member -->
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                            <input type="text" class="form-control" id="member_name" name="name" placeholder="Enter name">
                         </div>
                         <div class="mb-3">
                             <label for="username" class="form-label">Username</label>
@@ -78,7 +78,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                            <input type="email" class="form-control" id="member_email" name="email" placeholder="Enter email">
                         </div>
                         <button type="submit" class="btn btn-primary">Add Member</button>
                     </form>
@@ -282,47 +282,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const addMemberForm = document.getElementById("addMemberForm");
-
-    addMemberForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const formData = new FormData(addMemberForm);
-        const name = formData.get("name");
-        const email = formData.get("email");
-        const newUsername = formData.get("new_username"); // Update the selector here
-
-        fetch("{% url 'add_member' %}", {
-            method: "POST",
-            headers: {
-                "X-CSRFToken": "{{ csrf_token }}"
-            },
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Failed to add member.");
-            }
-        })
-        .then(data => {
-            console.log(data); // Log response data
-            // Optionally handle success message or UI update here
-            // For example, close modal, show success message, or redirect
-            $('#addMemberModal').modal('hide');
-            // Reload page or update UI as needed
-            location.reload();
-        })
-        .catch(error => {
-            console.error(error); // Log any errors
-            // Optionally handle error message or UI update here
-            // For example, display error message to user
-            alert("Failed to add member. Please try again.");
-        });
-    });
-});
 
 
 </script>
