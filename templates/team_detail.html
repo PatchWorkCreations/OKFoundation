@@ -171,7 +171,7 @@
 
 .team-box {
     width: 210px; /* Set a fixed width */
-    height: 300px;
+    height: 140px;
     background-color: #f0f0f0;
     margin: 10px;
     padding: 20px;
@@ -181,6 +181,7 @@
     color: black; /* Font color */
     
 }
+
 
 .one-line {
     white-space: nowrap;
@@ -269,13 +270,12 @@
         {% if team_captain %}
             <div class="team-box">
                 <h2>{{ team_captain.name }}</h2>
-                <p>Team Captain</p>
                 <!-- Add other team captain information here -->
             </div>
         {% endif %}
     </div>
 
-
+<br>
 <h1 style="text-align: center;">Members</h1>
 <div class=""team-container">
     <!-- Team Members Container -->
@@ -284,7 +284,7 @@
             {% for participant in participants %}
                 {% if not participant.is_team_captain %}
                     <div class="team-box">
-                        <h3>{{ participant.name }}</h3>
+                        <h3 style="text-align: center;">{{ participant.name }}</h3>
                         <!-- Add other participant information here -->
                     </div>
                 {% endif %}
