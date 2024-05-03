@@ -666,9 +666,16 @@
 
 
   const countdownn = () => {
-    const countToDate = new Date('May 18, 2024 09:00:00').getTime();
-    const now = new Date().getTime();
-    const difference = countToDate - now;
+    // Create a new Date object using UTC time, then set it to EST
+    const now = new Date();
+    const estOffset = -5 * 60 * 60 * 1000; // Offset for EST timezone (-5 hours)
+    const estNow = new Date(now.getTime() + estOffset);
+
+    // Set the countdown date to May 18, 2024 09:00:00 EST
+    const countToDate = new Date('May 18, 2024 09:00:00 EST').getTime();
+
+    // Calculate the time difference
+    const difference = countToDate - estNow.getTime();
 
     const seconds = 1000;
     const minutes = seconds * 60;
@@ -685,6 +692,9 @@
     document.getElementById('minutes-number').innerText = timeMinutes;
     document.getElementById('seconds-number').innerText = timeSeconds;
 };
+
+// Call the countdown function every second
+setInterval(countdownn, 1000);
 
 
   setInterval(countdownn, 1000);

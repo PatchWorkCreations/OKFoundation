@@ -246,7 +246,7 @@
         <div class="goal-bar">
             <div class="goal-progress"></div>
         </div>
-        <div class="goal-amount">$600 raised of $20,000 goal</div>
+        <div class="goal-amount">$700 raised of $20,000 goal</div>
     </div>
 </div>
 
@@ -258,10 +258,6 @@
 
 <div class="helpateam">
     <h1>Help a fundraiser team below!</h1>
-    <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search...">
-        <button class="search-button">Search</button>
-    </div>
 
     <div class="team-container">
         {% for team in registered_teams %}
@@ -297,6 +293,8 @@
         // Update the width of the progress bar
         progressBar.style.width = widthPercentage + "%";
     });
+
+    
 </script>
 </script>
 {% include 'footer.html' %}
