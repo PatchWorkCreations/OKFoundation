@@ -12,8 +12,21 @@ from django.core.mail import EmailMessage
 from decimal import Decimal
 from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
+import csv
+from django.http import HttpResponse
 
+def generate_csv(request):
+    participants = Participant.objects.all()  # Assuming Participant is your model name
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="participants.csv"'
 
+    writer = csv.writer(response)
+    writer.writerow(['Name', 'Email', 'Date Registered', 'Team Name', 'Fundraising Goal'])
+
+    for participant in participants:
+        writer.writerow([participant.name, participant.email, participant.created, participant.team_name, participant.fundraising_goal])
+
+    return response
 
 
 def home_page(request):
@@ -351,15 +364,22 @@ def fundraising_page(request):
 
 def fundraise(request):
     # Retrieve all registered teams along with their total fundraising goals
-    registered_teams = Participant.objects.exclude(team_name__isnull=True).exclude(team_name='').exclude(
-        fundraising_goal__isnull=True).values('team_name').annotate(
+    registered_teams = Participant.objects.exclude(team_name__in=[None, '']).values('team_name').annotate(
         total_fundraising_goal=Sum('fundraising_goal')).order_by('team_name')
+
+    # Retrieve solo participants or participants without a team
+    solo_participants = Participant.objects.filter(
+    team_name__isnull=True,
+    fundraising_goal__isnull=False
+    ).values('name')
+
 
     context = {
         'registered_teams': registered_teams,
+        'solo_participants': solo_participants,
     }
+    print(registered_teams)
     return render(request, 'fundraise.html', context)
-
 
 def team_detail(request, team_name):
     # Retrieve all participants for the team

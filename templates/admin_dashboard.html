@@ -4,7 +4,7 @@
 {% include 'navbar.html' %}
 
 <div class="container my-3">
-
+    <a href="{% url 'generate_csv' %}" class="btn btn-primary">Download CSV</a>
     <div class="card text-bg-primary" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">User Total: {{ participants_count }}</h5>
