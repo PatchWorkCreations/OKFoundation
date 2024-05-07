@@ -442,3 +442,30 @@ def add_member(request):
     else:
         form = AddMemberForm()
     return render(request, 'dashboard.html', {'form': form})
+
+from django.http import HttpResponse
+from .models import Participant, Donation
+from .forms import DonationForm
+
+
+def edit_donation(request, username):
+    try:
+        participant = Participant.objects.get(username=username)
+    except Participant.DoesNotExist:
+        return HttpResponse("Participant not found", status=404)
+
+    # Try to retrieve the participant's donation if it exists
+    donation = participant.donation
+
+    # If the participant doesn't have a donation yet, create a new one
+    if not donation:
+        donation = Donation(participant=participant)
+
+    if request.method == 'POST':
+        form = DonationForm(request.POST, instance=donation)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_dashboard')
+    else:
+        form = DonationForm(instance=donation)
+    return render(request, 'edit_donation.html', {'form': form})

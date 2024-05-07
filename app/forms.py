@@ -19,3 +19,11 @@ class AddMemberForm(forms.ModelForm):
     class Meta:
         model = Participant
         fields = ['name', 'email', 'username']  # Add 'username' field here
+
+
+from .models import Donation
+
+class DonationForm(forms.ModelForm):
+    class Meta:
+        model = Donation
+        fields = ['amount']  # Adjust the fields as per your Donation model

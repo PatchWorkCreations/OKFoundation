@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import *
 from django.contrib.auth import views as auth_views
+from . import views
 
 urlpatterns = [
     path('', home_page, name='home'),
@@ -38,5 +39,8 @@ urlpatterns = [
     path('test', test, name='test'),
     path('add_member/', add_member, name='add_member'),
     path('generate_csv/', generate_csv, name='generate_csv'),
+    path('edit_donation/<str:username>/', views.edit_donation, name='edit_donation'),
+
+
 
 ]

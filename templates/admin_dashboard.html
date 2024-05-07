@@ -2,6 +2,9 @@
 {% block content %}
 
 {% include 'navbar.html' %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 <div class="container my-3">
     <a href="{% url 'generate_csv' %}" class="btn btn-primary">Download CSV</a>
@@ -19,6 +22,7 @@
             <th scope="col">Team Name</th>
             <th scope="col">Fundraising Goal</th>
             <th scope="col"><a href="?sort_by=team_option">Team Option</a></th>
+            <th scope="col">Donation Amount</th> <!-- Add this line -->
             <th scope="col">Action</th>
             
         </tr>
@@ -34,12 +38,15 @@
             
             <td>{{ participant.fundraising_goal }}</td>
             <td>{{ participant.team_option }}</td> 
+            <td>{{ participant.donation.amount }}</td> <!-- Add this line -->
             
             
-            <td>
-                <a href="{% url 'fetch_user_details' participant.id %}" class="btn btn-sm btn-primary">Edit</a>
-                <a href="{% url 'delete_user' participant.id %}" class="btn btn-sm btn-danger">Delete</a>
-            </td>
+                <td>
+                    <a href="{% url 'fetch_user_details' participant.id %}" class="btn btn-sm btn-primary">Edit</a>
+                    <a href="{% url 'delete_user' participant.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editDonationModal{{ participant.username }}">Edit</button>
+                </td>
+            
         </tr>
         {% endif %}
         {% endfor %}
@@ -76,6 +83,34 @@
         </tbody>
     </table>
 </div>
+
+{% for participant in participants %}
+    {% if not participant.is_superuser %}
+        <div class="modal fade" id="editDonationModal{{ participant.username }}" tabindex="-1" role="dialog" aria-labelledby="editDonationModalLabel{{ participant.username }}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editDonationModalLabel{{ participant.username }}">Edit Donation for {{ participant.name }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="{% url 'edit_donation' participant.username %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="donation_amount">Amount:</label>
+                                <input type="text" id="donation_amount" name="amount" class="form-control" placeholder="Enter donation amount" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
 
 {% include 'footer.html' %}
 {% endblock %}
