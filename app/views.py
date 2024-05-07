@@ -14,6 +14,8 @@ from django.db.models import Sum
 from django.contrib.auth.decorators import login_required
 import csv
 from django.http import HttpResponse
+from django.db.models import Q
+
 
 def generate_csv(request):
     participants = Participant.objects.all()  # Assuming Participant is your model name
@@ -369,16 +371,15 @@ def fundraise(request):
 
     # Retrieve solo participants or participants without a team
     solo_participants = Participant.objects.filter(
-    team_name__isnull=True,
-    fundraising_goal__isnull=False
-    ).values('name')
-
+        Q(team_option='participating solo') | Q(team_name__isnull=True),
+        fundraising_goal__isnull=False
+    ).values('name', 'fundraising_goal')
 
     context = {
         'registered_teams': registered_teams,
         'solo_participants': solo_participants,
     }
-    print(registered_teams)
+
     return render(request, 'fundraise.html', context)
 
 def team_detail(request, team_name):
