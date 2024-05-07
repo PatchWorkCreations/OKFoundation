@@ -287,19 +287,16 @@
 </div>
 
 <div class="helpateam">
-<h2>Solo Participants</h2>
-<div class="team-container">
-    
-    
+    <h2>Solo Participants</h2>
+    <div class="team-container">
         {% for participant in solo_participants %}
         <div class="team-box">
             <h1 style="text-align: center;">{{ participant.name }}</h1>
-            <p style="text-align: center;">Fundraising Goal: ${{ participant.fundraising_goal }}</p>
         </div>
         {% endfor %}
-    
+    </div>
 </div>
-</div>
+
 
 <script>
    

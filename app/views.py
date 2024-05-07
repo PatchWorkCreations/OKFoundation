@@ -229,11 +229,19 @@ def admin_dashboard(request):
     volunteers = Volunteer.objects.all()
     volunteers_count = volunteers.count() - 1
 
-    context = {'participants': participants,
-               'participants_count': participants_count,
-               'volunteers': volunteers,
-               'volunteers_count': volunteers_count,
-               }
+    # Check if the sort_by query parameter exists in the request
+    sort_by = request.GET.get('sort_by')
+
+    # Sort participants by team option if the query parameter exists
+    if sort_by == 'team_option':
+        participants = participants.order_by('team_option')
+
+    context = {
+        'participants': participants,
+        'participants_count': participants_count,
+        'volunteers': volunteers,
+        'volunteers_count': volunteers_count,
+    }
     return render(request, 'admin_dashboard.html', context=context)
 
 
@@ -369,9 +377,9 @@ def fundraise(request):
     registered_teams = Participant.objects.exclude(team_name__in=[None, '']).values('team_name').annotate(
         total_fundraising_goal=Sum('fundraising_goal')).order_by('team_name')
 
-    # Retrieve solo participants or participants without a team
+    # Retrieve solo participants or participants with team_option set to "participating solo"
     solo_participants = Participant.objects.filter(
-        Q(team_option='participating solo') | Q(team_name__isnull=True),
+        Q(team_option='participating solo') | Q(team_option='participate_solo') | Q(team_name__isnull=True),
         fundraising_goal__isnull=False
     ).values('name', 'fundraising_goal')
 

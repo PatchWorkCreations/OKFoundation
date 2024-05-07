@@ -18,7 +18,9 @@
             <th scope="col">Date Registered</th>
             <th scope="col">Team Name</th>
             <th scope="col">Fundraising Goal</th>
+            <th scope="col"><a href="?sort_by=team_option">Team Option</a></th>
             <th scope="col">Action</th>
+            
         </tr>
         </thead>
         <tbody>
@@ -29,7 +31,9 @@
             <td>{{ participant.email }}</td>
             <td>{{ participant.created }}</td>
             <td>{{ participant.team_name }}</td>
+            
             <td>{{ participant.fundraising_goal }}</td>
+            <td>{{ participant.team_option }}</td> 
             
             
             <td>
