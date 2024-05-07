@@ -169,7 +169,7 @@
 
 .team-box {
     width: 220px; /* Set a fixed width */
-    height: 200px;
+    height: 255px;
     background-color: #f0f0f0;
     margin: 10px; /* Add margin to create space between team boxes */
     padding: 20px 0; /* Remove padding and adjust top and bottom padding as needed */
@@ -307,11 +307,14 @@
 
     <div class="team-container">
         {% for team in registered_teams %}
-        <div class="team-box">
+        <div href="{% url 'team_detail' team.team_name %}" class="team-box">
+            
             <h2>{{ team.team_name }}</h2>
             <p>Fundraising Goal: ${{ team.total_fundraising_goal }}</p>
             <!-- Add more information as needed -->
+            <p>Click here to learn more about <a href="{% url 'team_detail' team.team_name %}"> {{ team.team_name }} </a></p>
             <a target="_blank" data-url="https://square.link/u/5g6XQwWE?src=embd" href="https://square.link/u/5g6XQwWE?src=embed" class="btn btn-info ms-lg-3 button_donate">Support {{ team.team_name }}</a>
+            
         </div>
         {% endfor %}
     </div>
