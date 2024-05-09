@@ -448,22 +448,23 @@ from .models import Participant, Donation
 from .forms import DonationForm
 
 
+from .models import Participant, Donation
 def edit_donation(request, username):
     try:
         participant = Participant.objects.get(username=username)
+        donation = participant.donation_set.first()  # Access donations associated with the participant
     except Participant.DoesNotExist:
         return HttpResponse("Participant not found", status=404)
-
-    # Try to retrieve the participant's donation if it exists
-    donation = participant.donation
-
-    # If the participant doesn't have a donation yet, create a new one
-    if not donation:
-        donation = Donation(participant=participant)
+    except Donation.DoesNotExist:
+        donation = None  # If donation doesn't exist, set it to None
 
     if request.method == 'POST':
         form = DonationForm(request.POST, instance=donation)
         if form.is_valid():
+            # Set the participant for the donation if it's a new donation
+            if donation is None:
+                donation = form.save(commit=False)
+                donation.participant = participant
             form.save()
             return redirect('admin_dashboard')
     else:

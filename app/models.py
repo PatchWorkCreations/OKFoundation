@@ -19,6 +19,8 @@ class Participant(AbstractUser):
     is_team_captain = models.BooleanField(default=False)
     fundraising_goal = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
+    donation_amount = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    donation_date = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return self.name

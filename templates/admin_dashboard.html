@@ -38,9 +38,13 @@
             
             <td>{{ participant.fundraising_goal }}</td>
             <td>{{ participant.team_option }}</td> 
-            <td>{{ participant.donation.amount }}</td> <!-- Add this line -->
-            
-            
+            <td>
+                {% if participant.donation %}
+                    {{ participant.donation.amount }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </td>
                 <td>
                     <a href="{% url 'fetch_user_details' participant.id %}" class="btn btn-sm btn-primary">Edit</a>
                     <a href="{% url 'delete_user' participant.id %}" class="btn btn-sm btn-danger">Delete</a>
