@@ -4,6 +4,9 @@
 
 {% include 'navbar.html' %}
 
+<!-- JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 <style>
     form {
         max-width: 600px;
@@ -28,7 +31,7 @@
     }
 
     button[type="submit"] {
-        background-color: #4CAF50;
+        background-color: #5c1d94;
         color: white;
         padding: 10px 20px;
         border: none;
@@ -37,27 +40,35 @@
     }
 
     button[type="submit"]:hover {
-        background-color: #45a049;
+        background-color: #a554c8;
     }
 
     #sponsorship-details {
         margin-top: 20px;
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid #000000;
         border-radius: 5px;
     }
+
+    #sponsorship-details p.price {
+    font-weight: bold;
+    color: #8716d9; /* Choose your desired color */
+}
+
+
 </style>
+
 <div class="sponsor-box" style="padding: 15px;">
-<form id="sponsorship-form" method="post">
+    <form action="{% url 'sponsors' %}/" method="post">
     {% csrf_token %}
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
+    <input type="text" id="name" name="name" placeholder="Full Name" required>
     <br>
     <label for="company">Company:</label>
     <input type="text" id="company" name="company" value="NA">
     <br>
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" placeholder="your email or company email">
     <br>
     <label for="website">Website Link:</label>
     <input type="url" id="website" name="website" placeholder="Optional">
@@ -72,10 +83,64 @@
     </select>
     <div id="sponsorship-details"></div>
     <br>
+    <button type="button" id="donate-button" class="btn btn-primary" data-toggle="modal" data-target="#donationModal">Contribute Now</button>
+
     <button type="submit">Submit</button>
 </form>
 </div>
 
+<!-- Modal -->
+<div class="modal" id="donationModal" tabindex="-1" role="dialog" aria-labelledby="donationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="donationModalLabel">Make a sponsorship contribution</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div style="
+                    overflow: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: center;
+                    width: 259px;
+                    background: #FFFFFF;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    box-shadow: -2px 10px 5px rgba(0, 0, 0, 0);
+                    border-radius: 10px;
+                    font-family: Roboto, SQ Market, Helvetica, Arial, sans-serif;
+                    ">
+                        <div style="padding: 20px;">
+                            
+                            <a id="donateButton" href="#" data-url="(https://square.link/u/3xMgZeq7)" style="
+                                display: inline-block;
+                                font-size: 18px;
+                                line-height: 48px;
+                                height: 48px;
+                                color: #ffffff;
+                                min-width: 212px;
+                                background-color: #8716d9;
+                                text-align: center;
+                                box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
+                                border-radius: 6px;
+                            ">Click here to contribute</a>
+                        </div>
+                        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
 <script>
@@ -98,13 +163,13 @@
                 sponsorshipDetails.innerHTML = `
                     <p>Name or logo prominently featured on event website for 2 months</p>
                     <p>Exclusive Bronze sponsorship certificate</p>
-                    <p>Price: $250</p>`;
+                    <p class="price">Price: $250</p>`;
                 break;
             case 'silver':
                 sponsorshipDetails.innerHTML = `
                     <p>Name or logo prominently featured on event website for 3 months</p>
                     <p>Exclusive Silver sponsorship certificate</p>
-                    <p>Price: $500</p>`;
+                    <p class="price">Price: $500</p>`;
                 break;
             case 'gold':
                 sponsorshipDetails.innerHTML = `
@@ -112,7 +177,7 @@
                     <p>Exclusive Gold sponsorship certificate</p>
                     <p>Feature in press releases</p>
                     <p>Backlink to drive traffic to your website; stays for 6 months after event</p>
-                    <p>Price: $750</p>`;
+                    <p class="price">Price: $750</p>`;
                 break;
             case 'platinum':
                 sponsorshipDetails.innerHTML = `
@@ -120,21 +185,65 @@
                     <p>Exclusive Platinum sponsorship certificate</p>
                     <p>Your very own article featured on our website</p>
                     <p>Backlink to drive traffic to your website; stays for 12 months after event</p>
-                    <p>Price: $1000</p>`;
+                    <p class="price">Price: $1000</p>`;
                 break;
             case 'titanium':
                 sponsorshipDetails.innerHTML = `
                     <p>All Platinum benefits</p>
                     <p>Exclusive Titanium sponsorship certificate</p>
                     <p>Your pictures will be featured on our website as a key supporter of suicide prevention</p>
-                    <p>Price: $1500</p>`;
+                    <p class="price">Price: $1500</p>`;
                 break;
             default:
                 sponsorshipDetails.innerHTML = '<p>Please select a sponsorship level</p>';
         }
     });
 
+    function showDonationModal() {
+            $('#donationModal').modal('show');
+        }
+
+        // Event listener for the donate button
+        $('#donate-button').on('click', function(event) {
+            // Show the donation modal
+            showDonationModal();
+        });
+    
+        function showCheckoutWindow(e) {
+        e.preventDefault();
+
+        const url = "https://square.link/u/3xMgZeq7";
+        const title = 'Square Payment Links';
+
+        // Some platforms embed in an iframe, so we want to top window to calculate sizes correctly
+        const topWindow = window.top ? window.top : window;
+
+        // Fixes dual-screen position                                Most browsers          Firefox
+        const dualScreenLeft = topWindow.screenLeft !== undefined ? topWindow.screenLeft : topWindow.screenX;
+        const dualScreenTop = topWindow.screenTop !== undefined ? topWindow.screenTop : topWindow.screenY;
+
+        const width = topWindow.innerWidth ? topWindow.innerWidth : document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width;
+        const height = topWindow.innerHeight ? topWindow.innerHeight : document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height;
+
+        const h = height * .75;
+        const w = 500;
+
+        const systemZoom = width / topWindow.screen.availWidth;
+        const left = (width - w) / 2 / systemZoom + dualScreenLeft;
+        const top = (height - h) / 2 / systemZoom + dualScreenTop;
+        const newWindow = window.open(url, title, `scrollbars=yes, width=${w / systemZoom}, height=${h / systemZoom}, top=${top}, left=${left}`);
+
+        if (window.focus) newWindow.focus();
+    }
+
+    // This overrides the default checkout button click handler to show the embed modal
+    // instead of opening a new tab with the given link url
+    document.getElementById('donateButton').addEventListener('click', function (e) {
+        showCheckoutWindow(e);
+    });
+
 </script>
+
 
 {% include 'footer.html' %}
 {% endblock %}

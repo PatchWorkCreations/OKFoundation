@@ -36,11 +36,11 @@ urlpatterns = [
     path('blog1', blog1, name='blog1'),
     path('fundraise', fundraise, name='fundraise'),
     path('team/<str:team_name>/', team_detail, name='team_detail'),
-    path('sponsors', sponsors, name='sponsors'),
+    path('sponsors/', sponsorship_form, name='sponsors'),
     path('add_member/', add_member, name='add_member'),
     path('generate_csv/', generate_csv, name='generate_csv'),
     path('edit_donation/<str:username>/', views.edit_donation, name='edit_donation'),
-
+    
 
 
 ]
