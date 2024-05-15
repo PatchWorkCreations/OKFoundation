@@ -408,8 +408,8 @@ def team_detail(request, team_name):
 
 
 
-def test(request):
-    return render(request, 'test.html')
+def sponsors(request):
+    return render(request, 'sponsors.html')
 
 from .forms import AddMemberForm
 @login_required
