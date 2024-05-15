@@ -4,8 +4,136 @@
 
 {% include 'navbar.html' %}
 
+<style>
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-<img src="{% static 'images/brucewood.jpg' %}" alt="Your Photo" class="img-fluid">
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    #sponsorship-details {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+</style>
+
+<form id="sponsorship-form" method="post">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+    <br>
+    <label for="company">Company:</label>
+    <input type="text" id="company" name="company" value="NA">
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <br>
+    <label for="website">Website Link:</label>
+    <input type="url" id="website" name="website" placeholder="Optional">
+    <br>
+    <label for="level">Sponsorship Level:</label>
+    <select id="level" name="level">
+        <option value="bronze">Bronze Community Supporter</option>
+        <option value="silver">Silver Hope Advocate</option>
+        <option value="gold">Gold Lifesaver Leader</option>
+        <option value="platinum">Platinum Empathy Champion</option>
+        <option value="titanium">Titanium Community Ambassador</option>
+    </select>
+    <div id="sponsorship-details"></div>
+    <br>
+    <button type="submit">Submit</button>
+</form>
+
+
+
+<script>
+    // Get the dropdown element
+    const dropdown = document.getElementById('level');
+
+    // Container to display selected sponsorship details
+    const sponsorshipDetails = document.getElementById('sponsorship-details');
+
+    // Event listener for when a dropdown option is selected
+    dropdown.addEventListener('change', function () {
+        const selectedOption = dropdown.value;
+
+        // Clear previous details
+        sponsorshipDetails.innerHTML = '';
+
+        // Dynamically populate details based on selected option
+        switch (selectedOption) {
+            case 'bronze':
+                sponsorshipDetails.innerHTML = `
+                    <p>Name or logo prominently featured on event website for 2 months</p>
+                    <p>Exclusive Bronze sponsorship certificate</p>
+                    <p>Price: $250</p>`;
+                break;
+            case 'silver':
+                sponsorshipDetails.innerHTML = `
+                    <p>Name or logo prominently featured on event website for 3 months</p>
+                    <p>Exclusive Silver sponsorship certificate</p>
+                    <p>Price: $500</p>`;
+                break;
+            case 'gold':
+                sponsorshipDetails.innerHTML = `
+                    <p>All Silver benefits plus premier visibility across all event materials</p>
+                    <p>Exclusive Gold sponsorship certificate</p>
+                    <p>Feature in press releases</p>
+                    <p>Backlink to drive traffic to your website; stays for 6 months after event</p>
+                    <p>Price: $750</p>`;
+                break;
+            case 'platinum':
+                sponsorshipDetails.innerHTML = `
+                    <p>Name or logo prominently featured on event website</p>
+                    <p>Exclusive Platinum sponsorship certificate</p>
+                    <p>Your very own article featured on our website</p>
+                    <p>Backlink to drive traffic to your website; stays for 12 months after event</p>
+                    <p>Price: $1000</p>`;
+                break;
+            case 'titanium':
+                sponsorshipDetails.innerHTML = `
+                    <p>All Platinum benefits</p>
+                    <p>Exclusive Titanium sponsorship certificate</p>
+                    <p>Your pictures will be featured on our website as a key supporter of suicide prevention</p>
+                    <p>Price: $1500</p>`;
+                break;
+            default:
+                sponsorshipDetails.innerHTML = '<p>Please select a sponsorship level</p>';
+        }
+    });
+
+</script>
 
 {% include 'footer.html' %}
 {% endblock %}

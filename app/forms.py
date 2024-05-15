@@ -27,3 +27,11 @@ class DonationForm(forms.ModelForm):
     class Meta:
         model = Donation
         fields = ['amount']  # Adjust the fields as per your Donation model
+
+
+from .models import Sponsorship
+
+class SponsorshipForm(forms.ModelForm):
+    class Meta:
+        model = Sponsorship
+        fields = ['name', 'company', 'email', 'website_link', 'level', 'donation_amount']

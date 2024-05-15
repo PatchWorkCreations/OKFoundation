@@ -470,3 +470,15 @@ def edit_donation(request, username):
     else:
         form = DonationForm(instance=donation)
     return render(request, 'edit_donation.html', {'form': form})
+
+from .forms import SponsorshipForm  # Import your SponsorshipForm
+
+def sponsorship_form(request):
+    if request.method == 'POST':
+        form = SponsorshipForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('thank_you_page')  # Redirect to a thank you page after successful submission
+    else:
+        form = SponsorshipForm()
+    return render(request, 'sponsors.html', {'form': form})

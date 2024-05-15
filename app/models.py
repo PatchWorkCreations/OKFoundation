@@ -41,3 +41,24 @@ class Volunteer(models.Model):
 
     def __str__(self):
         return self.full_name
+
+
+class SponsorshipLevel(models.Model):
+    LEVEL_CHOICES = [
+        ('bronze', 'Bronze Community Supporter'),
+        ('silver', 'Silver Hope Advocate'),
+        ('gold', 'Gold Lifesaver Leader'),
+        ('platinum', 'Platinum Empathy Champion'),
+        ('titanium', 'Titanium Community Ambassador'),
+    ]
+    level = models.CharField(max_length=50, choices=LEVEL_CHOICES)
+
+class Sponsorship(models.Model):
+    name = models.CharField(max_length=100)
+    company = models.CharField(max_length=100, default="NA")
+    email = models.EmailField()
+    website_link = models.URLField(blank=True, null=True)  # Optional field for website link or page link
+    level = models.ForeignKey(SponsorshipLevel, on_delete=models.CASCADE)  # ForeignKey relationship with SponsorshipLevel
+    donation_amount = models.DecimalField(max_digits=10, decimal_places=2, null=True)  # Nullable field for donation amount
+    price = models.CharField(max_length=20)
+    details = models.TextField()
