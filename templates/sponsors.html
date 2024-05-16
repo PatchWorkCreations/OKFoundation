@@ -59,6 +59,9 @@
 </style>
 
 <div class="sponsor-box" style="padding: 15px;">
+    {% if submitted %}
+        <p>Thank you for your sponsorship!</p>
+    {% else %}
     <form action="{% url 'sponsors' %}" method="post">
     {% csrf_token %}
     <label for="name">Name:</label>
@@ -86,7 +89,9 @@
     <button type="button" id="donate-button" class="btn btn-primary" data-toggle="modal" data-target="#donationModal">Contribute Now</button>
 
     <button type="submit">Submit</button>
+
 </form>
+{% endif %}
 </div>
 
 <!-- Modal -->
