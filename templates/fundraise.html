@@ -118,89 +118,73 @@
     color: rgb(8, 8, 8);
     margin-bottom: 12px;
 }
-
-.search-container {
-    border-radius: 0px;
-    padding: 40px;
-    color: white;
-    padding-left: 65px;
-    }
-
-    /* Style the input field */
-    .search-input {
-        padding: 10px;
-        width: 300px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        box-sizing: border-box; /* Ensure padding and border are included in element's total width */
-    }
-
-    /* Style the search button */
-    .search-button {
-        padding: 10px 20px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    /* Style the search button on hover */
-    .search-button:hover {
-        background-color: #45a049;
-    }
-
-    .helpateam{
-        border-radius: 0px;
-    padding: 40px;
-    color: white;
-    padding-left: 65px;
-    text-align: center;
-    }
-
-
 .team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Adjust as needed */
-}
-
-.team-box {
-    width: 220px; /* Set a fixed width */
-    height: 265px;
-    background-color: #f0f0f0;
-    margin: 10px; /* Add margin to create space between team boxes */
-    padding: 20px 0; /* Remove padding and adjust top and bottom padding as needed */
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid black; /* Border color and thickness */
-    color: black; /* Font color */
-}
-
-/* Media queries for responsiveness */
-@media only screen and (max-width: 768px) {
-    .container-rectangle {
-        flex-direction: column; /* Stack rectangles vertically on small screens */
-    }
-
-    .my-custom-containerr,
-    .search-container,
-    .helpateam,
-    .team-box {
-        padding: 20px; /* Adjust padding for smaller screens */
-    }
-
-    .search-input {
-        width: 100%; /* Make the search input full-width */
-        max-width: 300px; /* Limit the maximum width */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
     }
 
     .team-box {
-        width: calc(50% - 20px); /* Two columns layout for teams */
+        width: 20%; /* Adjusted to fit 3 boxes per row */
+        height: 270px;
+        background-color: #f0f0f0;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid black;
+        color: black;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
-}
+
+    .team-box h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .team-box p {
+        font-size: 14px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .team-box a.button_donate {
+        display: inline-block;
+        background-color: #6743a4;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        max-width: 100%;
+        text-align: center;
+        font-size: 14px;
+        margin-top: auto;
+    }
+
+    .team-box a.button_donate:hover {
+        background-color: #0056b3;
+    }
+
+    /* Media queries for responsiveness */
+    @media only screen and (max-width: 992px) {
+        .team-box {
+            width: 45%; /* Adjust to fit 2 boxes per row on medium screens */
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .team-box {
+            width: 100%; /* Adjust to fit 1 box per row on small screens */
+        }
+    }
 
 
 /* Ensure that headings stay within their div containers */
@@ -244,7 +228,73 @@
             height: auto;
         }
 
+        .team-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
 
+    .team-boxx {
+        width: 20%; /* Adjusted to fit 3 boxes per row */
+        height: 200px;
+        background-color: #f0f0f0;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid black;
+        color: black;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .team-boxx h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .team-boxx p {
+        font-size: 14px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .team-boxx a.button_donate {
+        display: inline-block;
+        background-color: #6743a4;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        max-width: 100%;
+        text-align: center;
+        font-size: 14px;
+        margin-top: auto;
+    }
+
+    .team-boxx a.button_donate:hover {
+        background-color: #0056b3;
+    }
+
+    /* Media queries for responsiveness */
+    @media only screen and (max-width: 992px) {
+        .team-boxx {
+            width: 45%; /* Adjust to fit 2 boxes per row on medium screens */
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .team-boxx {
+            width: 100%; /* Adjust to fit 1 box per row on small screens */
+        }
+    }
 </style>
 
 {% include 'navbar.html' %}
@@ -297,37 +347,31 @@
 
 </div>
 
+
 <h1 style="text-align: center; color: #6743a4;">Help a fundraiser below!</h1>
 <br>
 <br>
 
 <h2>Fundraiser Teams</h2>
 <div class="helpateam">
-    
-
     <div class="team-container">
         {% for team in registered_teams %}
-        <div href="{% url 'team_detail' team.team_name %}" class="team-box">
-            
+        <div class="team-box">
             <h2>{{ team.team_name }}</h2>
             <p>Fundraising Goal: ${{ team.total_fundraising_goal }}</p>
             <!-- Add more information as needed -->
-            <p>Click here to learn more about <a href="{% url 'team_detail' team.team_name %}"> {{ team.team_name }} </a></p>
-            <a target="_blank" data-url="https://square.link/u/5g6XQwWE?src=embd" href="https://square.link/u/5g6XQwWE?src=embed" class="btn btn-info ms-lg-3 button_donate">Support {{ team.team_name }}</a>
-            
+            <p>Click here to learn more about <a href="{% url 'team_detail' team.team_name %}">{{ team.team_name }}</a></p>
+            <a target="_blank" data-url="https://square.link/u/5g6XQwWE?src=embd" href="https://square.link/u/5g6XQwWE?src=embed" class="btn btn-info button_donate">Support {{ team.team_name }}</a>
         </div>
         {% endfor %}
     </div>
-    
-    
 </div>
 
 <h2>Solo Participants</h2>
 <div class="helpateam">
-    
     <div class="team-container">
         {% for participant in solo_participants %}
-        <div class="team-box">
+        <div class="team-boxx">
             <h1 style="text-align: center;">{{ participant.name }}</h1>
         </div>
         {% endfor %}
