@@ -40,7 +40,6 @@ urlpatterns = [
     path('add_member/', add_member, name='add_member'),
     path('generate_csv/', generate_csv, name='generate_csv'),
     path('edit_donation/<str:username>/', views.edit_donation, name='edit_donation'),
-    
-
+    path('teamcaptainfactsheet', teamcaptainfactsheet, name='teamcaptainfactsheet'),
 
 ]

@@ -482,3 +482,6 @@ def sponsorship_form(request):
     else:
         form = SponsorshipForm()
     return render(request, 'sponsors.html', {'form': form, 'submitted': False})
+
+def teamcaptainfactsheet(request):
+    return render(request, 'teamcaptainfactsheet.html')
