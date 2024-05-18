@@ -41,5 +41,6 @@ urlpatterns = [
     path('generate_csv/', generate_csv, name='generate_csv'),
     path('edit_donation/<str:username>/', views.edit_donation, name='edit_donation'),
     path('teamcaptainfactsheet', teamcaptainfactsheet, name='teamcaptainfactsheet'),
+    path('Registration_2', Registration_2, name='Registration_2'),
 
 ]

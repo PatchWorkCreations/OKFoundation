@@ -485,3 +485,7 @@ def sponsorship_form(request):
 
 def teamcaptainfactsheet(request):
     return render(request, 'teamcaptainfactsheet.html')
+
+def Registration_2(request):
+    return render(request, 'Registration_2.html')
+
