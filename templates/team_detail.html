@@ -319,25 +319,23 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+  // JavaScript to update the width of the progress bar based on current progress
+  document.addEventListener("DOMContentLoaded", function() {
         // Get the progress bar element
         var progressBar = document.querySelector(".goal-progress");
-
-        // Set the actual progress and goal amount obtained from Django template variables
-        var currentProgress = {{ captain_fundraising_progress }};
-        var goalAmount = {{ captain_fundraising_goal }};
-
+        
+        // Set the current progress (you can replace this with actual progress data)
+        var currentProgress = 4610; // $600 raised
+        var goalAmount = { captain_fundraising_goal }; // $1000 goal
+        
         // Calculate the width percentage based on current progress and goal amount
         var widthPercentage = (currentProgress / goalAmount) * 100;
-
-        // Ensure widthPercentage is within the range [0, 100]
-        widthPercentage = Math.min(Math.max(widthPercentage, 0), 100);
-
+        
         // Update the width of the progress bar
         progressBar.style.width = widthPercentage + "%";
     });
 
-
+    
 </script>
 {% include 'footer.html' %}
 {% endblock %}

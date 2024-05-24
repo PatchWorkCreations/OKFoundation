@@ -222,28 +222,48 @@ def update_account_settings(request):
         return redirect('dashboard')
 
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Sum
+from django.http import JsonResponse
+from django.db import connection
+from .models import Participant, Volunteer, Donation
+import logging
+
+logger = logging.getLogger(__name__)
+
 def admin_dashboard(request):
-    participants = Participant.objects.all()
-    participants_count = participants.count() - 1
+    try:
+        participants = Participant.objects.all()
+        participants_count = participants.count() - 1
 
-    volunteers = Volunteer.objects.all()
-    volunteers_count = volunteers.count() - 1
+        volunteers = Volunteer.objects.all()
+        volunteers_count = volunteers.count() - 1
 
-    # Check if the sort_by query parameter exists in the request
-    sort_by = request.GET.get('sort_by')
+        # Check if the sort_by query parameter exists in the request
+        sort_by = request.GET.get('sort_by')
 
-    # Sort participants by team option if the query parameter exists
-    if sort_by == 'team_option':
-        participants = participants.order_by('team_option')
+        # Sort participants by team option if the query parameter exists
+        if sort_by == 'team_option':
+            participants = participants.order_by('team_option')
 
-    context = {
-        'participants': participants,
-        'participants_count': participants_count,
-        'volunteers': volunteers,
-        'volunteers_count': volunteers_count,
-    }
-    return render(request, 'admin_dashboard.html', context=context)
+        # Fetch donations for each participant
+        for participant in participants:
+            donation = Donation.objects.filter(participant=participant).aggregate(total_amount=Sum('amount'))
+            participant.donation = donation['total_amount'] if donation['total_amount'] else 'N/A'
 
+        context = {
+            'participants': participants,
+            'participants_count': participants_count,
+            'volunteers': volunteers,
+            'volunteers_count': volunteers_count,
+        }
+        return render(request, 'admin_dashboard.html', context=context)
+    except Exception as e:
+        logger.error("Error in admin_dashboard view: %s", str(e))
+        return JsonResponse({'error': str(e)}, status=500)
+    finally:
+        # Close any open database connections to prevent connection leaks
+        connection.close()
 
 def fetch_user_details(request, pk):
     participant = Participant.objects.get(id=pk)
@@ -449,26 +469,24 @@ from .forms import DonationForm
 
 
 from .models import Participant, Donation
+from .forms import DonationForm
 def edit_donation(request, username):
-    try:
-        participant = Participant.objects.get(username=username)
-        donation = participant.donation_set.first()  # Access donations associated with the participant
-    except Participant.DoesNotExist:
-        return HttpResponse("Participant not found", status=404)
-    except Donation.DoesNotExist:
-        donation = None  # If donation doesn't exist, set it to None
+    participant = get_object_or_404(Participant, username=username)
+    donation = Donation.objects.filter(participant=participant).first()
 
     if request.method == 'POST':
         form = DonationForm(request.POST, instance=donation)
         if form.is_valid():
-            # Set the participant for the donation if it's a new donation
-            if donation is None:
-                donation = form.save(commit=False)
-                donation.participant = participant
-            form.save()
+            donation = form.save(commit=False)
+            donation.participant = participant
+            donation.save()
+            print(f"Donation updated: {donation.amount}")  # Debugging print statement
             return redirect('admin_dashboard')
+        else:
+            print("Form is not valid")  # Debugging print statement
     else:
         form = DonationForm(instance=donation)
+
     return render(request, 'edit_donation.html', {'form': form})
 
 from .forms import SponsorshipForm
