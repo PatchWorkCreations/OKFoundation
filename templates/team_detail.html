@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    .header-section {
+      .header-section {
         background-image: url('{% static "images/aboutus2.png" %}');
         background-position: center;
         background-size: cover;
@@ -223,9 +223,6 @@
     }
 }
 
-
-
-
 </style>
 
 {% include 'navbar.html' %}
@@ -263,21 +260,21 @@
     </a>
 </div>
 
-<h1 style="text-align: center;">Team Captain of {{team_name}}</h1>
+<h1 style="text-align: center;">Team Captain of {{ team_name }}</h1>
 
-    <!-- Team Captain Container -->
-    <div class="team-container">
-        {% if team_captain %}
-            <div class="team-box">
-                <h2>{{ team_captain.name }}</h2>
-                <!-- Add other team captain information here -->
-            </div>
-        {% endif %}
-    </div>
+<!-- Team Captain Container -->
+<div class="team-container">
+    {% if team_captain %}
+        <div class="team-box">
+            <h2>{{ team_captain.name }}</h2>
+            <!-- Add other team captain information here -->
+        </div>
+    {% endif %}
+</div>
 
 <br>
 <h1 style="text-align: center;">Members</h1>
-<div class=""team-container">
+<div class="team-container">
     <!-- Team Members Container -->
     <div class="team-container">
         {% if participants %}
@@ -293,20 +290,18 @@
             <p>No participants found for this team.</p>
         {% endif %}
     </div>
-</div>    
+</div>
 
-
-<!-- JavaScript logic for the progress bar -->
-
+<!-- Progress Bar and Donation Information -->
 <div class="goal-container">
     <div class="goal-bar">
         <div class="goal-progress" style="width: {{ captain_fundraising_progress_percentage }}%;"></div>
     </div>
     <div class="goal-amount">
-        {{team_name}} raised  ${{ captain_fundraising_progress }} of ${{ captain_fundraising_goal }}
+        {{ team_name }} raised ${{ captain_fundraising_progress }} of ${{ captain_fundraising_goal }}<br>
+        Total Donations: ${{ total_donation }}
     </div>
 </div>
-
 
 <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="20" class="my-custom-containerr">
     <h2>Taking Action: Combatting Johnstown's Suicide Crisis</h2>
@@ -315,27 +310,18 @@
         urgent need for action and support within our community. Join us for 0K: The Finish Line Moves in Johnstown,
         Ohio, where we're tackling the local suicide crisis head-on. We're raising funds to aid those who've lost loved
         ones or are struggling. Let's unite to prevent further tragedies. Together, we can ALL be Life-Savers.</p>
-
 </div>
 
 <script>
-  // JavaScript to update the width of the progress bar based on current progress
-  document.addEventListener("DOMContentLoaded", function() {
-        // Get the progress bar element
+    // JavaScript to update the width of the progress bar based on current progress
+    document.addEventListener("DOMContentLoaded", function() {
         var progressBar = document.querySelector(".goal-progress");
-        
-        // Set the current progress (you can replace this with actual progress data)
-        var currentProgress = 4610; // $600 raised
-        var goalAmount = { captain_fundraising_goal }; // $1000 goal
-        
-        // Calculate the width percentage based on current progress and goal amount
+        var currentProgress = {{ captain_fundraising_progress }};
+        var goalAmount = {{ captain_fundraising_goal }};
         var widthPercentage = (currentProgress / goalAmount) * 100;
-        
-        // Update the width of the progress bar
         progressBar.style.width = widthPercentage + "%";
     });
-
-    
 </script>
+
 {% include 'footer.html' %}
 {% endblock %}

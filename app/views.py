@@ -418,13 +418,26 @@ def team_detail(request, team_name):
     team_captain = participants.filter(is_team_captain=True).first()
 
     # Calculate the total fundraising goal for the team captain
-    captain_fundraising_goal = participants.filter(is_team_captain=True).aggregate(total_goal=Sum('fundraising_goal'))[
-        'total_goal']
+    captain_fundraising_goal = participants.filter(is_team_captain=True).aggregate(total_goal=Sum('fundraising_goal'))['total_goal']
 
-    # Pass the team captain, participants, and total fundraising goal to the template
-    return render(request, 'team_detail.html',
-                  {'team_name': team_name, 'team_captain': team_captain, 'participants': participants,
-                   'captain_fundraising_goal': captain_fundraising_goal})
+    # Calculate the total donation amount for the team
+    total_donation = Donation.objects.filter(participant__team_name=team_name).aggregate(total_amount=Sum('amount'))['total_amount']
+
+    # Calculate the fundraising progress as a percentage
+    captain_fundraising_progress = Donation.objects.filter(participant=team_captain).aggregate(total_amount=Sum('amount'))['total_amount'] if team_captain else 0
+    captain_fundraising_progress_percentage = (captain_fundraising_progress / captain_fundraising_goal) * 100 if captain_fundraising_goal else 0
+
+    # Pass the team captain, participants, total fundraising goal, and total donation to the template
+    context = {
+        'team_name': team_name,
+        'team_captain': team_captain,
+        'participants': participants,
+        'captain_fundraising_goal': captain_fundraising_goal,
+        'total_donation': total_donation,
+        'captain_fundraising_progress': captain_fundraising_progress,
+        'captain_fundraising_progress_percentage': captain_fundraising_progress_percentage
+    }
+    return render(request, 'team_detail.html', context)
 
 
 
