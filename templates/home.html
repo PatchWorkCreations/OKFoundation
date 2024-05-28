@@ -319,36 +319,9 @@
 
 <head>
 
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Johnstown 2024</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body text-center">
-  <div class = "larger-text">       <!-- Modal content here -->
-    <h1 id="white-heading">FREE COMMUNITY EVENT!</h1>
-    <p>May 18, 2024</p>
-      <p>9am - 12 Noon</p>
-       </div>
-      <p>North Athletic Fields, by the American Legion</p>
-      <p>Wall of Honor</p>
-       <p>Maple & Oregon Streets </p>
-        <p>Johnstown, Ohio</p>
-          </div>
-          <div class="modal-footer justify-content-center">
-              <!-- Modal footer content here -->
-<a href="{% url 'registration' %}" class="btn btn-secondary">Register Here</a>
-          </div>
-      </div>
-  </div>
-</div>
 
-  
 
-<!-- HERO -->
+<!-- 
 <section id="hero" class="min-vh-100 d-flex align-items-center text-center">
   <div class="container">
       <div class="row">
@@ -367,6 +340,8 @@
       </div>
   </div>
 </section>
+
+HERO -->
 
 <div data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="50" class="my-custom-containerr">
   <h2>Taking Action: Combatting Johnstown's Suicide Crisis</h2>
@@ -653,47 +628,47 @@
 
 
 <script>
-  $(document).ready(function(){
+ // $(document).ready(function(){
     // Remove the automatic modal show to replace with click event
-    $('#exampleModal').modal('show');
+  //  $('#exampleModal').modal('show');
 
 
-  });
+ // });
 
 
-  const countdownn = () => {
+ // const countdownn = () => {
     // Create a new Date object using UTC time, then set it to EST
-    const now = new Date();
-    const estOffset = -5 * 60 * 60 * 1000; // Offset for EST timezone (-5 hours)
-    const estNow = new Date(now.getTime() + estOffset);
+   //  const now = new Date();
+   //  const estOffset = -5 * 60 * 60 * 1000; // Offset for EST timezone (-5 hours)
+    // const estNow = new Date(now.getTime() + estOffset);
 
     // Set the countdown date to May 18, 2024 09:00:00 EST
-    const countToDate = new Date('May 18, 2024 09:00:00 EST').getTime();
+   //  const countToDate = new Date('May 18, 2024 09:00:00 EST').getTime();
 
     // Calculate the time difference
-    const difference = countToDate - estNow.getTime();
+   //  const difference = countToDate - estNow.getTime();
 
-    const seconds = 1000;
-    const minutes = seconds * 60;
-    const hours = minutes * 60;
-    const days = hours * 24;
+   //  const seconds = 1000;
+   //  const minutes = seconds * 60;
+    // const hours = minutes * 60;
+    // const days = hours * 24;
 
-    let timeDays = Math.floor(difference / days);
-    let timeHours = Math.floor((difference % days) / hours);
-    let timeMinutes = Math.floor((difference % hours) / minutes);
-    let timeSeconds = Math.floor((difference % minutes) / seconds);
+   //  let timeDays = Math.floor(difference / days);
+   //  let timeHours = Math.floor((difference % days) / hours);
+   //  let timeMinutes = Math.floor((difference % hours) / minutes);
+    // let timeSeconds = Math.floor((difference % minutes) / seconds);
 
-    document.getElementById('days-number').innerText = timeDays;
-    document.getElementById('hours-number').innerText = timeHours;
-    document.getElementById('minutes-number').innerText = timeMinutes;
-    document.getElementById('seconds-number').innerText = timeSeconds;
-};
+    // document.getElementById('days-number').innerText = timeDays;
+    // document.getElementById('hours-number').innerText = timeHours;
+    // document.getElementById('minutes-number').innerText = timeMinutes;
+    // document.getElementById('seconds-number').innerText = timeSeconds;
+ //};
 
 // Call the countdown function every second
-setInterval(countdownn, 1000);
+ //setInterval(countdownn, 1000);
 
 
-  setInterval(countdownn, 1000);
+   //setInterval(countdownn, 1000);
 </script>
 
 {% endblock %}
