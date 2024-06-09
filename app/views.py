@@ -17,6 +17,52 @@ from django.http import HttpResponse
 from django.db.models import Q
 
 
+from django.http import JsonResponse
+from django.core.mail import EmailMessage
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from .models import Participant, Volunteer
+
+def schedule_call(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        city = request.POST.get('city')
+        country = request.POST.get('country')
+
+        # Process the data, save it to the database, or send an email
+        subject = 'Schedule a Call Submission'
+        content = f'Name: {name}\nEmail: {email}\nPhone: {phone}\nCity: {city}\nCountry: {country}'
+        to_email = 'officialpatchwork07@gmail.com'
+
+        email_message = EmailMessage(subject, content, to=[to_email])
+        email_message.send()
+
+        messages.success(request, 'We have received your submission. Thank you for supporting our cause!')
+        return JsonResponse({'message': 'Success'})
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+def contact_form_submission(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        # Process the data, save it to the database, or send an email
+        subject = 'Contact Form Submission'
+        content = f'Name: {name}\nEmail: {email}\nMessage: {message}'
+        to_email = 'officialpatchwork07@gmail.com'  # Your target email address
+
+        email_message = EmailMessage(subject, content, to=[to_email])
+        email_message.send()
+
+        messages.success(request, 'We have received your submission. Thank you for supporting our cause!')
+        return JsonResponse({'message': 'Success'})
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
 def generate_csv(request):
     participants = Participant.objects.all()  # Assuming Participant is your model name
     response = HttpResponse(content_type='text/csv')

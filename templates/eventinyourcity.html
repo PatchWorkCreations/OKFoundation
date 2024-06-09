@@ -3,256 +3,340 @@
 {% load static %}
 {% include 'navbar.html' %}
 <style>
-
-    #johnstown_2024_button {
-        position: absolute;
-        top: 8.7rem; /* Adjust this value as needed */
-        right: 0rem; /* Adjust this value as needed */
-        padding: 1rem 2rem; /* Adjust padding for height and width */
-        background-color: purple;
-        color: #ffffff;
-        text-decoration: none;
-        border-radius: 10px;
-        border: none;
-        cursor: pointer;
-        line-height: 1; /* Ensure line-height doesn't affect the size */
-    }
-
     .contact-form {
-  
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  float: left;
-
-  max-width: 50%; /* Adjust width as needed */
-  margin-right: 20px; /* Adjust margin between form and image */
-}
-
-.contact-form h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button[type="submit"] {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-.image-container {
-  float: right; /* Align image to the right */
-  max-width: 50%;
-}
-
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-.contact-form-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 10px;
-}
-
-#welcome-section {
-    background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('static/images/ipatchwork_44223_community_engagement_d428d78a-bc00-44c4-bd21-eecae194f589.png');
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    align-items: center; /* Vertically center the content */
-    justify-content: center; /* Horizontally center the content */
-    min-height: 60vh; /* Adjust the height as needed */
-    padding: 0 20px; /* Add padding to prevent content from sticking to the edges */
-}
-
-/* Styling for the text content */
-/* Adjusting the text alignment */
-/* Adjusting the text alignment */
-#welcome-section .container {
-    position: relative; /* Ensure content stays above the background */
-    display: flex;
-    flex-direction: column; /* Stack columns vertically */
-    justify-content: center; /* Vertically center the content */
-    align-items: center; /* Horizontally center the content */
-    max-width: 70%; /* Limit container width to 70% of its parent */
-    margin: 0 auto; /* Center the container horizontally */
-}
-
-/* Centering hero content */
-.hero-content {
-    text-align: center; /* Center text inside the hero content */
-}
-
-
-
-/* Adjusting the text alignment */
-#welcome-section .col-md-6 {
-    text-align: center; /* Align text to the left */
-}
-
-/* Other styles for headings and paragraphs if needed */
-#welcome-section h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: whitesmoke; /* Dark text color */
-    margin-bottom: 20px;
-    text-align: center; /* Align heading text to the left */
-    max-width: 100%;
-}
-
-#welcome-section p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: whitesmoke; /* Slightly darker text color */
-    margin-bottom: 15px;
-    text-align: left; /* Align paragraph text to the left */
-    max-width: 100%;
-}
-
-@media (max-width: 768px) {
-    #welcome-section .col-md-6 {
-        text-align: center; /* Align text to the center on smaller screens */
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        float: left;
+        max-width: 50%;
+        margin-right: 20px;
     }
-}
 
-.container-movement {
-            width: 80%;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .contact-form h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .image-container {
+        float: right;
+        max-width: 50%;
+    }
+
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .contact-form-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+
+    #welcome-section {
+        background: linear-gradient(rgba(var(--c-brand-rgb), 0.507), rgba(var(--c-brand-rgb), 0.438)), url('static/images/ipatchwork_44223_community_engagement_d428d78a-bc00-44c4-bd21-eecae194f589.png');
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60vh;
+        padding: 0 20px;
+    }
+
+    #welcome-section .container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 70%;
+        margin: 0 auto;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    #welcome-section .col-md-6 {
+        text-align: center;
+    }
+
+    #welcome-section h2 {
+        font-size: 32px;
+        font-weight: bold;
+        color: whitesmoke;
+        margin-bottom: 20px;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    #welcome-section p {
+        font-size: 18px;
+        line-height: 1.6;
+        color: whitesmoke;
+        margin-bottom: 15px;
+        text-align: left;
+        max-width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        #welcome-section .col-md-6 {
             text-align: center;
         }
-        .container-movement h1 {
-            color: #673ab7;
-        }
-        .container-movement p {
-            color: #333;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .cta-btn {
-            display: inline-block;
-            background-color: #673ab7;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        .cta-btn:hover {
-            background-color: #512da8;
-        }
-        .image-container {
-            margin-top: 20px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
+    }
 
+    .container-movement {
+        width: 80%;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .container-movement h1 {
+        color: #673ab7;
+    }
+
+    .container-movement p {
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .cta-btn {
+        display: inline-block;
+        background-color: #673ab7;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        background-color: #512da8;
+    }
+
+    .image-container {
+        margin-top: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+        border-radius: 8px;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 </style>
 
 <body>
-<div class="rectangle-barr">
-    <p>Welcome to The 0K Foundation</p>
-</div>
-
-<a href="{% url 'johnstown_2024' %}" id="johnstown_2024_button">
-    <p>Johnstown 2024</p>
-    <p>May 18, 2024</p>
-    <p>9am - 12 Noon</p>
-</a>
-
-<section id="welcome-section" class="min-vh-60 d-flex align-items-center text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 hero-content">
-                <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1 text-center">Host AN EVENT IN YOUR CITY!</h1> 
-                <h5 class="text-white mt-3 mb-4" data-aos="fade-right"></h5>
-                <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
-                  <a href="{% url 'registration' %}" class="engage-button">Schedule a call</a>
+    <section id="welcome-section" class="min-vh-60 d-flex align-items-center text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 hero-content">
+                    <h1 data-aos="fade-left" class="hero-title text-uppercase text-white fw-semibold display-1 text-center">Host AN EVENT IN YOUR CITY!</h1>
+                    <h5 class="text-white mt-3 mb-4" data-aos="fade-right"></h5>
+                    <div data-aos="fade-up" data-aos-delay="50" class="hero-buttons">
+                        <button id="openModal" class="engage-button">Schedule a call</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<div class="container-movement">
-    <h1>Join the Movement</h1>
-    <p>Are you passionate about suicide prevention and mental health awareness? Do you want to make a tangible difference in your community? Join our movement and become a Life-Saver by hosting an event in your city!</p>
-    <a href="#" class="cta-btn">Get Involved</a>
-    <!---
-    <div class="image-container">
-        
-        <img src="your-image-url.jpg" alt="Event Image">
-    </div>  <!-- Add your image here -->
+    <div class="container-movement">
+        <h1>Join the Movement</h1>
+        <p>Are you passionate about suicide prevention and mental health awareness? Do you want to make a tangible difference in your community? Join our movement and become a Life-Saver by hosting an event in your city!</p>
+        <a href="#" class="cta-btn">Get Involved</a>
+    </div>
+<!-- Modal for scheduling a call -->
+<div id="scheduleCallModal" class="modal">
+  <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Schedule a Call</h2>
+      <form id="scheduleCallForm" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="text" id="phone" name="phone" required>
+          </div>
+          <div class="form-group">
+              <label for="city">City:</label>
+              <input type="text" id="city" name="city" required>
+          </div>
+          <div class="form-group">
+              <label for="country">Country:</label>
+              <input type="text" id="country" name="country" required>
+          </div>
+          <button type="submit">Submit</button>
+      </form>
+      <div id="confirmationMessage" style="display: none; color: green; margin-top: 20px;">
+          We have received your submission. Thank you for supporting our cause!
+      </div>
+  </div>
 </div>
 
-
+<!-- Contact form -->
 <div class="contact-form-wrapper clearfix">
-    <div class="contact-form">
+  <div class="contact-form">
       <h2>Contact Us for Further Information</h2>
-      <form action="/submit-contact-form" method="post">
-        <!-- Add CSRF token for security -->
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="name">Your Name:</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">Your Email:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Your Message:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
+      <form id="contactForm" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+              <label for="name">Your Name:</label>
+              <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+              <label for="email">Your Email:</label>
+              <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+              <label for="message">Your Message:</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
       </form>
-    </div>
-    <div class="image-container">
-      <img src="{% static 'images/new.png' %}" alt="Your Image">
-    </div>
+      <div id="contactConfirmationMessage" style="display: none; color: green; margin-top: 20px;">
+          We have received your submission. Thank you for supporting our cause!
+      </div>
   </div>
-  
-<!-- End of inserted code -->
+  <div class="image-container">
+      <img src="{% static 'images/new.png' %}" alt="Your Image">
+  </div>
+</div>
 
-<!-- FOOTER -->
-{% include 'footer.html' %}
+<script>
+  var modal = document.getElementById("scheduleCallModal");
+  var btn = document.getElementById("openModal");
+  var span = document.getElementsByClassName("close")[0];
+
+  btn.onclick = function () {
+      modal.style.display = "block";
+  }
+
+  span.onclick = function () {
+      modal.style.display = "none";
+  }
+
+  window.onclick = function (event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+
+  function handleFormSubmission(formId, url, confirmationMessageId) {
+      var form = document.getElementById(formId);
+      var confirmationMessage = document.getElementById(confirmationMessageId);
+
+      form.onsubmit = function (event) {
+          event.preventDefault();
+          var formData = new FormData(form);
+
+          fetch(url, {
+              method: 'POST',
+              headers: {
+                  'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+              },
+              body: formData
+          }).then(response => response.json()).then(data => {
+              if (data.message === 'Success') {
+                  form.reset();
+                  confirmationMessage.style.display = 'block';
+                  setTimeout(function () {
+                      confirmationMessage.style.display = 'none';
+                  }, 5000);
+              }
+          }).catch(error => console.error('Error:', error));
+      }
+  }
+
+  handleFormSubmission('scheduleCallForm', '{% url "schedule_call" %}', 'confirmationMessage');
+  handleFormSubmission('contactForm', '{% url "contact_form_submission" %}', 'contactConfirmationMessage');
+</script>
 
 </body>
-
+{% include 'footer.html' %}
 {% endblock %}
+

@@ -2,6 +2,7 @@ from django.urls import path
 from .views import *
 from django.contrib.auth import views as auth_views
 from . import views
+from .views import schedule_call, contact_form_submission
 
 urlpatterns = [
     path('', home_page, name='home'),
@@ -42,5 +43,7 @@ urlpatterns = [
     path('edit_donation/<str:username>/', views.edit_donation, name='edit_donation'),
     path('teamcaptainfactsheet', teamcaptainfactsheet, name='teamcaptainfactsheet'),
     path('Registration_2', Registration_2, name='Registration_2'),
-
+    path('schedule-call/', schedule_call, name='schedule_call'),
+    path('contact-form-submission/', contact_form_submission, name='contact_form_submission'),
 ]
+
